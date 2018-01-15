@@ -14,8 +14,8 @@
 <body>
 	<h1>Het CultuurHuis: Overzicht</h1>
 	<img
-		src='images/overzicht.png'
-		alt='overzicht'
+		src='images/bevestig.png'
+		alt='bevestig'
 	>
 </body>
 </html>

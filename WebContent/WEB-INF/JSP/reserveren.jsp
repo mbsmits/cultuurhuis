@@ -12,7 +12,7 @@
 <vdab:head title='Het CultuurHuis: Reserveren' />
 </head>
 <body>
-	<h1>Het CultuurHuis: Voorstellingen</h1>
+	<h1>Het CultuurHuis: Reserveren</h1>
 	<img
 		src='images/reserveren.png'
 		alt='reserveren'
