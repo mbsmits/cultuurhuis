@@ -1,6 +1,6 @@
 1 DE CASE
 =========
-Je maakt een web applicatie waarmee klanten van een cultuucentrum
+Je maakt een web applicatie waarmee klanten van een cultuurcentrum
 ("Het CultuurHuis") kaarten kunnen reserveren voor de voorstellingen.
 
 De voorstellingen zijn ingedeeld in genres.
