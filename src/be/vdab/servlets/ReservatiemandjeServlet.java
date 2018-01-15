@@ -32,4 +32,5 @@ public class ReservatiemandjeServlet extends HttpServlet {
 		request.setAttribute("genres", genreRepository.findAll());
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
+
 }

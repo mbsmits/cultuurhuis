@@ -1,0 +1,218 @@
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+
+Humor voorstellingen
+Datum				Titel		Uitvoerders		Prijs		Vrije plaatsen	Reserveren
+6/11/09 20:00		...			...				�5,00		165				Reserveren(=hyperlink)
+...
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Reserveren (+reserveren.png)
+
+Voorstellingen (=hyperlink)
+
+Voorstelling:
+Moest ik van u zijn
+
+Uitvoerders:
+...
+
+Datum:
+18/11/09 20:00
+
+Prijs:
+�6,OO
+
+Vrije plaatsen:
+198
+
+Plaatsen:
+<input field>
+
+Reserveren(=button)
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Reservatiemandje (+reservatiemandje.png)
+
+Voorstellingen(=hyperlink)	Bevestiging reservatie(=hyperlink)
+Datum				Titel		Uitvoerders		Prijs		Plaatsen	Verwijderen (=button)
+6/11/09 20:00		...			...				�5,00		4			checkbox
+...
+Te betalen: �34,00
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Reservatiemandje(=hyperlink)		Bevestiging reservatie(=hyperlink)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button)
+Ik ben nieuw (=button)
+
+Stap 2: Bevestigen
+
+Bevestigen (=button disabled)
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button disabled)
+Ik ben nieuw (=button disabled)
+
+Hans Desmet Keizerslaan 7 1000 Brussel
+
+
+Stap 2: Bevestigen
+
+Bevestigen (=button enabled)
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Nieuwe klant (+ nieuweklant.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)	Bevestiging reservatie(=hyperlink)
+
+Voornaam:
+invulveld
+
+Familienaam:
+invulveld
+
+Straat:
+invulveld
+
+Huisnr.:
+invulveld
+
+Postcode:
+invulveld
+
+Gemeente:
+invulveld
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Herhaal paswoord:
+invulveld
+
+
+OK (=button)
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Nieuwe klant (+ nieuweklant.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)	Bevestiging reservatie(=hyperlink)
+
+Voornaam:
+invulveld
+
+Familienaam:
+invulveld
+
+Straat:
+invulveld
+
+Huisnr.:
+invulveld
+
+Postcode:
+invulveld
+
+Gemeente:
+invulveld
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Herhaal paswoord:
+invulveld
+
+OK (=button)
+
+- Voornaam niet ingevuld
+- ...
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button disabled)
+Ik ben nieuw (=button disabled)
+
+Joske Vermeulen Tramlei 15	2900 Schoten
+
+Stap 2: Bevestigen
+
+Bevestigen (=button enabled)
+-----------------------------------------------------------------------------------------
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Overzicht (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		
+
+Gelukte reserveringen
+
+Datum				Titel		Uitvoerders		Prijs (�)		Plaatsen
+14/11/09 20:00		...			...				...				2
+...
+
+Mislukte reserveringen
+
+Datum				Titel		Uitvoerders		Prijs (�)		Plaatsen	Vrije plaatsen
+18/11/09 20:00		...			...				...				3			0
+-----------------------------------------------------------------------------------------

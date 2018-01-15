@@ -44,6 +44,9 @@ Enkel bij voorstellingen die nog vrije plaatsen hebben ziet de gebruiker een hyp
 
 
 
+
+
+
 																						PAGE 4/11
 Als de gebruiker de hyperlink Reserveren bij een voorstelling aanklikt, ziet hij een 
 nieuwe pagina, waarin hij kaarten voor die voorstelling kan reserveren:
