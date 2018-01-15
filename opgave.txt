@@ -52,6 +52,7 @@ Als een gebruiker een tweede keer dezelfde voorstelling reserveert, toon je in h
 invoervak bij Plaatsen: het aantal dat hij reeds intikte bj de eerste reservering van 
 die voorstelling. Hij kan dit getal bij de tweede reservering wijzigen.
 Een reservatiemandje (zie verder) kan een voorstelling max. één keer bevatten.
+
 Ieder keer de gebruiker een reservering gedaan heeft, komt hij op een pagina 
 waarin hij zijn reserveringen ziet. 
 
@@ -64,6 +65,66 @@ op de knop Verwijderen klikken. De aangevinkte reserveringen worden dan uit het
 mandje verwijderd.
 
 Met de hyperlink Voorstellingen komt de gebruiker terug op de eerste pagina.
+
+Zodra de gebruiker minstens één reservering heeft, ziet hij op de andere pagina's
+naast de hyperlink Voorstellingen de hyperlinks Reservatiemandje en Bevestiging reservatie:
+
+Met de hyperlink Reservatiemandje ziet de gebruiker terug zijn mandje.
+
+Met de hyperlink Bevestiging reservatie komt de gebruiker op een pagina waar hij 
+zich indentificeert en de reservatie definitief vastlegt:
+
+Een bestaande klant tikt zijn gebruikersnaam en paswoord in.
+Daarna klikt hij op de button Zoek me op.
+
+Als deze gebruikersnaam met bijhorend paswoord bestaan, ziet de gebruiker zijn 
+gegevens en wordt de knop Bevestigen bruikbaar.
+De textboxen bij Gebruikersnaam en Paswoord en de buttons Zoek me op en Ik ben nieuw zijn gedisabled.
+
+...
+
+Als hij een verkeerde gebruikersnaam of paswoord intikt, toon je in plaats van zijn
+voornaam, familienaam en adres de foutmelding
+Verkeerde gebruikersnaam of paswoord
+
+Een nieuwe gebruiker klikt op de knop Ik ben nieuw.
+Dan ziet hij volgend invulformulier:
+
+...
+
+Alle velden zijn verplicht in te vullen.
+
+Als de gebruiker op OK klikt, voeg je de gegevens toe aan de database, tenzij één
+van volgende fouten optreedt:
+- Velden werden leegelaten.
+- Paswoord en Herhaal paswoord zijn verschillend.
+- Een klant met Gebruikersnaam komt al voor in de database.
+
+Je toont deze fouten onder in het invulformulier:
+
+...
+
+
+Als de klant als nieuwe gebruiker is toegevoegd, keert hij terug naar de pagina 
+bevestiging reservaties en is hij daar geselecteerd alsof hij zich zou opgezocht
+hebben als bestaande klant.
+...
+
+nadat de gebruiker op de knop Bevestigen klikt, leg je de reservaties in het
+reservatiemandje vast in de database:
+- Je vermindert VrijePlaatsen in de table Voorstellingen.
+Als VrijePlaatsen kleiner geworde is dan de gewenst plaatsen in het
+reservatiemandje (omdat een andere gebruiker ondertussen ook voor die
+voorstelling gereserveerd heeft), ken je VrijePlaatsen niet verminderen.
+Die reservatie voor deze voorstelling gaat voor deze gebruiker dan niet door.
+- Als je VrijePlaatsen wel kon verminderen in de table Voorstellingen, voeg je
+een record toe aan de table Reserveringen.
+
+Daarna toon je aan de gebruiker een overzicht van de handelingen in de database:
+...
+Op dat moment heb je het reservatiemandje ook leeg gemaakt.
+
+
 
 
 
