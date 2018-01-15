@@ -12,20 +12,20 @@ import javax.sql.DataSource;
 
 import be.vdab.repositories.GenreRepository;
 
-@WebServlet(urlPatterns = "/index.htm", name = "indexservlet")
-public class IndexServlet extends HttpServlet {
-	
+@WebServlet(urlPatterns = "/voorstellingen.htm", name = "voorstellingenservlet")
+public class VoorstellingenServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
-	
-	private static final String VIEW = "/WEB-INF/JSP/index.jsp";
-	
+
+	private static final String VIEW = "/WEB-INF/JSP/voorstellingen.jsp";
+
 	private final transient GenreRepository genreRepository = new GenreRepository();
-	
+
 	@Resource(name = GenreRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		genreRepository.setDataSource(dataSource);
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

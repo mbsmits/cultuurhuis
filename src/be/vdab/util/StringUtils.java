@@ -13,6 +13,15 @@ public class StringUtils {
 		}
 	}
 
+	public static boolean isLocalDateTime(String string) {
+		try {
+			// TODO
+			return true;
+		} catch (NullPointerException | NumberFormatException ex) {
+			return false;
+		}
+	}
+
 	public static boolean isBigDecimal(String string) {
 		try {
 			new BigDecimal(string);

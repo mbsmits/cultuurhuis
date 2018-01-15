@@ -34,11 +34,13 @@ Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	M
 
 Humor voorstellingen
 Datum				Titel		Uitvoerders		Prijs		Vrije plaatsen	Reserveren
-6/11/09 20:00		...			...				€5,00		165				Reserveren(=hyperlink)
+6/11/09 20:00		...			...				ï¿½5,00		165				Reserveren(=hyperlink)
 ...
 -----------------------------------------------------------------------------------------
 
 Enkel bij voorstellingen die nog vrije plaatsen hebben ziet de gebruiker een hyperlink Reserveren.
+
+
 
 
 
@@ -61,7 +63,7 @@ Datum:
 18/11/09 20:00
 
 Prijs:
-€6,OO
+ï¿½6,OO
 
 Vrije plaatsen:
 198
@@ -90,7 +92,7 @@ reservering op dit moment nog niet in de database, maar op HTTP session).
 Als een gebruiker een tweede keer dezelfde voorstelling reserveert, toon je in het 
 invoervak bij Plaatsen: het aantal dat hij reeds intikte bj de eerste reservering van 
 die voorstelling. Hij kan dit getal bij de tweede reservering wijzigen.
-Een reservatiemandje (zie verder) kan een voorstelling max. één keer bevatten.
+Een reservatiemandje (zie verder) kan een voorstelling max. ï¿½ï¿½n keer bevatten.
 
 
 
@@ -106,20 +108,20 @@ Het CultuurHuis: Reservatiemandje (+reservatiemandje.png)
 
 Voorstellingen(=hyperlink)	Bevestiging reservatie(=hyperlink)
 Datum				Titel		Uitvoerders		Prijs		Plaatsen	Verwijderen (=button)
-6/11/09 20:00		...			...				€5,00		4			checkbox
+6/11/09 20:00		...			...				ï¿½5,00		4			checkbox
 ...
-Te betalen: €34,00
+Te betalen: ï¿½34,00
 -----------------------------------------------------------------------------------------
 
 Onder het overzicht ziet de gebruiker hoeveel hij in totaal moet betalen.
 
-De gebruiker kan een vinkje plaatsen bij één of meerdere reserveringen en daarna
+De gebruiker kan een vinkje plaatsen bij ï¿½ï¿½n of meerdere reserveringen en daarna
 op de knop Verwijderen klikken. De aangevinkte reserveringen worden dan uit het 
 mandje verwijderd.
 
 Met de hyperlink Voorstellingen komt de gebruiker terug op de eerste pagina.
 
-Zodra de gebruiker minstens één reservering heeft, ziet hij op de andere pagina's
+Zodra de gebruiker minstens ï¿½ï¿½n reservering heeft, ziet hij op de andere pagina's
 naast de hyperlink Voorstellingen de hyperlinks Reservatiemandje en 
 Bevestiging reservatie:
 
@@ -259,7 +261,7 @@ OK (=button)
 
 Alle velden zijn verplicht in te vullen.
 
-Als de gebruiker op OK klikt, voeg je de gegevens toe aan de database, tenzij één
+Als de gebruiker op OK klikt, voeg je de gegevens toe aan de database, tenzij ï¿½ï¿½n
 van volgende fouten optreedt:
 - Velden werden leegelaten.
 - Paswoord en Herhaal paswoord zijn verschillend.
@@ -377,13 +379,13 @@ Voorstellingen(=hyperlink)
 
 Gelukte reserveringen
 
-Datum				Titel		Uitvoerders		Prijs (€)		Plaatsen
+Datum				Titel		Uitvoerders		Prijs (ï¿½)		Plaatsen
 14/11/09 20:00		...			...				...				2
 ...
 
 Mislukte reserveringen
 
-Datum				Titel		Uitvoerders		Prijs (€)		Plaatsen	Vrije plaatsen
+Datum				Titel		Uitvoerders		Prijs (ï¿½)		Plaatsen	Vrije plaatsen
 18/11/09 20:00		...			...				...				3			0
 -----------------------------------------------------------------------------------------
 

@@ -9,7 +9,7 @@
 <!doctype html>
 <html lang='nl'>
 <head>
-<vdab:head title='Het CultuurHuis' />
+<vdab:head title='Het CultuurHuis: Voorstellingen' />
 </head>
 <body>
 	<h1>Het CultuurHuis: Voorstellingen</h1>
@@ -24,7 +24,7 @@
 			items='${genres}'
 		>
 			<li>
-				<a href=''> ${genre.naam}</a>
+				<a href='voorstellingen.htm?genreid=${genreid}'> ${genre.naam}</a>
 			</li>
 		</c:forEach>
 	</ol>

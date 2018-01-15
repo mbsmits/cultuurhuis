@@ -16,12 +16,12 @@ import be.vdab.entities.Voorstelling;
 import be.vdab.entities.VoorstellingBuilder;
 
 public final class VoorstellingRepository extends AbstractRepository {
-	
-	private static final Logger	LOGGER			= Logger.getLogger(VoorstellingRepository.class.getName());
-	private static final String	BEGIN_SELECT	= "select id, titel, uitvoerders, datum, prijs, vrijeplaatsen from voorstellingen ";
-	private static final String	FIND_BY_GENRE	= BEGIN_SELECT + "where datum>=? and genreid=? order by datum";
-	private static final String	READ			= BEGIN_SELECT + "where id=?";
-	
+
+	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
+	private static final String BEGIN_SELECT = "select id, titel, uitvoerders, datum, prijs, vrijeplaatsen from voorstellingen ";
+	private static final String FIND_BY_GENRE = BEGIN_SELECT + "where datum>=? and genreid=? order by datum";
+	private static final String READ = BEGIN_SELECT + "where id=?";
+
 	public List<Voorstelling> findByGenre(Genre genre) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_GENRE)) {
@@ -42,8 +42,8 @@ public final class VoorstellingRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-	
-	public Optional<Voorstelling> read(long id) {
+
+	public Optional<Voorstelling> read(long id, Genre genre) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(READ)) {
 			Optional<Voorstelling> voorstelling;
@@ -52,8 +52,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery()) {
 				if (resultSet.next()) {
-					throw new UnsupportedOperationException();
-					// voorstelling = Optional.of(resultSetRijNaarVoorstelling(resultSet));
+					voorstelling = Optional.of(resultSetRijNaarVoorstelling(resultSet, genre));
 				} else {
 					voorstelling = Optional.empty();
 				}
@@ -65,7 +64,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-	
+
 	private Voorstelling resultSetRijNaarVoorstelling(ResultSet resultSet, Genre genre) throws SQLException {
 		VoorstellingBuilder builder = new VoorstellingBuilder();
 		builder.setId(resultSet.getLong("id"));
@@ -77,5 +76,5 @@ public final class VoorstellingRepository extends AbstractRepository {
 		builder.setVrijePlaatsen(resultSet.getLong("vrijeplaatsen"));
 		return builder.build();
 	}
-	
+
 }
