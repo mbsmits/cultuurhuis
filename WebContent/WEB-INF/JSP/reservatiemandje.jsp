@@ -9,24 +9,13 @@
 <!doctype html>
 <html lang='nl'>
 <head>
-<vdab:head title='Het CultuurHuis: Voorstellingen' />
+<vdab:head title='Het CultuurHuis: Reservatiemandje' />
 </head>
 <body>
-	<h1>Het CultuurHuis: Voorstellingen</h1>
+	<h1>Het CultuurHuis: Reservatiemandje</h1>
 	<img
-		src='images/voorstellingen.png'
-		alt='voorstellingen'
+		src='images/mandje.png'
+		alt='mandje'
 	>
-	<h2>Genres</h2>
-	<ol>
-		<c:forEach
-			var='genre'
-			items='${genres}'
-		>
-			<li>
-				<a href='voorstellingen.htm?genreid=${genreid}'> ${genre.naam}</a>
-			</li>
-		</c:forEach>
-	</ol>
 </body>
 </html>

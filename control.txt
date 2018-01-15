@@ -18,6 +18,6 @@ voorstellingen
 Het CultuurHuis: Voorstellingen (+voorstellingen.png)
 Het CultuurHuis: Reserveren (+reserveren.png)
 Het CultuurHuis: Reservatiemandje (+mandje.png)
-Het CultuurHuis: Bevestiging reservaties (+ bevestig.png)
+Het CultuurHuis: Bevestiging reservaties (+ bevestig.png)		
 Het CultuurHuis: Nieuwe klant (+ nieuweklant.png)
 Het CultuurHuis: Overzicht (+ bevestig.png)

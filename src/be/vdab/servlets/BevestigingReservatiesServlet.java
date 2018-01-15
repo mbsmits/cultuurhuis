@@ -12,12 +12,12 @@ import javax.sql.DataSource;
 
 import be.vdab.repositories.GenreRepository;
 
-@WebServlet(urlPatterns = "/voorstellingen.htm", name = "voorstellingenservlet")
-public class MandjeServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/bevestigingreservaties.htm", name = "bevestigingreservatiesservlet")
+public class BevestigingReservatiesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String VIEW = "/WEB-INF/JSP/voorstellingen.jsp";
+	private static final String VIEW = "/WEB-INF/JSP/bevestigingreservaties.jsp";
 
 	private final transient GenreRepository genreRepository = new GenreRepository();
 
