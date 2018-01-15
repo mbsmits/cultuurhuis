@@ -10,7 +10,7 @@ public final class Genre extends Entiteit implements Serializable, Comparable<Ge
 	private final long		id;
 	private final String	naam;
 	
-	public Genre(long id, String naam) {
+	Genre(long id, String naam) {
 		this.id = checkGeheelGetal(id);
 		this.naam = Objects.requireNonNull(naam);
 	}

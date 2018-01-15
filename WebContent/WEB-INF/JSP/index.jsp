@@ -7,20 +7,14 @@
 	uri='http://java.sun.com/jsp/jstl/core'
 %>
 <!doctype html>
-<html>
+<html lang='nl'>
 <head>
-<!--  TODO: niet beter custom tag ipv. import? -->
-<c:import url='head.jsp'>
-	<c:param
-		name='title'
-		value='Het CultuurHuis'
-	/>
-</c:import>
+<vdab:head title='Het CultuurHuis' />
 </head>
 <body>
 	<h1>Het CultuurHuis: Voorstellingen</h1>
 	<img
-		src='/images/voorstellingen.png'
+		src='images/voorstellingen.png'
 		alt='voorstellingen'
 	>
 	<h2>Genres</h2>

@@ -8,17 +8,15 @@ public final class Voorstelling extends Entiteit implements Serializable, Compar
 	
 	private static final long serialVersionUID = 1L;
 	
-	// TODO: builder?
-	
 	private final long			id;
 	private final String		titel;
 	private final String		uitvoerders;
-	private final LocalDateTime	datum;			// TODO: moet dit niet LocalDate zijn?
+	private final LocalDateTime	datum;
 	private final Genre			genre;
 	private final BigDecimal	prijs;
 	private final long			vrijePlaatsen;
 	
-	public Voorstelling(long id, String titel, String uitvoerders, LocalDateTime datum, Genre genre, BigDecimal prijs,
+	Voorstelling(long id, String titel, String uitvoerders, LocalDateTime datum, Genre genre, BigDecimal prijs,
 			long vrijePlaatsen) {
 		this.id = checkGeheelGetal(id);
 		this.titel = titel;

@@ -7,8 +7,6 @@ public final class Klant extends Entiteit implements Serializable, Comparable<Kl
 	
 	private static final long serialVersionUID = 1L;
 	
-	// TODO: builder pattern
-	
 	private final long		id;
 	private final String	voornaam;
 	private final String	familienaam;
@@ -19,8 +17,8 @@ public final class Klant extends Entiteit implements Serializable, Comparable<Kl
 	private final String	gebruikersnaam;
 	private final String	paswoord;
 	
-	public Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode,
-			String gemeente, String gebruikersnaam, String paswoord) {
+	Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
+			String gebruikersnaam, String paswoord) {
 		this.id = checkGeheelGetal(id);
 		this.voornaam = voornaam;
 		this.familienaam = familienaam;

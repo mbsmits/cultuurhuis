@@ -10,9 +10,9 @@ public final class Reservatie extends Entiteit implements Serializable, Comparab
 	private final long			id;
 	private final Klant			klant;
 	private final Voorstelling	voorstelling;
-	private final int			plaatsen;
+	private final long			plaatsen;
 	
-	public Reservatie(long id, Klant klant, Voorstelling voorstelling, int plaatsen) {
+	Reservatie(long id, Klant klant, Voorstelling voorstelling, long plaatsen) {
 		this.id = checkGeheelGetal(id);
 		this.klant = klant;
 		this.voorstelling = voorstelling;
@@ -31,7 +31,7 @@ public final class Reservatie extends Entiteit implements Serializable, Comparab
 		return voorstelling;
 	}
 	
-	public int getPlaatsen() {
+	public long getPlaatsen() {
 		return plaatsen;
 	}
 	

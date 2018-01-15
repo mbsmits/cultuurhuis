@@ -1,3 +1,4 @@
+																						PAGE 3/11
 1 DE CASE
 =========
 Je maakt een web applicatie waarmee klanten van een cultuurcentrum
@@ -5,33 +6,71 @@ Je maakt een web applicatie waarmee klanten van een cultuurcentrum
 
 De voorstellingen zijn ingedeeld in genres.
 Je toont op de beginpagina de genres als hyperlinks, in alfabetische volgorde:
-- Circustheater
-- Dans
-- Familievoorstelling
-- Humor
-- Modern klassiek
-- Multimedia
-- Muziek
-- Muziektheater
-- Theater
-- Wereldmuziek
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+-----------------------------------------------------------------------------------------
 
 
-Als de gebruiker genre kiest, ziet hij de voorstellingen van dat genre.
-Voorstellingen uit het verleden (voorstellingsdatum < systeemdatum) komen niet in de lijst voor.
-De voorstellingen zijn oplopend gesorteerd op de voorstellingsdatum.
+
+
+Als de gebruiker een genre kiest, ziet hij de voorstellingen van dat genre.
+Voorstellingen uit het verleden (voorstellingsdatum < systeemdatum) komen niet in 
+de lijst voor. De voorstellingen zijn oplopend gesorteerd op de voorstellingsdatum.
 Bemerk dat de even en oneven rijen een andere achtergrondkleur hebben.
 
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+
+Humor voorstellingen
+Datum				Titel		Uitvoerders		Prijs		Vrije plaatsen	Reserveren
+6/11/09 20:00		...			...				€5,00		165				Reserveren(=hyperlink)
+...
+-----------------------------------------------------------------------------------------
 
 Enkel bij voorstellingen die nog vrije plaatsen hebben ziet de gebruiker een hyperlink Reserveren.
 
 
 
+																						PAGE 4/11
 Als de gebruiker de hyperlink Reserveren bij een voorstelling aanklikt, ziet hij een 
 nieuwe pagina, waarin hij kaarten voor die voorstelling kan reserveren:
 
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Reserveren (+reserveren.png)
+
+Voorstellingen (=hyperlink)
+
+Voorstelling:
+Moest ik van u zijn
+
+Uitvoerders:
 ...
 
+Datum:
+18/11/09 20:00
+
+Prijs:
+€6,OO
+
+Vrije plaatsen:
+198
+
+Plaatsen:
+<input field>
+
+Reserveren(=button)
+-----------------------------------------------------------------------------------------
 
 De hyperlink Voorstellingen brengt de gebruiker terug op de eerste pagina.
 
@@ -40,7 +79,7 @@ De gebruiker kan bij Plaatsen een geheel getal intikken tussen 1 en Vrije Plaats
 Als hij een verkeerde waarde intikt, toon je naast de knop de foutmelding
 Tik een getal tussen 1 en [vrijeplaatsen].
 
-Je vervangt in deze foutelding [vrijeplaatsen] door de vrije plaatsen van de voorstelling.
+Je vervangt in deze foutmelding [vrijeplaatsen] door de vrije plaatsen van de voorstelling.
 
 In het voorbeeld hierboven wordt de melding dus:
 Tik een getal tussen 1 en 198.
@@ -53,10 +92,24 @@ invoervak bij Plaatsen: het aantal dat hij reeds intikte bj de eerste reserverin
 die voorstelling. Hij kan dit getal bij de tweede reservering wijzigen.
 Een reservatiemandje (zie verder) kan een voorstelling max. één keer bevatten.
 
+
+
+
+
+
+																						PAGE 5/11
 Ieder keer de gebruiker een reservering gedaan heeft, komt hij op een pagina 
 waarin hij zijn reserveringen ziet. 
 
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Reservatiemandje (+reservatiemandje.png)
+
+Voorstellingen(=hyperlink)	Bevestiging reservatie(=hyperlink)
+Datum				Titel		Uitvoerders		Prijs		Plaatsen	Verwijderen (=button)
+6/11/09 20:00		...			...				€5,00		4			checkbox
 ...
+Te betalen: €34,00
+-----------------------------------------------------------------------------------------
 
 Onder het overzicht ziet de gebruiker hoeveel hij in totaal moet betalen.
 
@@ -67,21 +120,98 @@ mandje verwijderd.
 Met de hyperlink Voorstellingen komt de gebruiker terug op de eerste pagina.
 
 Zodra de gebruiker minstens één reservering heeft, ziet hij op de andere pagina's
-naast de hyperlink Voorstellingen de hyperlinks Reservatiemandje en Bevestiging reservatie:
+naast de hyperlink Voorstellingen de hyperlinks Reservatiemandje en 
+Bevestiging reservatie:
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Voorstellingen (+voorstellingen.png)
+
+Reservatiemandje(=hyperlink)		Bevestiging reservatie(=hyperlink)
+
+Genres
+
+Lijst van hyperlinks:
+Circustheater	Dans	Familievoorstelling	Humor	Modern klassiek	Multimedia	Muziek	Muziektheater	Theater	Wereldmuziek
+-----------------------------------------------------------------------------------------
 
 Met de hyperlink Reservatiemandje ziet de gebruiker terug zijn mandje.
 
+
+
+
+
+
+
+																						PAGE 6/11
 Met de hyperlink Bevestiging reservatie komt de gebruiker op een pagina waar hij 
 zich indentificeert en de reservatie definitief vastlegt:
+
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button)
+Ik ben nieuw (=button)
+
+Stap 2: Bevestigen
+
+Bevestigen (=button disabled)
+-----------------------------------------------------------------------------------------
 
 Een bestaande klant tikt zijn gebruikersnaam en paswoord in.
 Daarna klikt hij op de button Zoek me op.
 
 Als deze gebruikersnaam met bijhorend paswoord bestaan, ziet de gebruiker zijn 
 gegevens en wordt de knop Bevestigen bruikbaar.
-De textboxen bij Gebruikersnaam en Paswoord en de buttons Zoek me op en Ik ben nieuw zijn gedisabled.
+De textboxen bij Gebruikersnaam en Paswoord en de buttons Zoek me op en Ik 
+ben nieuw zijn gedisabled.
 
-...
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button disabled)
+Ik ben nieuw (=button disabled)
+
+Hans Desmet Keizerslaan 7 1000 Brussel
+
+
+Stap 2: Bevestigen
+
+Bevestigen (=button enabled)
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+																						PAGE 7/11
+
+
 
 Als hij een verkeerde gebruikersnaam of paswoord intikt, toon je in plaats van zijn
 voornaam, familienaam en adres de foutmelding
@@ -90,7 +220,42 @@ Verkeerde gebruikersnaam of paswoord
 Een nieuwe gebruiker klikt op de knop Ik ben nieuw.
 Dan ziet hij volgend invulformulier:
 
-...
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Nieuwe klant (+ nieuweklant.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)	Bevestiging reservatie(=hyperlink)
+
+Voornaam:
+invulveld
+
+Familienaam:
+invulveld
+
+Straat:
+invulveld
+
+Huisnr.:
+invulveld
+
+Postcode:
+invulveld
+
+Gemeente:
+invulveld
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Herhaal paswoord:
+invulveld
+
+
+OK (=button)
+-----------------------------------------------------------------------------------------
 
 Alle velden zijn verplicht in te vullen.
 
@@ -100,17 +265,98 @@ van volgende fouten optreedt:
 - Paswoord en Herhaal paswoord zijn verschillend.
 - Een klant met Gebruikersnaam komt al voor in de database.
 
+
+
+
+
+
+																						PAGE 8/11
 Je toont deze fouten onder in het invulformulier:
 
-...
 
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Nieuwe klant (+ nieuweklant.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)	Bevestiging reservatie(=hyperlink)
+
+Voornaam:
+invulveld
+
+Familienaam:
+invulveld
+
+Straat:
+invulveld
+
+Huisnr.:
+invulveld
+
+Postcode:
+invulveld
+
+Gemeente:
+invulveld
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Herhaal paswoord:
+invulveld
+
+OK (=button)
+
+- Voornaam niet ingevuld
+- ...
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+																						PAGE 9/11
 
 Als de klant als nieuwe gebruiker is toegevoegd, keert hij terug naar de pagina 
 bevestiging reservaties en is hij daar geselecteerd alsof hij zich zou opgezocht
 hebben als bestaande klant.
-...
 
-nadat de gebruiker op de knop Bevestigen klikt, leg je de reservaties in het
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Bevestiging reservaties (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		Reservatiemandje(=hyperlink)
+
+Stap 1: Wie ben je?
+
+Gebruikersnaam:
+invulveld
+
+Paswoord:
+invulveld
+
+Zoek me op (=button disabled)
+Ik ben nieuw (=button disabled)
+
+Joske Vermeulen Tramlei 15	2900 Schoten
+
+Stap 2: Bevestigen
+
+Bevestigen (=button enabled)
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+																						PAGE 10/11
+Nadat de gebruiker op de knop Bevestigen klikt, leg je de reservaties in het
 reservatiemandje vast in de database:
 - Je vermindert VrijePlaatsen in de table Voorstellingen.
 Als VrijePlaatsen kleiner geworde is dan de gewenst plaatsen in het
@@ -121,12 +367,24 @@ Die reservatie voor deze voorstelling gaat voor deze gebruiker dan niet door.
 een record toe aan de table Reserveringen.
 
 Daarna toon je aan de gebruiker een overzicht van de handelingen in de database:
+
+
+
+PICTURE	---------------------------------------------------------------------------------
+Het CultuurHuis: Overzicht (+ bevestiging.png)
+
+Voorstellingen(=hyperlink)		
+
+Gelukte reserveringen
+
+Datum				Titel		Uitvoerders		Prijs (€)		Plaatsen
+14/11/09 20:00		...			...				...				2
 ...
+
+Mislukte reserveringen
+
+Datum				Titel		Uitvoerders		Prijs (€)		Plaatsen	Vrije plaatsen
+18/11/09 20:00		...			...				...				3			0
+-----------------------------------------------------------------------------------------
+
 Op dat moment heb je het reservatiemandje ook leeg gemaakt.
-
-
-
-
-
-
-

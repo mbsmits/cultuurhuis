@@ -6,11 +6,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
+import be.vdab.entities.GenreBuilder;
 
 public final class GenreRepository extends AbstractRepository {
 	
+	private static final Logger	LOGGER			= Logger.getLogger(GenreRepository.class.getName());
 	private static final String	BEGIN_SELECT	= "select id, naam from genres ";
 	private static final String	FIND_ALL		= BEGIN_SELECT + "order by naam";
 	
@@ -27,11 +31,15 @@ public final class GenreRepository extends AbstractRepository {
 			connection.commit();
 			return genres;
 		} catch (SQLException ex) {
+			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
 			throw new RepositoryException(ex);
 		}
 	}
 	
 	private Genre resultSetRijNaarGenre(ResultSet resultSet) throws SQLException {
-		return new Genre(resultSet.getLong("id"), resultSet.getString("naam"));
+		GenreBuilder builder = new GenreBuilder();
+		builder.setId(resultSet.getLong("id"));
+		builder.setNaam(resultSet.getString("naam"));
+		return builder.build();
 	}
 }
