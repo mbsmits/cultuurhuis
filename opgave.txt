@@ -1,0 +1,71 @@
+1 DE CASE
+=========
+Je maakt een web applicatie waarmee klanten van een cultuucentrum
+("Het CultuurHuis") kaarten kunnen reserveren voor de voorstellingen.
+
+De voorstellingen zijn ingedeeld in genres.
+Je toont op de beginpagina de genres als hyperlinks, in alfabetische volgorde:
+- Circustheater
+- Dans
+- Familievoorstelling
+- Humor
+- Modern klassiek
+- Multimedia
+- Muziek
+- Muziektheater
+- Theater
+- Wereldmuziek
+
+
+Als de gebruiker genre kiest, ziet hij de voorstellingen van dat genre.
+Voorstellingen uit het verleden (voorstellingsdatum < systeemdatum) komen niet in de lijst voor.
+De voorstellingen zijn oplopend gesorteerd op de voorstellingsdatum.
+Bemerk dat de even en oneven rijen een andere achtergrondkleur hebben.
+
+
+Enkel bij voorstellingen die nog vrije plaatsen hebben ziet de gebruiker een hyperlink Reserveren.
+
+
+
+Als de gebruiker de hyperlink Reserveren bij een voorstelling aanklikt, ziet hij een 
+nieuwe pagina, waarin hij kaarten voor die voorstelling kan reserveren:
+
+...
+
+
+De hyperlink Voorstellingen brengt de gebruiker terug op de eerste pagina.
+
+De gebruiker kan bij Plaatsen een geheel getal intikken tussen 1 en Vrije Plaatsen
+
+Als hij een verkeerde waarde intikt, toon je naast de knop de foutmelding
+Tik een getal tussen 1 en [vrijeplaatsen].
+
+Je vervangt in deze foutelding [vrijeplaatsen] door de vrije plaatsen van de voorstelling.
+
+In het voorbeeld hierboven wordt de melding dus:
+Tik een getal tussen 1 en 198.
+
+Jij plaatst de reservering in een tijdelijk(!) reserveringsmandje (Je onthoudt de 
+reservering op dit moment nog niet in de database, maar op HTTP session).
+
+Als een gebruiker een tweede keer dezelfde voorstelling reserveert, toon je in het 
+invoervak bij Plaatsen: het aantal dat hij reeds intikte bj de eerste reservering van 
+die voorstelling. Hij kan dit getal bij de tweede reservering wijzigen.
+Een reservatiemandje (zie verder) kan een voorstelling max. één keer bevatten.
+Ieder keer de gebruiker een reservering gedaan heeft, komt hij op een pagina 
+waarin hij zijn reserveringen ziet. 
+
+...
+
+Onder het overzicht ziet de gebruiker hoeveel hij in totaal moet betalen.
+
+De gebruiker kan een vinkje plaatsen bij één of meerdere reserveringen en daarna
+op de knop Verwijderen klikken. De aangevinkte reserveringen worden dan uit het 
+mandje verwijderd.
+
+Met de hyperlink Voorstellingen komt de gebruiker terug op de eerste pagina.
+
+
+
+
+
