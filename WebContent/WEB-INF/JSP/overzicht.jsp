@@ -16,14 +16,33 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
-<vdab:head title='Het CultuurHuis: Voorstellingen' />
-</head>
+<vdab:head title='Het CultuurHuis: Overzicht' />
 <body>
-	<h1>Het CultuurHuis: Overzicht</h1>
-	<img
-		src='images/bevestig.png'
-		alt='bevestig'
-	>
+	<vdab:title
+		title='Het CultuurHuis: Overzicht'
+		image='bevestig'
+	/>
+	<vdab:menu />
+	Gelukte reserveringen:
+	<table class='zebra'>
+		<tr>
+			<th>Datum</th>
+			<th>Title</th>
+			<th>Uitvoerders</th>
+			<th>Prijs</th>
+			<th>Plaatsen</th>
+		</tr>
+	</table>
+	Mislukte reserveringen:
+	<table class='zebra'>
+		<tr>
+			<th>Datum</th>
+			<th>Title</th>
+			<th>Uitvoerders</th>
+			<th>Prijs</th>
+			<th>Plaatsen</th>
+			<th>Vrije plaatsen</th>
+		</tr>
+	</table>
 </body>
 </html>

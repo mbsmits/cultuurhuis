@@ -13,14 +13,19 @@ import be.vdab.entities.Klant;
 import be.vdab.entities.KlantBuilder;
 
 public final class KlantRepository extends AbstractRepository {
-
-	private static final Logger LOGGER = Logger.getLogger(KlantRepository.class.getName());
-	private static final String BEGIN_SELECT = "select voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ";
-	private static final String FIND_BY_ID = BEGIN_SELECT + "where id=?";
-	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = BEGIN_SELECT
+	
+	private static final Logger			LOGGER								= Logger
+			.getLogger(KlantRepository.class.getName());
+	private static final String			BEGIN_SELECT						= "select voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ";
+	private static final String			FIND_BY_ID							= BEGIN_SELECT + "where id=?";
+	private static final String			FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD	= BEGIN_SELECT
 			+ "where gebruikersnaam=? and paswoord=?";
-	private static final String CREATE = "insert into klanten(voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord) values (?, ?, ?, ?, ?, ?, ?, ?)";
-
+	private static final String			CREATE								= "insert into klanten(voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	public static final KlantRepository	INSTANCE							= new KlantRepository();
+	
+	private KlantRepository() {
+	}
+	
 	public Optional<Klant> read(String gebruikersnaam, String paswoord) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD)) {
@@ -43,7 +48,7 @@ public final class KlantRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	public Optional<Klant> read(long id) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
@@ -65,7 +70,7 @@ public final class KlantRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	public Klant create(KlantBuilder builder) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS)) {
@@ -91,7 +96,7 @@ public final class KlantRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	private Klant resultSetRijNaarKlant(ResultSet resultSet) throws SQLException {
 		KlantBuilder builder = new KlantBuilder();
 		builder.setId(resultSet.getLong("id"));
@@ -105,4 +110,5 @@ public final class KlantRepository extends AbstractRepository {
 		builder.setPaswoord(resultSet.getString("paswoord"));
 		return builder.build();
 	}
+	
 }

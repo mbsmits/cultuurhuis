@@ -16,14 +16,13 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
 <vdab:head title='Het CultuurHuis: Reservatiemandje' />
-</head>
 <body>
-	<h1>Het CultuurHuis: Reservatiemandje</h1>
-	<img
-		src='images/mandje.png'
-		alt='mandje'
-	>
+	<vdab:title
+		title='Het CultuurHuis: Reservatiemandje'
+		image='mandje'
+	/>
+	<vdab:menu />
+	<vdab:footer />
 </body>
 </html>

@@ -5,17 +5,17 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public final class Voorstelling extends Entiteit implements Serializable, Comparable<Voorstelling> {
-
+	
 	private static final long serialVersionUID = 1L;
-
-	private final long id;
-	private final String titel;
-	private final String uitvoerders;
-	private final LocalDateTime datum;
-	private final Genre genre;
-	private final BigDecimal prijs;
-	private final long vrijePlaatsen;
-
+	
+	private final long			id;
+	private final String		titel;
+	private final String		uitvoerders;
+	private final LocalDateTime	datum;
+	private final Genre			genre;
+	private final BigDecimal	prijs;
+	private final long			vrijePlaatsen;
+	
 	Voorstelling(long id, String titel, String uitvoerders, LocalDateTime datum, Genre genre, BigDecimal prijs,
 			long vrijePlaatsen) {
 		this.id = id;
@@ -26,43 +26,47 @@ public final class Voorstelling extends Entiteit implements Serializable, Compar
 		this.prijs = prijs;
 		this.vrijePlaatsen = vrijePlaatsen;
 	}
-
+	
 	public long getId() {
 		return id;
 	}
-
+	
 	public String getTitel() {
 		return titel;
 	}
-
+	
 	public String getUitvoerders() {
 		return uitvoerders;
 	}
-
+	
 	public LocalDateTime getDatum() {
 		return datum;
 	}
-
+	
 	public Genre getGenre() {
 		return genre;
 	}
-
+	
 	public BigDecimal getPrijs() {
 		return prijs;
 	}
-
+	
 	public long getVrijePlaatsen() {
 		return vrijePlaatsen;
 	}
-
+	
+	public boolean isReserveerbaar() {
+		return vrijePlaatsen > 0;
+	}
+	
 	@Override
 	public int compareTo(Voorstelling o) {
 		return getTitel().compareTo(getTitel());
 	}
-
+	
 	@Override
 	public String toString() {
 		return getTitel();
 	}
-
+	
 }

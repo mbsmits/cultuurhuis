@@ -4,8 +4,7 @@
 %>
 <%@taglib
 	uri='http://vdab.be/tags'
-	prefix='vdab'
-%>
+	prefix='vdab'%>
 <%@taglib
 	prefix='c'
 	uri='http://java.sun.com/jsp/jstl/core'
@@ -16,14 +15,29 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
 <vdab:head title='Het CultuurHuis: Reserveren' />
-</head>
 <body>
-	<h1>Het CultuurHuis: Reserveren</h1>
-	<img
-		src='images/reserveren.png'
-		alt='reserveren'
-	>
+	<vdab:title
+		title='Het CultuurHuis: Reserveren'
+		image='reserveren'
+	/>
+	<vdab:menu />
+	Voorstelling:<br>
+	<b>Moest ik van u zijn</b><br>
+	<br>
+	Uitvoerders:<br>
+	<b>Wouter Deprez</b><br>
+	<br>
+	Datum:<br>
+	<b>18/11/09 20:00</b><br>
+	<br>
+	Prijs:<br>
+	<b>€6,00</b><br>
+	<br>
+	Vrije plaatsen:br>
+	<b>198</b><br>
+	<br>
+	
+	<vdab:footer />
 </body>
 </html>

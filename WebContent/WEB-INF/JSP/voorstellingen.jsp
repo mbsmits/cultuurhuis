@@ -16,25 +16,62 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
 <vdab:head title='Het CultuurHuis: Voorstellingen' />
-</head>
 <body>
-	<h1>Het CultuurHuis: Voorstellingen</h1>
-	<img
-		src='images/voorstellingen.png'
-		alt='voorstellingen'
-	>
-	<h2>Genres</h2>
-	<ol>
-		<c:forEach
-			var='genre'
-			items='${genres}'
-		>
-			<li>
-				<a href='voorstellingen.htm?genreid=${genreid}'> ${genre.naam}</a>
-			</li>
-		</c:forEach>
-	</ol>
+	<header>
+		<vdab:title
+			title='Het CultuurHuis: Voorstellingen'
+			image='voorstellingen'
+		/>
+		<nav>
+			<h2>Genres</h2>
+			<ul>
+				<c:forEach
+					var='genre'
+					items='${genres}'
+				>
+					<li>
+						<a href='voorstellingen.htm?genreid=${genre.id}'>
+							${genre.naam}</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h2>${genre.naam}voorstellingen</h2>
+		<table class='zebra'>
+			<tr>
+				<th>Datum</th>
+				<th>Title</th>
+				<th>Uitvoerders</th>
+				<th>Prijs</th>
+				<th>Vrije plaatsen</th>
+				<th>Reserveren</th>
+			</tr>
+			<c:forEach
+				var='voorstelling'
+				items='${voorstellingen}'
+			>
+				<tr>
+					<td>${voorstelling.datum}</td>
+					<td>
+						<c:out value='${voorstelling.titel}' />
+					</td>
+					<td>
+						<c:out value='${voorstelling.uitvoerders}' />
+					</td>
+					<td>${voorstelling.prijs}</td>
+					<td>${voorstelling.vrijePlaatsen}</td>
+					<td>
+						<c:if test='${voorstelling.reserveerbaar}'>
+							<a href='reserveren.htm'>Reserveren</a>
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</section>
+	<vdab:footer />
 </body>
 </html>

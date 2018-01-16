@@ -16,14 +16,31 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
 <vdab:head title='Het CultuurHuis: Bevestiging reservaties' />
-</head>
 <body>
-	<h1>Het CultuurHuis: Bevestiging reservaties</h1>
-	<img
-		src='images/bevestig.png'
-		alt='bevestig'
-	>
+	<vdab:title
+		title='Het CultuurHuis: Bevestiging reservaties'
+		image='bevestig'
+	/>
+	<vdab:menu />
+	<form>
+		<h2>Stap 1: Wie ben je?</h2>
+		Gebruikersnaam:
+		<br>
+		<input type='text'></input>
+		<br>
+		<br>
+		Paswoord:
+		<br>
+		<input type='password'></input>
+		<br>
+		<br>
+		<input type='button'>
+		<input type='button'>
+		Joske Vermeulen ...
+		<h2>Stap 2: Bevestigen</h2>
+		<input type='button'>
+	</form>
+	<vdab:footer />
 </body>
 </html>

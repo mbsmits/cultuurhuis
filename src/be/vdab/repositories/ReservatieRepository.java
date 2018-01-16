@@ -14,11 +14,16 @@ import be.vdab.entities.ReservatieBuilder;
 import be.vdab.entities.Voorstelling;
 
 public final class ReservatieRepository extends AbstractRepository {
-
-	private static final Logger LOGGER = Logger.getLogger(ReservatieRepository.class.getName());
-	private static final String BEGIN_SELECT = "select id, klantid, voorstellingsid, plaatsen from reservaties ";
-	private static final String READ = BEGIN_SELECT + "where id=?";
-
+	
+	private static final Logger					LOGGER			= Logger
+			.getLogger(ReservatieRepository.class.getName());
+	private static final String					BEGIN_SELECT	= "select id, klantid, voorstellingsid, plaatsen from reservaties ";
+	private static final String					READ			= BEGIN_SELECT + "where id=?";
+	public static final ReservatieRepository	INSTANCE		= new ReservatieRepository();
+	
+	private ReservatieRepository() {
+	}
+	
 	public Optional<Reservatie> read(long id, Voorstelling voorstelling, Klant klant) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(READ)) {
@@ -40,7 +45,7 @@ public final class ReservatieRepository extends AbstractRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	private Reservatie resultSetRijNaarReservatie(ResultSet resultSet, Voorstelling voorstelling, Klant klant)
 			throws SQLException {
 		ReservatieBuilder builder = new ReservatieBuilder();
@@ -50,5 +55,5 @@ public final class ReservatieRepository extends AbstractRepository {
 		builder.setPlaatsen(resultSet.getLong("plaatsen"));
 		return builder.build();
 	}
-
+	
 }

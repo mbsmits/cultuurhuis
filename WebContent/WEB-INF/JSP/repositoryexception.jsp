@@ -16,16 +16,19 @@
 %>
 <!doctype html>
 <html lang='nl'>
-<head>
 <vdab:head title='Problemen bij ophalen data' />
-</head>
 <body>
+	<vdab:title
+		title='Het CultuurHuis: Problemen bij ophalen data'
+		image='datafout'
+	/>
 	<vdab:menu />
-	<h1>Problemen bij het ophalen van data</h1>
-	<img src='<c:url value="/images/datafout.jpg"/>' alt='data fout'>
 	<p>
 		We kunnen de gevraagde data niet ophalen wegens een technische
-		storing. <br> Gelieve de helpdesk te contacteren.
+		storing.
+		<br>
+		Gelieve de helpdesk te contacteren.
 	</p>
+	<vdab:footer />
 </body>
 </html>

@@ -14,23 +14,22 @@ import be.vdab.repositories.GenreRepository;
 
 @WebServlet(urlPatterns = "/overzicht.htm", name = "overzichtservlet")
 public class OverzichtServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
-
-	private static final String VIEW = "/WEB-INF/JSP/overzicht.jsp";
-
-	private final transient GenreRepository genreRepository = new GenreRepository();
-
+	
+	private static final long	serialVersionUID	= 1L;
+	private static final String	VIEW				= "/WEB-INF/JSP/overzicht.jsp";
+	
+	private final transient GenreRepository genreRepository = GenreRepository.INSTANCE;
+	
 	@Resource(name = GenreRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		genreRepository.setDataSource(dataSource);
 	}
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("genres", genreRepository.findAll());
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
-
+	
 }
