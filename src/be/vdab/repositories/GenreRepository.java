@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
@@ -16,11 +15,12 @@ import be.vdab.entities.GenreBuilder;
 
 public final class GenreRepository extends AbstractRepository {
 	
-	private static final Logger			LOGGER			= Logger.getLogger(GenreRepository.class.getName());
-	private static final String			BEGIN_SELECT	= "select id, naam from genres ";
-	private static final String			FIND_ALL		= BEGIN_SELECT + "order by naam";
-	private static final String			READ			= BEGIN_SELECT + "where id=?";
-	public static final GenreRepository	INSTANCE		= new GenreRepository();
+	private static final Logger LOGGER = Logger.getLogger(GenreRepository.class.getName());
+	private static final String BEGIN_SELECT = "select id, naam from genres ";
+	private static final String FIND_ALL = BEGIN_SELECT + "order by naam";
+	private static final String READ = BEGIN_SELECT + "where id=?";
+	
+	public static final GenreRepository INSTANCE = new GenreRepository();
 	
 	private GenreRepository() {
 	}
@@ -38,7 +38,7 @@ public final class GenreRepository extends AbstractRepository {
 			connection.commit();
 			return genres;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -60,7 +60,7 @@ public final class GenreRepository extends AbstractRepository {
 			connection.commit();
 			return genre;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}

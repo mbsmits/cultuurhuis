@@ -1,5 +1,9 @@
 package be.vdab.repositories;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.sql.DataSource;
 
 abstract class AbstractRepository {
@@ -10,6 +14,10 @@ abstract class AbstractRepository {
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
+	}
+	
+	protected void log(SQLException ex, Logger logger) {
+		logger.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
 	}
 	
 }

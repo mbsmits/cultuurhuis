@@ -19,11 +19,11 @@ import be.vdab.util.StringUtils;
 @WebServlet(urlPatterns = "/voorstellingen.htm", name = "voorstellingenservlet")
 public class VoorstellingenServlet extends HttpServlet {
 	
-	private static final long	serialVersionUID	= 1L;
-	private static final String	VIEW				= "/WEB-INF/JSP/voorstellingen.jsp";
+	private static final long serialVersionUID = 1L;
+	private static final String VIEW = "/WEB-INF/JSP/voorstellingen.jsp";
 	
-	private final transient GenreRepository			genreRepository			= GenreRepository.INSTANCE;
-	private final transient VoorstellingRepository	voorstellingRepository	= VoorstellingRepository.INSTANCE;
+	private final transient GenreRepository genreRepository = GenreRepository.INSTANCE;
+	private final transient VoorstellingRepository voorstellingRepository = VoorstellingRepository.INSTANCE;
 	
 	@Resource(name = GenreRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {

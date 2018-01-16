@@ -22,6 +22,22 @@
 		<path>/WEB-INF/tags/vdab/menu.tag</path>
 	</tag-file>
 	<tag-file>
+		<name>field</name>
+		<path>/WEB-INF/tags/vdab/field.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>textinputfield</name>
+		<path>/WEB-INF/tags/vdab/textinputfield.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>passwordinputfield</name>
+		<path>/WEB-INF/tags/vdab/passwordinputfield.tag</path>
+	</tag-file>
+	<tag-file>
+		<name>numberinputfield</name>
+		<path>/WEB-INF/tags/vdab/numberinputfield.tag</path>
+	</tag-file>
+	<tag-file>
 		<name>footer</name>
 		<path>/WEB-INF/tags/vdab/footer.tag</path>
 	</tag-file>

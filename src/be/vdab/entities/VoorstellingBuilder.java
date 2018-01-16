@@ -5,13 +5,41 @@ import java.time.LocalDateTime;
 
 public final class VoorstellingBuilder extends Builder<Voorstelling> {
 	
-	private long			id;
-	private String			titel;
-	private String			uitvoerders;
-	private LocalDateTime	datum;
-	private Genre			genre;
-	private BigDecimal		prijs;
-	private long			vrijePlaatsen;
+	private long id;
+	private String titel;
+	private String uitvoerders;
+	private LocalDateTime datum;
+	private Genre genre;
+	private BigDecimal prijs;
+	private long vrijePlaatsen;
+	
+	public long getId() {
+		return id;
+	}
+	
+	public String getTitel() {
+		return titel;
+	}
+	
+	public String getUitvoerders() {
+		return uitvoerders;
+	}
+	
+	public LocalDateTime getDatum() {
+		return datum;
+	}
+	
+	public Genre getGenre() {
+		return genre;
+	}
+	
+	public BigDecimal getPrijs() {
+		return prijs;
+	}
+	
+	public long getVrijePlaatsen() {
+		return vrijePlaatsen;
+	}
 	
 	public VoorstellingBuilder setId(long id) {
 		this.id = checkLong(id);

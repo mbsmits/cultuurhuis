@@ -17,6 +17,11 @@ header {
 	color: black;
 }
 
+header img {
+	display: block;
+	float: right;
+}
+
 nav ul {
 	padding: 0;
 }
@@ -25,16 +30,20 @@ nav li {
 	display: inline;
 }
 
-table.zebra tr:nth-child(odd) {
+table tr:nth-child(odd) {
 	background-color: grey;
 }
 
-table.zebra tr:nth-child(even) {
+table tr:nth-child(even) {
 	background-color: white;
 }
 
-label, input {
+label {
 	display: block;
+}
+
+span.value {
+	font-weight: bold;
 }
 
 footer {

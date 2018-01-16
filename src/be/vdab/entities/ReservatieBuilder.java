@@ -2,10 +2,26 @@ package be.vdab.entities;
 
 public final class ReservatieBuilder extends Builder<Reservatie> {
 	
-	private long			id;
-	private Klant			klant;
-	private Voorstelling	voorstelling;
-	private long			plaatsen;
+	private long id;
+	private Klant klant;
+	private Voorstelling voorstelling;
+	private long plaatsen;
+	
+	public long getId() {
+		return id;
+	}
+	
+	public Klant getKlant() {
+		return klant;
+	}
+	
+	public Voorstelling getVoorstelling() {
+		return voorstelling;
+	}
+	
+	public long getPlaatsen() {
+		return plaatsen;
+	}
 	
 	public ReservatieBuilder setId(long id) {
 		this.id = checkLong(id);

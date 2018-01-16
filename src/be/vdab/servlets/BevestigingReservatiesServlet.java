@@ -15,8 +15,8 @@ import be.vdab.repositories.GenreRepository;
 @WebServlet(urlPatterns = "/bevestigingreservaties.htm", name = "bevestigingreservatiesservlet")
 public class BevestigingReservatiesServlet extends HttpServlet {
 	
-	private static final long	serialVersionUID	= 1L;
-	private static final String	VIEW				= "/WEB-INF/JSP/bevestigingreservaties.jsp";
+	private static final long serialVersionUID = 1L;
+	private static final String VIEW = "/WEB-INF/JSP/bevestigingreservaties.jsp";
 	
 	private final transient GenreRepository genreRepository = GenreRepository.INSTANCE;
 	

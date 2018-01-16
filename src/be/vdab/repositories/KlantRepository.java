@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Klant;
@@ -14,14 +13,13 @@ import be.vdab.entities.KlantBuilder;
 
 public final class KlantRepository extends AbstractRepository {
 	
-	private static final Logger			LOGGER								= Logger
-			.getLogger(KlantRepository.class.getName());
-	private static final String			BEGIN_SELECT						= "select voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ";
-	private static final String			FIND_BY_ID							= BEGIN_SELECT + "where id=?";
-	private static final String			FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD	= BEGIN_SELECT
+	private static final Logger LOGGER = Logger.getLogger(KlantRepository.class.getName());
+	private static final String BEGIN_SELECT = "select voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ";
+	private static final String FIND_BY_ID = BEGIN_SELECT + "where id=?";
+	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = BEGIN_SELECT
 			+ "where gebruikersnaam=? and paswoord=?";
-	private static final String			CREATE								= "insert into klanten(voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord) values (?, ?, ?, ?, ?, ?, ?, ?)";
-	public static final KlantRepository	INSTANCE							= new KlantRepository();
+	private static final String CREATE = "insert into klanten(voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	public static final KlantRepository INSTANCE = new KlantRepository();
 	
 	private KlantRepository() {
 	}
@@ -44,7 +42,7 @@ public final class KlantRepository extends AbstractRepository {
 			connection.commit();
 			return klant;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -66,7 +64,7 @@ public final class KlantRepository extends AbstractRepository {
 			connection.commit();
 			return klant;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -92,7 +90,7 @@ public final class KlantRepository extends AbstractRepository {
 			connection.commit();
 			return builder.build();
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}

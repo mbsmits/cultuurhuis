@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
@@ -17,13 +16,11 @@ import be.vdab.entities.VoorstellingBuilder;
 
 public final class VoorstellingRepository extends AbstractRepository {
 	
-	private static final Logger					LOGGER			= Logger
-			.getLogger(VoorstellingRepository.class.getName());
-	private static final String					BEGIN_SELECT	= "select id, titel, uitvoerders, datum, prijs, vrijeplaatsen from voorstellingen ";
-	private static final String					FIND_BY_GENRE	= BEGIN_SELECT
-			+ "where datum>=? and genreid=? order by datum";
-	private static final String					READ			= BEGIN_SELECT + "where id=?";
-	public static final VoorstellingRepository	INSTANCE		= new VoorstellingRepository();
+	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
+	private static final String BEGIN_SELECT = "select id, titel, uitvoerders, datum, prijs, vrijeplaatsen from voorstellingen ";
+	private static final String FIND_BY_GENRE = BEGIN_SELECT + "where datum>=? and genreid=? order by datum";
+	private static final String READ = BEGIN_SELECT + "where id=?";
+	public static final VoorstellingRepository INSTANCE = new VoorstellingRepository();
 	
 	private VoorstellingRepository() {
 	}
@@ -44,7 +41,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 			connection.commit();
 			return voorstellingen;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}
@@ -66,7 +63,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 			connection.commit();
 			return voorstelling;
 		} catch (SQLException ex) {
-			LOGGER.log(Level.SEVERE, "Probleem met database cultuurhuis", ex);
+			log(ex, LOGGER);
 			throw new RepositoryException(ex);
 		}
 	}

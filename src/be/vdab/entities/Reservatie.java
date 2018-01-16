@@ -7,10 +7,10 @@ public final class Reservatie extends Entiteit implements Serializable, Comparab
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final long			id;
-	private final Klant			klant;
-	private final Voorstelling	voorstelling;
-	private final long			plaatsen;
+	private final long id;
+	private final Klant klant;
+	private final Voorstelling voorstelling;
+	private final long plaatsen;
 	
 	Reservatie(long id, Klant klant, Voorstelling voorstelling, long plaatsen) {
 		this.id = id;

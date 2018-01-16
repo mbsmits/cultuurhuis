@@ -7,15 +7,15 @@ public final class Klant extends Entiteit implements Serializable, Comparable<Kl
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final long		id;
-	private final String	voornaam;
-	private final String	familienaam;
-	private final String	straat;
-	private final String	huisnr;
-	private final String	postcode;
-	private final String	gemeente;
-	private final String	gebruikersnaam;
-	private final String	paswoord;
+	private final long id;
+	private final String voornaam;
+	private final String familienaam;
+	private final String straat;
+	private final String huisnr;
+	private final String postcode;
+	private final String gemeente;
+	private final String gebruikersnaam;
+	private final String paswoord;
 	
 	Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
 			String gebruikersnaam, String paswoord) {

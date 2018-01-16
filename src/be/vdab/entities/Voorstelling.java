@@ -8,13 +8,13 @@ public final class Voorstelling extends Entiteit implements Serializable, Compar
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final long			id;
-	private final String		titel;
-	private final String		uitvoerders;
-	private final LocalDateTime	datum;
-	private final Genre			genre;
-	private final BigDecimal	prijs;
-	private final long			vrijePlaatsen;
+	private final long id;
+	private final String titel;
+	private final String uitvoerders;
+	private final LocalDateTime datum;
+	private final Genre genre;
+	private final BigDecimal prijs;
+	private final long vrijePlaatsen;
 	
 	Voorstelling(long id, String titel, String uitvoerders, LocalDateTime datum, Genre genre, BigDecimal prijs,
 			long vrijePlaatsen) {

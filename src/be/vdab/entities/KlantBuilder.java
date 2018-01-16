@@ -2,15 +2,15 @@ package be.vdab.entities;
 
 public final class KlantBuilder extends Builder<Klant> {
 	
-	private long	id;
-	private String	voornaam;
-	private String	familienaam;
-	private String	straat;
-	private String	huisnr;
-	private String	postcode;
-	private String	gemeente;
-	private String	gebruikersnaam;
-	private String	paswoord;
+	private long id;
+	private String voornaam;
+	private String familienaam;
+	private String straat;
+	private String huisnr;
+	private String postcode;
+	private String gemeente;
+	private String gebruikersnaam;
+	private String paswoord;
 	
 	public long getId() {
 		return id;

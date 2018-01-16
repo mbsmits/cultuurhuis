@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/reserveren.htm", name = "reserverenservlet")
 public class ReserverenServlet extends HttpServlet {
 	
-	private static final long	serialVersionUID	= 1L;
-	private static final String	VIEW				= "/WEB-INF/JSP/reserveren.jsp";
+	private static final long serialVersionUID = 1L;
+	private static final String VIEW = "/WEB-INF/JSP/reserveren.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

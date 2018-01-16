@@ -7,8 +7,8 @@ public final class Genre extends Entiteit implements Serializable, Comparable<Ge
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final long		id;
-	private final String	naam;
+	private final long id;
+	private final String naam;
 	
 	Genre(long id, String naam) {
 		this.id = id;
