@@ -11,7 +11,7 @@
 		<vdab:menu />
 	</header>
 	<section>
-		<form method='post' action='bevestigingreservaties.htm'>
+		<form method='post'>
 			<vdab:textinputfield label='Voornaam' name='voornaam' />
 			<vdab:textinputfield label='Familienaam' name='familienaam' />
 			<vdab:textinputfield label='Straat' name='straat' />
@@ -22,7 +22,7 @@
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
 			<vdab:passwordinputfield label='Herhaal paswoord' name='paswoord2' />
 			<p>
-				<input type='submit' value='OK' />
+				<input type='submit' value='OK' formmethod='post' formaction='nieuweklant.htm' />
 			</p>
 		</form>
 		<ul>

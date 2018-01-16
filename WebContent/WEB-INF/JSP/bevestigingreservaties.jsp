@@ -16,15 +16,15 @@
 			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam' value='...' />
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='...' />
 			<p>
-				<input type='submit' value='Zoek me op'>
+				<input type='submit' value='Zoek me op' formmethod='post' formaction='bevestigingreservaties.htm'>
 			</p>
 			<p>
-				<input type='submit' value='Ik ben nieuw'>
+				<input type='submit' value='Ik ben nieuw' formmethod='post' formaction='nieweklant.htm'>
 			</p>
 			Joske Vermeulen ...
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
-				<input type='submit' value='Bevestigen'>
+				<input type='submit' value='Bevestigen' formmethod='post' formaction='overzicht.htm'>
 			</p>
 		</form>
 	</section>

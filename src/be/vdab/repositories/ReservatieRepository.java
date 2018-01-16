@@ -16,11 +16,15 @@ import be.vdab.entities.Voorstelling;
 public final class ReservatieRepository extends AbstractRepository {
 	
 	private static final Logger LOGGER = Logger.getLogger(ReservatieRepository.class.getName());
-	private static final String BEGIN_SELECT = "select id, klantid, voorstellingsid, plaatsen from reservaties ";
-	private static final String READ = BEGIN_SELECT + "where id=?";
-	
-	private static final String CREATE = "insert into reservaties(klantid, voorstellingsid, plaatsen) values (?, ?, ?)";
-	
+	private static final String ID = "id";
+	private static final String KLANTID = "klantid";
+	private static final String VOORSTELLINGSID = "voorstellingsid";
+	private static final String PLAATSEN = "plaatsen";
+	private static final String BEGIN_SELECT = String.format("select %s, %s, %s, %s from reservaties ", ID, KLANTID,
+			VOORSTELLINGSID, PLAATSEN);
+	private static final String READ = BEGIN_SELECT + String.format("where %s=?", ID);
+	private static final String CREATE = String.format("insert into reservaties(%s, %s, %s) values (?, ?, ?)", KLANTID,
+			VOORSTELLINGSID, PLAATSEN);
 	public static final ReservatieRepository INSTANCE = new ReservatieRepository();
 	
 	private ReservatieRepository() {
@@ -72,10 +76,10 @@ public final class ReservatieRepository extends AbstractRepository {
 	private Reservatie resultSetRijNaarReservatie(ResultSet resultSet, Voorstelling voorstelling, Klant klant)
 			throws SQLException {
 		ReservatieBuilder builder = new ReservatieBuilder();
-		builder.setId(resultSet.getLong("id"));
+		builder.setId(resultSet.getLong(ID));
 		builder.setVoorstelling(voorstelling);
 		builder.setKlant(klant);
-		builder.setPlaatsen(resultSet.getLong("plaatsen"));
+		builder.setPlaatsen(resultSet.getLong(PLAATSEN));
 		return builder.build();
 	}
 	

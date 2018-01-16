@@ -16,10 +16,11 @@ import be.vdab.entities.GenreBuilder;
 public final class GenreRepository extends AbstractRepository {
 	
 	private static final Logger LOGGER = Logger.getLogger(GenreRepository.class.getName());
-	private static final String BEGIN_SELECT = "select id, naam from genres ";
-	private static final String FIND_ALL = BEGIN_SELECT + "order by naam";
-	private static final String READ = BEGIN_SELECT + "where id=?";
-	
+	private static final String ID = "id";
+	private static final String NAAM = "naam";
+	private static final String BEGIN_SELECT = String.format("select %s, %s from genres ", ID, NAAM);
+	private static final String FIND_ALL = BEGIN_SELECT + String.format("order by %s", NAAM);
+	private static final String READ = BEGIN_SELECT + String.format("where %s=?", ID);
 	public static final GenreRepository INSTANCE = new GenreRepository();
 	
 	private GenreRepository() {
@@ -67,8 +68,8 @@ public final class GenreRepository extends AbstractRepository {
 	
 	private Genre resultSetRijNaarGenre(ResultSet resultSet) throws SQLException {
 		GenreBuilder builder = new GenreBuilder();
-		builder.setId(resultSet.getLong("id"));
-		builder.setNaam(resultSet.getString("naam"));
+		builder.setId(resultSet.getLong(ID));
+		builder.setNaam(resultSet.getString(NAAM));
 		return builder.build();
 	}
 }

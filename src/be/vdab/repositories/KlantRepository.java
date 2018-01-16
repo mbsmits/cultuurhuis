@@ -14,11 +14,23 @@ import be.vdab.entities.KlantBuilder;
 public final class KlantRepository extends AbstractRepository {
 	
 	private static final Logger LOGGER = Logger.getLogger(KlantRepository.class.getName());
-	private static final String BEGIN_SELECT = "select voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ";
-	private static final String FIND_BY_ID = BEGIN_SELECT + "where id=?";
+	private static final String ID = "id";
+	private static final String VOORNAAM = "voornaam";
+	private static final String FAMILIENAAM = "familienaam";
+	private static final String STRAAT = "straat";
+	private static final String HUISNR = "huisnr";
+	private static final String POSTCODE = "postcode";
+	private static final String GEMEENTE = "gemeente";
+	private static final String GEBRUIKERSNAAM = "gebruikersnaam";
+	private static final String PASWOORD = "paswoord";
+	private static final String BEGIN_SELECT = String.format("select %s, %s, %s, %s, %s, %s, %s, %s ", VOORNAAM,
+			FAMILIENAAM, STRAAT, HUISNR, POSTCODE, GEMEENTE, GEBRUIKERSNAAM, PASWOORD);
+	private static final String FIND_BY_ID = BEGIN_SELECT + String.format("where %s=?", ID);
 	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = BEGIN_SELECT
-			+ "where gebruikersnaam=? and paswoord=?";
-	private static final String CREATE = "insert into klanten(voonaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord) values (?, ?, ?, ?, ?, ?, ?, ?)";
+			+ String.format("where %s=? and %s=?", GEBRUIKERSNAAM, PASWOORD);
+	private static final String CREATE = String.format(
+			"insert into klanten(%s, %s, %s, %s, %s, %s, %s, %s) values (?, ?, ?, ?, ?, ?, ?, ?)", VOORNAAM,
+			FAMILIENAAM, STRAAT, HUISNR, POSTCODE, GEMEENTE, GEBRUIKERSNAAM, PASWOORD);
 	public static final KlantRepository INSTANCE = new KlantRepository();
 	
 	private KlantRepository() {
@@ -97,15 +109,15 @@ public final class KlantRepository extends AbstractRepository {
 	
 	private Klant resultSetRijNaarKlant(ResultSet resultSet) throws SQLException {
 		KlantBuilder builder = new KlantBuilder();
-		builder.setId(resultSet.getLong("id"));
-		builder.setVoornaam(resultSet.getString("voornaam"));
-		builder.setFamilienaam(resultSet.getString("familienaam"));
-		builder.setStraat(resultSet.getString("straat"));
-		builder.setHuisnr(resultSet.getString("huisnr"));
-		builder.setPostcode(resultSet.getString("postcode"));
-		builder.setGemeente(resultSet.getString("gemeente"));
-		builder.setGebruikersnaam(resultSet.getString("gebruikersnaam"));
-		builder.setPaswoord(resultSet.getString("paswoord"));
+		builder.setId(resultSet.getLong(ID));
+		builder.setVoornaam(resultSet.getString(VOORNAAM));
+		builder.setFamilienaam(resultSet.getString(FAMILIENAAM));
+		builder.setStraat(resultSet.getString(STRAAT));
+		builder.setHuisnr(resultSet.getString(HUISNR));
+		builder.setPostcode(resultSet.getString(POSTCODE));
+		builder.setGemeente(resultSet.getString(GEMEENTE));
+		builder.setGebruikersnaam(resultSet.getString(GEBRUIKERSNAAM));
+		builder.setPaswoord(resultSet.getString(PASWOORD));
 		return builder.build();
 	}
 	
