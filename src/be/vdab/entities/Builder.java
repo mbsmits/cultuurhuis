@@ -50,5 +50,4 @@ abstract class Builder<T extends Entiteit> {
 	}
 	
 	public abstract T build();
-	
 }
