@@ -3,10 +3,11 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!doctype html>
 <html lang='nl'>
-<vdab:head title='Pagina niet gevonden' />
+<c:set var='titel' value='Pagina niet gevonden' />
+<vdab:head title='${titel}' />
 <body>
 	<header>
-		<vdab:title title='Het CultuurHuis: Pagina niet gevonden' image='fout' />
+		<vdab:title title='${titel}' image='fout' />
 		<vdab:menu />
 	</header>
 	<section>De pagina die u zocht bestaat niet op onze website.</section>

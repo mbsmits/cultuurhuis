@@ -4,10 +4,11 @@
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <!doctype html>
 <html lang='nl'>
-<vdab:head title='Het CultuurHuis: Reserveren' />
+<c:set var='titel' value='Reserveren' />
+<vdab:head title='${titel}' />
 <body>
 	<header>
-		<vdab:title title='Het CultuurHuis: Reserveren' image='reserveren' />
+		<vdab:title title='${titel}' image='reserveren' />
 		<vdab:menu />
 	</header>
 	<form>

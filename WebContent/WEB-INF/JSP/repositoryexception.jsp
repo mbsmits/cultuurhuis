@@ -3,10 +3,11 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!doctype html>
 <html lang='nl'>
-<vdab:head title='Problemen bij ophalen data' />
+<c:set var='titel' value='Problemen bij ophalen data' />
+<vdab:head title='${titel}' />
 <body>
 	<header>
-		<vdab:title title='Het CultuurHuis: Problemen bij ophalen data' image='datafout' />
+		<vdab:title title='${titel}' image='datafout' />
 		<vdab:menu />
 	</header>
 	<section>We kunnen de gevraagde data niet ophalen wegens een technische storing. Gelieve de helpdesk te
