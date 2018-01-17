@@ -2,6 +2,8 @@ package be.vdab.servlets;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import be.vdab.entities.Reservatie;
 import be.vdab.entities.ReservatieBuilder;
 import be.vdab.repositories.GenreRepository;
 import be.vdab.repositories.ReservatieRepository;
@@ -21,7 +24,6 @@ public class OverzichtServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/overzicht.jsp";
-	
 	private final transient ReservatieRepository reservatieRepository = ReservatieRepository.INSTANCE;
 	
 	@Resource(name = GenreRepository.JNDI_NAME)
@@ -37,7 +39,10 @@ public class OverzichtServlet extends HttpServlet {
 		List<ReservatieBuilder> builders = (List<ReservatieBuilder>) session.getAttribute("reservatiesbuilders");
 		builders.stream().forEach(builder -> reservatieRepository.create(builder));
 		builders.clear();
+		SortedSet<Reservatie> gelukteReservaties = new TreeSet<>(); // TODO
+		SortedSet<Reservatie> mislukteReservaties = new TreeSet<>(); // TODO
+		request.setAttribute("geluktereservaties", gelukteReservaties);
+		request.setAttribute("misluktereservaties", mislukteReservaties);
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
-	
 }

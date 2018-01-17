@@ -21,7 +21,7 @@
 	</header>
 	<section>
 		<h2>${genre.naam}voorstellingen</h2>
-		<table class='zebra'>
+		<table>
 			<tr>
 				<th>Datum</th>
 				<th>Title</th>

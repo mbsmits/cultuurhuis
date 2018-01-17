@@ -11,27 +11,8 @@
 		<vdab:menu />
 	</header>
 	<section>
-		Gelukte reserveringen:
-		<table>
-			<tr>
-				<th>Datum</th>
-				<th>Title</th>
-				<th>Uitvoerders</th>
-				<th>Prijs (€)</th>
-				<th>Plaatsen</th>
-			</tr>
-		</table>
-		Mislukte reserveringen:
-		<table>
-			<tr>
-				<th>Datum</th>
-				<th>Title</th>
-				<th>Uitvoerders</th>
-				<th>Prijs (€)</th>
-				<th>Plaatsen</th>
-				<th>Vrije plaatsen</th>
-			</tr>
-		</table>
+		<vdab:reservaties titel='Gelukte reservaties' reservaties='${geluktereservaties}' gelukt='true' />
+		<vdab:reservaties titel='Mislukte reservaties' reservaties='${misluktereservaties}' gelukt='false' />
 	</section>
 </body>
 </html>
