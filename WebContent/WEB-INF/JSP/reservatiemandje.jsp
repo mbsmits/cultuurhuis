@@ -16,9 +16,7 @@
 				<th>Uitvoerders</th>
 				<th>Prijs (€)</th>
 				<th>Plaatsen</th>
-				<th>
-					<input type='submit' value='Verwijderen' />
-				</th>
+				<th><input type='submit' value='Verwijderen' /></th>
 			</tr>
 			<tr>
 				<td>23/01/10 20:00</td>
@@ -26,9 +24,7 @@
 				<td>Bea Van der Maat &amp; Dr Kloot Per W</td>
 				<td>5,50</td>
 				<td>4</td>
-				<td>
-					<input type='checkbox' />
-				</td>
+				<td><input type='checkbox' /></td>
 			</tr>
 			<tr>
 				<td>23/01/10 20:00</td>
@@ -36,9 +32,7 @@
 				<td>Bea Van der Maat &amp; Dr Kloot Per W</td>
 				<td>5,50</td>
 				<td>4</td>
-				<td>
-					<input type='checkbox' />
-				</td>
+				<td><input type='checkbox' /></td>
 			</tr>
 			<tr>
 				<td>23/01/10 20:00</td>
@@ -46,9 +40,7 @@
 				<td>Bea Van der Maat &amp; Dr Kloot Per W</td>
 				<td>5,50</td>
 				<td>4</td>
-				<td>
-					<input type='checkbox' />
-				</td>
+				<td><input type='checkbox' /></td>
 			</tr>
 		</table>
 		Te betalen (€): 654,54

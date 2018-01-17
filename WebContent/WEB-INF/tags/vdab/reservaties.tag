@@ -17,15 +17,9 @@
 		<c:forEach var='reservatie' items='${reservaties}'>
 			<tr>
 				<td>${reservatie.voorstelling.datum}</td>
-				<td>
-					<c:out value='${reservatie.voorstelling.titel}' />
-				</td>
-				<td>
-					<c:out value='${reservatie.voorstelling.uitvoerders}' />
-				</td>
-				<td>
-					<fmt:formatNumber value='${reservatie.voorstelling.prijs}' />
-				</td>
+				<td><c:out value='${reservatie.voorstelling.titel}' /></td>
+				<td><c:out value='${reservatie.voorstelling.uitvoerders}' /></td>
+				<td><fmt:formatNumber value='${reservatie.voorstelling.prijs}' /></td>
 				<td>${reservatie.plaatsen}</td>
 				<c:if test='${!gelukt}'>
 					<td>${reservatie.voorstelling.vrijePlaatsen}</td>
