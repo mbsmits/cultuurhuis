@@ -39,6 +39,10 @@ section {
 	margin-bottom: 100px;
 }
 
+table {
+	width: 100%;
+}
+
 table tr:nth-child(odd) {
 	background-color: grey;
 }

@@ -16,7 +16,9 @@
 		</tr>
 		<c:forEach var='voorstelling' items='${voorstellingen}'>
 			<tr>
-				<td><fmt:formatDate value='${voorstelling.utilDatum}'/></td>
+				<td>
+					<fmt:formatDate type='both' dateStyle='short' timeStyle='short' value='${voorstelling.utilDatum}' />
+				</td>
 				<td>
 					<c:out value='${voorstelling.titel}' />
 				</td>
@@ -24,7 +26,7 @@
 					<c:out value='${voorstelling.uitvoerders}' />
 				</td>
 				<td>
-					<fmt:formatNumber value='${voorstelling.prijs}' />
+					&euro; <fmt:formatNumber minFractionDigits='2' maxFractionDigits='2' value='${voorstelling.prijs}' />
 				</td>
 				<td>${voorstelling.vrijePlaatsen}</td>
 				<td>
