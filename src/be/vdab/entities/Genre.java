@@ -3,10 +3,9 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class Genre extends Entiteit implements Serializable, Comparable<Genre> {
+public final class Genre implements Serializable, Comparable<Genre> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private final long id;
 	private final String naam;
 	
@@ -47,5 +46,4 @@ public final class Genre extends Entiteit implements Serializable, Comparable<Ge
 	public int compareTo(Genre other) {
 		return getNaam().compareTo(other.getNaam());
 	}
-	
 }

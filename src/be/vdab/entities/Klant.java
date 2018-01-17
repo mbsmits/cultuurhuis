@@ -3,10 +3,9 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class Klant extends Entiteit implements Serializable, Comparable<Klant> {
+public final class Klant implements Serializable, Comparable<Klant> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private final long id;
 	private final String voornaam;
 	private final String familienaam;
@@ -90,5 +89,4 @@ public final class Klant extends Entiteit implements Serializable, Comparable<Kl
 	public int compareTo(Klant other) {
 		return getGebruikersnaam().compareTo(getGebruikersnaam());
 	}
-	
 }

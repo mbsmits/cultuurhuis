@@ -3,10 +3,9 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class Reservatie extends Entiteit implements Serializable, Comparable<Reservatie> {
+public final class Reservatie implements Serializable, Comparable<Reservatie> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private final long id;
 	private final Klant klant;
 	private final Voorstelling voorstelling;
@@ -60,5 +59,4 @@ public final class Reservatie extends Entiteit implements Serializable, Comparab
 	public String toString() {
 		return getVoorstelling() + " voor " + getKlant();
 	}
-	
 }

@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public final class Voorstelling extends Entiteit implements Serializable, Comparable<Voorstelling> {
+public final class Voorstelling implements Serializable, Comparable<Voorstelling> {
 	
 	private static final long serialVersionUID = 1L;
-	
 	private final long id;
 	private final String titel;
 	private final String uitvoerders;
@@ -68,5 +67,4 @@ public final class Voorstelling extends Entiteit implements Serializable, Compar
 	public String toString() {
 		return getTitel();
 	}
-	
 }

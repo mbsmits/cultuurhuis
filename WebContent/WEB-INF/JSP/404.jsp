@@ -8,7 +8,7 @@
 <body>
 	<header>
 		<vdab:title title='${titel}' image='fout' />
-		<vdab:menu />
+		<vdab:navigatie />
 	</header>
 	<section>De pagina die u zocht bestaat niet op onze website.</section>
 	<vdab:footer />

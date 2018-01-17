@@ -53,10 +53,8 @@
 					<input type='checkbox' />
 				</td>
 			</tr>
-			<tr>
-				<td colspan='6'>Te betalen (€): 654,54</td>
-			</tr>
 		</table>
+		Te betalen (€): 654,54
 	</section>
 	<vdab:footer />
 </body>

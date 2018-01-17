@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-abstract class Builder<T extends Entiteit> {
+abstract class Builder<T> {
 	
 	protected static long checkLong(long geheelGetal) {
 		if (geheelGetal < 0) {

@@ -21,36 +21,8 @@
 		</nav>
 	</header>
 	<section>
-		<c:if test='${!gelukt}'>
-			<h2>${genre.naam}voorstellingen</h2>
-			<table>
-				<tr>
-					<th>Datum</th>
-					<th>Title</th>
-					<th>Uitvoerders</th>
-					<th>Prijs (€)</th>
-					<th>Vrije plaatsen</th>
-					<th>Reserveren</th>
-				</tr>
-				<c:forEach var='voorstelling' items='${voorstellingen}'>
-					<tr>
-						<td>${voorstelling.datum}</td>
-						<td>
-							<c:out value='${voorstelling.titel}' />
-						</td>
-						<td>
-							<c:out value='${voorstelling.uitvoerders}' />
-						</td>
-						<td>${voorstelling.prijs}</td>
-						<td>${voorstelling.vrijePlaatsen}</td>
-						<td>
-							<c:if test='${voorstelling.reserveerbaar}'>
-								<a href='reserveren.htm'>Reserveren</a>
-							</c:if>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
+		<c:if test='${! empty genre}'>
+			<vdab:voorstellingen titel='${genre.naam} voorstellingen' voorstellingen='${voorstellingen}' />
 		</c:if>
 	</section>
 	<vdab:footer />
