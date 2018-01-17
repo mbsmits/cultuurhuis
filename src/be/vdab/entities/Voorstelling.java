@@ -3,6 +3,8 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 public final class Voorstelling implements Serializable, Comparable<Voorstelling> {
 	
@@ -66,5 +68,9 @@ public final class Voorstelling implements Serializable, Comparable<Voorstelling
 	@Override
 	public String toString() {
 		return getTitel();
+	}
+	
+	public Date getUtilDatum() {
+		return Date.from(datum.atZone(ZoneId.systemDefault()).toInstant());
 	}
 }

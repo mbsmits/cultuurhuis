@@ -7,19 +7,7 @@
 <c:set var='titel' value='Voorstellingen' />
 <vdab:head title='${titel}' />
 <body>
-	<header>
-		<vdab:title title='${titel}' image='voorstellingen' />
-		<nav>
-			<h2>Genres</h2>
-			<ul>
-				<c:forEach var='genre' items='${genres}'>
-					<li>
-						<a href='voorstellingen.htm?genreid=${genre.id}'> ${genre.naam}</a>
-					</li>
-				</c:forEach>
-			</ul>
-		</nav>
-	</header>
+	<vdab:header title='${titel}' image='voorstellingen' />
 	<section>
 		<c:if test='${! empty genre}'>
 			<vdab:voorstellingen titel='${genre.naam} voorstellingen' voorstellingen='${voorstellingen}' />

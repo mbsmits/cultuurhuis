@@ -6,10 +6,7 @@
 <c:set var='titel' value='Problemen bij ophalen data' />
 <vdab:head title='${titel}' />
 <body>
-	<header>
-		<vdab:title title='${titel}' image='datafout' />
-		<vdab:menu />
-	</header>
+	<vdab:header title='${titel}' image='datafout' />
 	<section>We kunnen de gevraagde data niet ophalen wegens een technische storing. Gelieve de helpdesk te
 		contacteren.</section>
 	<vdab:footer />

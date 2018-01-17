@@ -6,10 +6,7 @@
 <c:set var='titel' value='Pagina niet gevonden' />
 <vdab:head title='${titel}' />
 <body>
-	<header>
-		<vdab:title title='${titel}' image='fout' />
-		<vdab:navigatie />
-	</header>
+	<vdab:header title='${titel}' image='fout' />
 	<section>De pagina die u zocht bestaat niet op onze website.</section>
 	<vdab:footer />
 </body>

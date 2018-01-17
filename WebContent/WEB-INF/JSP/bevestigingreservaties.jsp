@@ -7,10 +7,7 @@
 <c:set var='titel' value='Bevestiging reservaties' />
 <vdab:head title='${titel}' />
 <body>
-	<header>
-		<vdab:title title='${titel}' image='bevestig' />
-		<vdab:menu />
-	</header>
+	<vdab:header title='${titel}' image='bevestig' />
 	<section>
 		<form>
 			<h2>Stap 1: Wie ben je?</h2>

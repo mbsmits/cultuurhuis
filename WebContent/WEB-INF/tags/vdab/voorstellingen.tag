@@ -4,7 +4,7 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <section>
-	${titel}:
+	<h2>${titel}</h2>
 	<table>
 		<tr>
 			<th>Datum</th>
@@ -16,7 +16,7 @@
 		</tr>
 		<c:forEach var='voorstelling' items='${voorstellingen}'>
 			<tr>
-				<td>${voorstelling.datum}</td>
+				<td><fmt:formatDate value='${voorstelling.utilDatum}'/></td>
 				<td>
 					<c:out value='${voorstelling.titel}' />
 				</td>
@@ -26,6 +26,7 @@
 				<td>
 					<fmt:formatNumber value='${voorstelling.prijs}' />
 				</td>
+				<td>${voorstelling.vrijePlaatsen}</td>
 				<td>
 					<c:if test='${voorstelling.reserveerbaar}'>
 						<a href='reserveren.htm'>Reserveren</a>

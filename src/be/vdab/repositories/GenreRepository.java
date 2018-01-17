@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.Optional;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
@@ -26,9 +27,9 @@ public final class GenreRepository extends AbstractRepository {
 	private GenreRepository() {
 	}
 	
-	public List<Genre> findAll() {
+	public SortedSet<Genre> findAll() {
 		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
-			List<Genre> genres = new ArrayList<>();
+			SortedSet<Genre> genres = new TreeSet<>();
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			try (ResultSet resultSet = statement.executeQuery(FIND_ALL)) {
@@ -37,7 +38,7 @@ public final class GenreRepository extends AbstractRepository {
 				}
 			}
 			connection.commit();
-			return genres;
+			return Collections.unmodifiableSortedSet(genres);
 		} catch (SQLException ex) {
 			log(ex, LOGGER);
 			throw new RepositoryException(ex);

@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.Optional;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
@@ -34,10 +35,10 @@ public final class VoorstellingRepository extends AbstractRepository {
 	private VoorstellingRepository() {
 	}
 	
-	public List<Voorstelling> findByGenre(Genre genre) {
+	public SortedSet<Voorstelling> findByGenre(Genre genre) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_GENRE)) {
-			List<Voorstelling> voorstellingen = new ArrayList<>();
+			SortedSet<Voorstelling> voorstellingen = new TreeSet<>();
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			statement.setTimestamp(1, java.sql.Timestamp.valueOf(LocalDateTime.now()));
@@ -48,7 +49,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 				}
 			}
 			connection.commit();
-			return voorstellingen;
+			return Collections.unmodifiableSortedSet(voorstellingen);
 		} catch (SQLException ex) {
 			log(ex, LOGGER);
 			throw new RepositoryException(ex);
@@ -88,5 +89,4 @@ public final class VoorstellingRepository extends AbstractRepository {
 		builder.setVrijePlaatsen(resultSet.getLong(VRIJEPLAATSEN));
 		return builder.build();
 	}
-	
 }

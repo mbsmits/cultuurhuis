@@ -7,10 +7,7 @@
 <c:set var='titel' value='Overzicht' />
 <vdab:head title='${titel}' />
 <body>
-	<header>
-		<vdab:title title='${titel}' image='bevestig' />
-		<vdab:menu />
-	</header>
+	<vdab:header title='${titel}' image='bevestig' />
 	<section>
 		<vdab:reservaties titel='Gelukte reservaties' reservaties='${geluktereservaties}' gelukt='true' />
 		<vdab:reservaties titel='Mislukte reservaties' reservaties='${misluktereservaties}' gelukt='false' />
