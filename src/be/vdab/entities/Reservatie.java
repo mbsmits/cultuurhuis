@@ -25,6 +25,13 @@ public final class Reservatie extends Entiteit implements Serializable {
 		this.plaatsen = checkLong(plaatsen);
 	}
 	
+	public Reservatie(Voorstelling voorstelling, long plaatsen) {
+		super();
+		this.klant = null;
+		this.voorstelling = Objects.requireNonNull(voorstelling);
+		this.plaatsen = checkLong(plaatsen);
+	}
+	
 	public Klant getKlant() {
 		return klant;
 	}

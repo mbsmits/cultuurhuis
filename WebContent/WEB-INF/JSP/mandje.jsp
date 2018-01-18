@@ -9,7 +9,7 @@
 <body>
 	<vdab:header title='${titel}' image='mandje' />
 	<section>
-		<vdab:reservaties titel='Reservatiemandje' reservaties='${reservaties}' verwijderbaar='true' mislukt='false' />
+		<vdab:mandje titel='Reservatiemandje' reservaties='${mandje}' />
 		Te betalen (€): ${totaal}
 	</section>
 	<vdab:footer />

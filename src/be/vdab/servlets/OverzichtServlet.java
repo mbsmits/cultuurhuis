@@ -18,7 +18,7 @@ public class OverzichtServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static final String VIEW = "/WEB-INF/JSP/overzicht.jsp";
+	//private static final String VIEW = "/WEB-INF/JSP/overzicht.jsp";
 	
 	private final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
 	

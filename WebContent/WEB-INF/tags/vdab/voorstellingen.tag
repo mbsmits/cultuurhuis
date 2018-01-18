@@ -2,7 +2,6 @@
 <%@attribute name='titel' required='true' type='String'%>
 <%@attribute name='voorstellingen' required='true' type='Iterable'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
-<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <section>
 	<h2>${titel}</h2>

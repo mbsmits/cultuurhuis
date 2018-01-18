@@ -9,12 +9,10 @@
 <body>
 	<vdab:header title='${titel}' image='bevestig' />
 	<section>
-		<vdab:reservaties titel='Gelukte reservaties' reservaties='${geluktereservaties}' verwijderbaar='false'
-			mislukt='false'
-		/>
-		<vdab:reservaties titel='Mislukte reservaties' reservaties='${misluktereservaties}' verwijderbaar='false'
-			mislukt='true'
-		/>
+		<vdab:overzicht titel='Gelukte reservaties'
+			reservaties='${geluktereservaties}' mislukt='false' />
+		<vdab:overzicht titel='Mislukte reservaties'
+			reservaties='${misluktereservaties}' mislukt='true' />
 	</section>
 </body>
 </html>
