@@ -10,7 +10,8 @@
 	<vdab:header title='${titel}' image='voorstellingen' />
 	<section>
 		<c:if test='${! empty genre}'>
-			<vdab:voorstellingen titel='${genre.naam} voorstellingen' voorstellingen='${voorstellingen}' />
+			<vdab:voorstellingen titel='${genre.naam} voorstellingen'
+				voorstellingen='${voorstellingen}' />
 		</c:if>
 	</section>
 	<vdab:footer />

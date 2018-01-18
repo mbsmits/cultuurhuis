@@ -14,7 +14,7 @@
 			<th>Uitvoerders</th>
 			<th>Prijs</th>
 			<th>Plaatsen</th>
-			
+
 			<c:if test='${mislukt}'>
 				<th>Vrije plaatsen</th>
 			</c:if>
@@ -26,7 +26,7 @@
 				<td><c:out value='${reservatie.voorstelling.uitvoerders}' /></td>
 				<td><vdab:bedrag value='${reservatie.voorstelling.prijs}' /></td>
 				<td>${reservatie.plaatsen}</td>
-				
+
 				<c:if test='${mislukt}'>
 					<td>${reservatie.voorstelling.vrijePlaatsen}</td>
 				</c:if>

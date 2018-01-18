@@ -24,7 +24,8 @@
 					<td><c:out value='${reservatie.voorstelling.uitvoerders}' /></td>
 					<td><vdab:bedrag value='${reservatie.voorstelling.prijs}' /></td>
 					<td>${reservatie.plaatsen}</td>
-					<td><input type='checkbox' name='${reservatie.voorstelling.id}' /></td>
+					<td><input type='checkbox'
+						name='${reservatie.voorstelling.id}' /></td>
 				</tr>
 			</c:forEach>
 		</table>

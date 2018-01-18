@@ -20,7 +20,8 @@
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
 			<vdab:passwordinputfield label='Herhaal paswoord' name='paswoord2' />
 			<p>
-				<input type='submit' value='OK' formmethod='post' formaction='nieuweklant.htm' />
+				<input type='submit' value='OK' formmethod='post'
+					formaction='nieuweklant.htm' />
 			</p>
 		</form>
 		<ul>

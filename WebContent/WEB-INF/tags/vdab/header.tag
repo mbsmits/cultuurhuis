@@ -7,14 +7,16 @@
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <header>
 	<h1 class="clearFix">
-		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS - ${title}
+		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS -
+		${title}
 	</h1>
 	<!--  TODO -->
 	<nav>
 		<ul>
 			<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
 			<li><a href='reservatiemandje.htm'>Reservatiemandje</a></li>
-			<li><a href='bevestigingreservaties.htm'>Bevestiging reservaties</a></li>
+			<li><a href='bevestigingreservaties.htm'>Bevestiging
+					reservaties</a></li>
 		</ul>
 	</nav>
 	<c:if test='${! empty genres}'>
@@ -22,7 +24,8 @@
 			<h2>Genres</h2>
 			<ul>
 				<c:forEach var='genre' items='${genres}'>
-					<li><a href='voorstellingen.htm?genreid=${genre.id}'> ${genre.naam}</a></li>
+					<li><a href='voorstellingen.htm?genreid=${genre.id}'>
+							${genre.naam}</a></li>
 				</c:forEach>
 			</ul>
 		</nav>

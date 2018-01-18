@@ -13,7 +13,6 @@ a {
 }
 
 /* HEADER *************************************************************************************************************/
-
 header {
 	background-color: white;
 	color: black;
@@ -38,7 +37,6 @@ nav li {
 }
 
 /* SECTION ************************************************************************************************************/
-
 section {
 	margin-top: 100px;
 	margin-bottom: 100px;
@@ -64,26 +62,23 @@ span.value {
 	font-weight: bold;
 }
 
-
 /* FOOTER *************************************************************************************************************/
-
 footer {
 	background-color: grey;
 	color: white;
 }
 
 /* CLEARFIX ***********************************************************************************************************/
-
 .clearFix:before, .clearFix:after {
-    content: " ";
-    display: table;
+	content: " ";
+	display: table;
 }
 
 .clearFix:after {
-    clear: both;
+	clear: both;
 }
 
 /* enkel voor IE6/7 */
 .clearFix {
-    *zoom: 1;
+	*zoom: 1;
 }
