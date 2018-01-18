@@ -14,22 +14,19 @@
 		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS -
 		${title}
 	</h1>
-	<c:if
-		test='showVoorstellingenLink || showMandjeLink || showBevestigLink'>
-		<nav>
-			<ul>
-				<c:if test='showVoorstellingenLink'>
-					<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
-				</c:if>
-				<c:if test='showMandjeLink'>
-					<li><a href='mandje.htm'>Reservatiemandje</a></li>
-				</c:if>
-				<c:if test='showBevestigLink'>
-					<li><a href='bevestig.htm'>Bevestiging reservaties</a></li>
-				</c:if>
-			</ul>
-		</nav>
-	</c:if>
+	<nav>
+		<ul>
+			<c:if test='${showVoorstellingenLink}'>
+				<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
+			</c:if>
+			<c:if test='${showMandjeLink}'>
+				<li><a href='mandje.htm'>Reservatiemandje</a></li>
+			</c:if>
+			<c:if test='${showBevestigLink}'>
+				<li><a href='bevestig.htm'>Bevestiging reservaties</a></li>
+			</c:if>
+		</ul>
+	</nav>
 	<c:if test='${! empty genres}'>
 		<nav>
 			<h2>Genres</h2>
