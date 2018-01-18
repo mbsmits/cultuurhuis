@@ -7,7 +7,7 @@
 <c:set var='titel' value='Problemen bij ophalen data' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='datafout' />
+	<vdab:header title='${titel}' image='datafout' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
 	<section>
 		We kunnen de gevraagde data niet ophalen wegens een technische
 		storing. Gelieve de webbeheerder: <a

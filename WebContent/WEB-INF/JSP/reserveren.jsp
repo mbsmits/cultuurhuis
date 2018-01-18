@@ -7,7 +7,7 @@
 <c:set var='titel' value='Reserveren' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='reserveren' />
+	<vdab:header title='${titel}' image='reserveren' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
 	<form>
 		<vdab:field label='Voorstelling' value='${voorstelling.titel}' />
 		<vdab:field label='Uitvoerders' value='${voorstelling.uitvoerders}' />

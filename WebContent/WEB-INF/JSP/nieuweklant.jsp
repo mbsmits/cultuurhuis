@@ -7,7 +7,7 @@
 <c:set var='titel' value='Nieuwe Klant' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='nieuweklant' />
+	<vdab:header title='${titel}' image='nieuweklant' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
 	<section>
 		<form method='post'>
 			<vdab:textinputfield label='Voornaam' name='voornaam' />

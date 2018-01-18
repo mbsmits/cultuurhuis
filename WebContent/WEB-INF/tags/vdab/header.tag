@@ -1,6 +1,10 @@
 <%@tag pageEncoding='UTF-8'%>
 <%@attribute name='title' required='true' type='String'%>
 <%@attribute name='image' required='true' type='String'%>
+<%@attribute name='showVoorstellingenLink' required='true'
+	type='Boolean'%>
+<%@attribute name='showMandjeLink' required='true' type='Boolean'%>
+<%@attribute name='showBevestigLink' required='true' type='Boolean'%>
 <%@attribute name='genres' required='false' type='Iterable'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
@@ -10,14 +14,22 @@
 		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS -
 		${title}
 	</h1>
-	<!--  TODO -->
-	<nav>
-		<ul>
-			<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
-			<li><a href='mandje.htm'>Reservatiemandje</a></li>
-			<li><a href='bevestig.htm'>Bevestiging reservaties</a></li>
-		</ul>
-	</nav>
+	<c:if
+		test='showVoorstellingenLink || showMandjeLink || showBevestigLink'>
+		<nav>
+			<ul>
+				<c:if test='showVoorstellingenLink'>
+					<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
+				</c:if>
+				<c:if test='showMandjeLink'>
+					<li><a href='mandje.htm'>Reservatiemandje</a></li>
+				</c:if>
+				<c:if test='showBevestigLink'>
+					<li><a href='bevestig.htm'>Bevestiging reservaties</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</c:if>
 	<c:if test='${! empty genres}'>
 		<nav>
 			<h2>Genres</h2>
