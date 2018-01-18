@@ -18,12 +18,12 @@ import javax.sql.DataSource;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.ReservatieRepository;
 
-@WebServlet(urlPatterns = "/bevestigingreservaties.htm", name = "bevestigingreservatiesservlet")
-public class BevestigingReservatiesServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/bevestig.htm", name = "bevestigservlet")
+public class BevestigServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final String VIEW = "/WEB-INF/JSP/bevestigingreservaties.jsp";
+	private static final String VIEW = "/WEB-INF/JSP/bevestig.jsp";
 
 	private final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
 
@@ -32,14 +32,10 @@ public class BevestigingReservatiesServlet extends HttpServlet {
 		reservatieRepository.setDataSource(dataSource);
 	}
 
+	//	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			//@SuppressWarnings("unchecked")
-			//Set<Long> mandje = (Set<Long>) session.getAttribute("mandje");
-		}
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 

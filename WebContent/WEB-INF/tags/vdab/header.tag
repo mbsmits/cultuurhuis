@@ -14,9 +14,8 @@
 	<nav>
 		<ul>
 			<li><a href='voorstellingen.htm'>Voorstellingen</a></li>
-			<li><a href='reservatiemandje.htm'>Reservatiemandje</a></li>
-			<li><a href='bevestigingreservaties.htm'>Bevestiging
-					reservaties</a></li>
+			<li><a href='mandje.htm'>Reservatiemandje</a></li>
+			<li><a href='bevestig.htm'>Bevestiging reservaties</a></li>
 		</ul>
 	</nav>
 	<c:if test='${! empty genres}'>
