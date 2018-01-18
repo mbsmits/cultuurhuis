@@ -3,23 +3,26 @@ package be.vdab.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-public final class Reservatie implements Serializable, Comparable<Reservatie> {
+public final class Reservatie extends Entiteit implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private final long id;
+	
 	private final Klant klant;
 	private final Voorstelling voorstelling;
 	private final long plaatsen;
 	
-	Reservatie(long id, Klant klant, Voorstelling voorstelling, long plaatsen) {
-		this.id = id;
-		this.klant = klant;
-		this.voorstelling = voorstelling;
-		this.plaatsen = plaatsen;
+	public Reservatie(long id, Klant klant, Voorstelling voorstelling, long plaatsen) {
+		super(id);
+		this.klant = Objects.requireNonNull(klant);
+		this.voorstelling = Objects.requireNonNull(voorstelling);
+		this.plaatsen = checkLong(plaatsen);
 	}
 	
-	public long getId() {
-		return id;
+	public Reservatie(Klant klant, Voorstelling voorstelling, long plaatsen) {
+		super();
+		this.klant = Objects.requireNonNull(klant);
+		this.voorstelling = Objects.requireNonNull(voorstelling);
+		this.plaatsen = checkLong(plaatsen);
 	}
 	
 	public Klant getKlant() {
@@ -35,28 +38,8 @@ public final class Reservatie implements Serializable, Comparable<Reservatie> {
 	}
 	
 	@Override
-	public int hashCode() {
-		return Objects.hash(getId());
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this instanceof Reservatie) {
-			Genre other = (Genre) obj;
-			return Objects.equals(getId(), other.getId());
-		} else {
-			return false;
-		}
-	}
-	
-	@Override
-	public int compareTo(Reservatie other) {
-		int compareVoorstellingen = getVoorstelling().compareTo(other.getVoorstelling());
-		return compareVoorstellingen != 0 ? compareVoorstellingen : getKlant().compareTo(other.getKlant());
-	}
-	
-	@Override
 	public String toString() {
-		return getVoorstelling() + " voor " + getKlant();
+		return "reservatie van " + klant + " voor " + voorstelling;
 	}
+	
 }

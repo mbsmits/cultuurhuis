@@ -9,14 +9,15 @@
 <body>
 	<vdab:header title='${titel}' image='reserveren' />
 	<form>
-		<vdab:field label='Voorstelling' value='Moest ik van u zijn' />
-		<vdab:field label='Uitvoerders' value='Wouter Deprez' />
-		<vdab:field label='Datum' value='18/11/09 20:00' />
-		<vdab:field label='Prijs' value='&euro;6,00' />
-		<vdab:field label='Vrije plaatsen' value='198' />
+		<vdab:field label='Voorstelling' value='${voorstelling.titel}' />
+		<vdab:field label='Uitvoerders' value='${voorstelling.uitvoerders}' />
+		<vdab:field label='Datum' value='${voorstelling.datum}' />
+		<vdab:field label='Prijs' value='${voorstelling.prijs}' />
+		<vdab:field label='Vrije plaatsen' value='${voorstelling.vrijePlaatsen}' />
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
 		<p>
-			<input type='submit' value='Reserveren' />
+			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' />
+			<input type='submit' value='Reserveren' formaction='mandje.htm'>
 		</p>
 	</form>
 	<vdab:footer />

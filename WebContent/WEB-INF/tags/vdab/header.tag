@@ -1,12 +1,12 @@
-<%@tag description='header onderdeel van pagina' pageEncoding='UTF-8'%>
-<%@attribute name='title' required='true' type='java.lang.String'%>
-<%@attribute name='image' required='true' type='java.lang.String'%>
-<%@attribute name='genres' required='false' type='java.util.SortedSet'%>
+<%@tag pageEncoding='UTF-8'%>
+<%@attribute name='title' required='true' type='String'%>
+<%@attribute name='image' required='true' type='String'%>
+<%@attribute name='genres' required='false' type='Iterable'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <header>
-	<h1>
+	<h1 class="clearFix">
 		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS - ${title}
 	</h1>
 	<!--  TODO -->

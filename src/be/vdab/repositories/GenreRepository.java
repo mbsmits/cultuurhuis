@@ -5,31 +5,23 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.List;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
-import be.vdab.entities.GenreBuilder;
 
 public final class GenreRepository extends AbstractRepository {
-	
+
 	private static final Logger LOGGER = Logger.getLogger(GenreRepository.class.getName());
-	private static final String ID = "id";
-	private static final String NAAM = "naam";
-	private static final String BEGIN_SELECT = String.format("select %s, %s from genres ", ID, NAAM);
-	private static final String FIND_ALL = BEGIN_SELECT + String.format("order by %s", NAAM);
-	private static final String READ = BEGIN_SELECT + String.format("where %s=?", ID);
-	public static final GenreRepository INSTANCE = new GenreRepository();
+
+	private static final String FIND_ALL = "select id, naam from genres";
+	private static final String FIND_BY_ID = "select id, naam from genres where id=?";
 	
-	private GenreRepository() {
-	}
-	
-	public SortedSet<Genre> findAll() {
+	public List<Genre> findAll() {
 		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
-			SortedSet<Genre> genres = new TreeSet<>();
+			List<Genre> genres = new ArrayList<>();
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			try (ResultSet resultSet = statement.executeQuery(FIND_ALL)) {
@@ -38,39 +30,35 @@ public final class GenreRepository extends AbstractRepository {
 				}
 			}
 			connection.commit();
-			return Collections.unmodifiableSortedSet(genres);
+			return Collections.unmodifiableList(genres);
 		} catch (SQLException ex) {
-			log(ex, LOGGER);
+			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
 		}
 	}
-	
-	public Optional<Genre> read(long id) {
+
+	public Genre findById(long id) {
 		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(READ)) {
-			Optional<Genre> genre;
+				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			statement.setLong(1, id);
+			Genre genre;
 			try (ResultSet resultSet = statement.executeQuery()) {
-				if (resultSet.next()) {
-					genre = Optional.of(resultSetRijNaarGenre(resultSet));
-				} else {
-					genre = Optional.empty();
-				}
+				resultSet.next();
+				genre = resultSetRijNaarGenre(resultSet);
 			}
 			connection.commit();
 			return genre;
 		} catch (SQLException ex) {
-			log(ex, LOGGER);
+			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
 		}
-	}
+	}	
 	
 	private Genre resultSetRijNaarGenre(ResultSet resultSet) throws SQLException {
-		GenreBuilder builder = new GenreBuilder();
-		builder.setId(resultSet.getLong(ID));
-		builder.setNaam(resultSet.getString(NAAM));
-		return builder.build();
+		long id = resultSet.getLong("id");
+		String naam = resultSet.getString("naam");
+		return new Genre(id, naam);
 	}
 }

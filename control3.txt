@@ -1,0 +1,5 @@
+VoorstellingenServlet
+	- haalt alle genres op en steekt die in attribute genres:		oké
+	- kijkt naar inkomende parameter "genreid"... als die er is vult een attribute voorstellingen:		oké
+	
+	

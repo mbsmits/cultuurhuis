@@ -1,12 +1,11 @@
 package be.vdab.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-public final class Klant implements Serializable, Comparable<Klant> {
-	
+public final class Klant extends Entiteit implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	private final long id;
+
 	private final String voornaam;
 	private final String familienaam;
 	private final String straat;
@@ -15,78 +14,68 @@ public final class Klant implements Serializable, Comparable<Klant> {
 	private final String gemeente;
 	private final String gebruikersnaam;
 	private final String paswoord;
-	
-	Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
+
+	public Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode,
+			String gemeente, String gebruikersnaam, String paswoord) {
+		super(id);
+		this.voornaam = checkString(voornaam);
+		this.familienaam = checkString(familienaam);
+		this.straat = checkString(straat);
+		this.huisnr = checkString(huisnr);
+		this.postcode = checkString(postcode);
+		this.gemeente = checkString(gemeente);
+		this.gebruikersnaam = checkString(gebruikersnaam);
+		this.paswoord = checkString(paswoord);
+	}
+
+	public Klant(String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
 			String gebruikersnaam, String paswoord) {
-		this.id = id;
-		this.voornaam = voornaam;
-		this.familienaam = familienaam;
-		this.straat = straat;
-		this.huisnr = huisnr;
-		this.postcode = postcode;
-		this.gemeente = gemeente;
-		this.gebruikersnaam = gebruikersnaam;
-		this.paswoord = paswoord;
+		super();
+		this.voornaam = checkString(voornaam);
+		this.familienaam = checkString(familienaam);
+		this.straat = checkString(straat);
+		this.huisnr = checkString(huisnr);
+		this.postcode = checkString(postcode);
+		this.gemeente = checkString(gemeente);
+		this.gebruikersnaam = checkString(gebruikersnaam);
+		this.paswoord = checkString(paswoord);
 	}
-	
-	public long getId() {
-		return id;
-	}
-	
+
 	public String getVoornaam() {
 		return voornaam;
 	}
-	
+
 	public String getFamilienaam() {
 		return familienaam;
 	}
-	
+
 	public String getStraat() {
 		return straat;
 	}
-	
+
 	public String getHuisnr() {
 		return huisnr;
 	}
-	
+
 	public String getPostcode() {
 		return postcode;
 	}
-	
+
 	public String getGemeente() {
 		return gemeente;
 	}
-	
+
 	public String getGebruikersnaam() {
 		return gebruikersnaam;
 	}
-	
+
 	public String getPaswoord() {
 		return paswoord;
 	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(getId());
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this instanceof Klant) {
-			Klant other = (Klant) obj;
-			return Objects.equals(getId(), other.getId());
-		} else {
-			return false;
-		}
-	}
-	
+
 	@Override
 	public String toString() {
-		return getGebruikersnaam();
+		return gebruikersnaam;
 	}
-	
-	@Override
-	public int compareTo(Klant other) {
-		return getGebruikersnaam().compareTo(getGebruikersnaam());
-	}
+
 }

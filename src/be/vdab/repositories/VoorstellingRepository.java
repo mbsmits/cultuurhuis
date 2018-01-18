@@ -1,92 +1,81 @@
 package be.vdab.repositories;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Optional;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.List;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
 import be.vdab.entities.Voorstelling;
-import be.vdab.entities.VoorstellingBuilder;
 
 public final class VoorstellingRepository extends AbstractRepository {
-	
+
 	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
-	private static final String ID = "id";
-	private static final String TITEL = "titel";
-	private static final String UITVOERDERS = "uitvoerders";
-	private static final String DATUM = "datum";
-	private static final String GENREID = "genreid";
-	private static final String PRIJS = "prijs";
-	private static final String VRIJEPLAATSEN = "vrijeplaatsen";
-	private static final String BEGIN_SELECT = String.format("select %s, %s, %s, %s, %s, %s from voorstellingen ", ID,
-			TITEL, UITVOERDERS, DATUM, PRIJS, VRIJEPLAATSEN);
-	private static final String FIND_BY_GENRE = BEGIN_SELECT
-			+ String.format("where %s>=? and %s=? order by %s", DATUM, GENREID, DATUM);
-	private static final String READ = BEGIN_SELECT + String.format("where %s=?", ID);
-	public static final VoorstellingRepository INSTANCE = new VoorstellingRepository();
-	
-	private VoorstellingRepository() {
-	}
-	
-	public SortedSet<Voorstelling> findByGenre(Genre genre) {
+
+	private static final String FIND_BY_GENRE = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
+			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and genres.id=? and datum>=?";
+
+	private static final String FIND_BY_ID = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
+			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and voorstellingen.id=?";
+
+	public List<Voorstelling> findByGenre(long genreid) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_GENRE)) {
-			SortedSet<Voorstelling> voorstellingen = new TreeSet<>();
+			List<Voorstelling> voorstellingen = new ArrayList<>();
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
-			statement.setTimestamp(1, java.sql.Timestamp.valueOf(LocalDateTime.now()));
-			statement.setLong(2, genre.getId());
+			statement.setLong(1, genreid);
+			statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now().minusYears(100)));
 			try (ResultSet resultSet = statement.executeQuery()) {
 				while (resultSet.next()) {
-					voorstellingen.add(resultSetRijNaarVoorstelling(resultSet, genre));
+					voorstellingen.add(resultSetRijNaarVoorstelling(resultSet));
 				}
 			}
 			connection.commit();
-			return Collections.unmodifiableSortedSet(voorstellingen);
+			return Collections.unmodifiableList(voorstellingen);
 		} catch (SQLException ex) {
-			log(ex, LOGGER);
+			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
 		}
 	}
-	
-	public Optional<Voorstelling> read(long id, Genre genre) {
+
+	public Voorstelling findById(long id) {
 		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(READ)) {
-			Optional<Voorstelling> voorstelling;
+				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			statement.setLong(1, id);
+			Voorstelling voorstelling;
 			try (ResultSet resultSet = statement.executeQuery()) {
-				if (resultSet.next()) {
-					voorstelling = Optional.of(resultSetRijNaarVoorstelling(resultSet, genre));
-				} else {
-					voorstelling = Optional.empty();
-				}
+				resultSet.next();
+				voorstelling = resultSetRijNaarVoorstelling(resultSet);
 			}
 			connection.commit();
 			return voorstelling;
 		} catch (SQLException ex) {
-			log(ex, LOGGER);
+			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
 		}
 	}
-	
-	private Voorstelling resultSetRijNaarVoorstelling(ResultSet resultSet, Genre genre) throws SQLException {
-		VoorstellingBuilder builder = new VoorstellingBuilder();
-		builder.setId(resultSet.getLong(ID));
-		builder.setTitel(resultSet.getString(TITEL));
-		builder.setUitvoerders(resultSet.getString(UITVOERDERS));
-		builder.setDatum(resultSet.getTimestamp(DATUM).toLocalDateTime());
-		builder.setGenre(genre);
-		builder.setPrijs(resultSet.getBigDecimal(PRIJS));
-		builder.setVrijePlaatsen(resultSet.getLong(VRIJEPLAATSEN));
-		return builder.build();
+
+	private Voorstelling resultSetRijNaarVoorstelling(ResultSet resultSet) throws SQLException {
+		long genreid = resultSet.getLong("genres.id");
+		String naam = resultSet.getString("naam");
+		Genre genre = new Genre(genreid, naam);
+
+		long voorstellingenid = resultSet.getLong("voorstellingen.id");
+		String titel = resultSet.getString("titel");
+		String uitvoerders = resultSet.getString("uitvoerders");
+		LocalDateTime datum = resultSet.getTimestamp("datum").toLocalDateTime();
+		BigDecimal prijs = resultSet.getBigDecimal("prijs");
+		long vrijePlaatsen = resultSet.getLong("vrijeplaatsen");
+		return new Voorstelling(voorstellingenid, titel, uitvoerders, datum, genre, prijs, vrijePlaatsen);
 	}
 }
