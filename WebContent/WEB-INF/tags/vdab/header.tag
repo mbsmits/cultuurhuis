@@ -3,6 +3,8 @@
 <%@attribute name='image' required='true' type='java.lang.String'%>
 <%@attribute name='genres' required='false' type='java.util.SortedSet'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
+<%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <header>
 	<h1>
 		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS - ${title}

@@ -13,11 +13,11 @@
 			<th>Uitvoerders</th>
 			<th>Prijs</th>
 			<th>Vrije plaatsen</th>
-			<th>Reserveren</th>
+			<th>&nbsp;</th>
 		</tr>
 		<c:forEach var='voorstelling' items='${voorstellingen}'>
 			<tr>
-				<td><fmt:formatDate type='both' dateStyle='short' timeStyle='short' value='${voorstelling.utilDatum}' /></td>
+				<td><vdab:datum value='${voorstelling.utilDatum}' /></td>
 				<td><c:out value='${voorstelling.titel}' /></td>
 				<td><c:out value='${voorstelling.uitvoerders}' /></td>
 				<td><vdab:bedrag value='${voorstelling.prijs}' /></td>
