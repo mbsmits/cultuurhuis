@@ -14,6 +14,5 @@
 				voorstellingen='${voorstellingen}' />
 		</c:if>
 	</section>
-	<vdab:footer />
 </body>
 </html>

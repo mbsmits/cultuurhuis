@@ -30,6 +30,5 @@
 			</p>
 		</form>
 	</section>
-	<vdab:footer />
 </body>
 </html>

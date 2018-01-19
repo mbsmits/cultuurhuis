@@ -9,7 +9,6 @@
 <body>
 	<vdab:header title='${titel}' image='fout' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
 	<section>De pagina die u zocht bestaat niet op onze website.</section>
-	<vdab:footer />
 </body>
 </html>
 

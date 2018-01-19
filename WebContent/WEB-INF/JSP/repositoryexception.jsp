@@ -14,6 +14,5 @@
 			href=”//mailto:mbsmits.vdab@gmail.com”>Marc Smits</a> te
 		contacteren.
 	</section>
-	<vdab:footer />
 </body>
 </html>

@@ -1,6 +1,7 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -42,11 +43,16 @@ public class OverzichtServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		@SuppressWarnings("unchecked")
 		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
+		List<Reservatie> gelukteReservaties = new ArrayList<>();
+		List<Reservatie> mislukteReservaties = new ArrayList<>();
 		for (Reservatie reservatie : mandje) {
 			reservatie.setKlant(klant);
 			reservatieRepository.maakAan(reservatie);
+			gelukteReservaties.add(reservatie);
 		}
 		session.setAttribute("mandje", null);
+		request.setAttribute("geluktereservaties", gelukteReservaties);
+		request.setAttribute("misluktereservaties", mislukteReservaties);
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 

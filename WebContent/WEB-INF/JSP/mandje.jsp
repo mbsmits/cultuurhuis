@@ -12,6 +12,5 @@
 		<vdab:mandje titel='Reservatiemandje' reservaties='${mandje}' />
 		Te betalen (€): ${totaal}
 	</section>
-	<vdab:footer />
 </body>
 </html>

@@ -22,6 +22,5 @@
 				value='Reserveren' formaction='mandje.htm'>
 		</p>
 	</form>
-	<vdab:footer />
 </body>
 </html>
