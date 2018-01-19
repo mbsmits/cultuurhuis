@@ -13,11 +13,13 @@ public final class KlantRepository extends AbstractRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(KlantRepository.class.getName());
 
-	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = "select voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
+	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = "select id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
 			+ " from klanten where gebruikersnaam=? and paswoord=?";
 
-	private static final String CREATE = "insert into klanten(voornaam, familienaam, straat, huisnr, postcode, gebruikersnaam, paswoord ) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String FIND_BY_ID = "select id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
+			+ " from klanten where id=?";
 
+	private static final String CREATE = "insert into klanten(voornaam, familienaam, straat, huisnr, postcode, gebruikersnaam, paswoord ) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public Klant findByGebruikersnaamAndPaswoord(String gebruikersnaam, String paswoord) {
 		try (Connection connection = dataSource.getConnection();
@@ -39,7 +41,26 @@ public final class KlantRepository extends AbstractRepository {
 		}
 	}
 
-	public long maakAan(Klant klant) {
+	public Klant findById(long id) {
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
+			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+			connection.setAutoCommit(false);
+			statement.setLong(1, id);
+			Klant klant;
+			try (ResultSet resultSet = statement.executeQuery()) {
+				resultSet.next();
+				klant = resultSetRijNaarKlant(resultSet);
+			}
+			connection.commit();
+			return klant;
+		} catch (SQLException ex) {
+			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
+			throw new RepositoryException(ex);
+		}
+	}
+
+	public void maakAan(Klant klant) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS)) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
@@ -53,13 +74,7 @@ public final class KlantRepository extends AbstractRepository {
 			statement.setString(7, klant.getGebruikersnaam());
 			statement.setString(8, klant.getPaswoord());
 			statement.executeUpdate();
-			long id;
-			try (ResultSet resultSet = statement.getGeneratedKeys()) {
-				resultSet.next();
-				id = resultSet.getLong(1);
-			}
 			connection.commit();
-			return id;
 		} catch (SQLException ex) {
 			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
@@ -68,15 +83,15 @@ public final class KlantRepository extends AbstractRepository {
 
 	private Klant resultSetRijNaarKlant(ResultSet resultSet) throws SQLException {
 		long id = resultSet.getLong("id");
-		String voornaam = resultSet.getString("");
-		String familienaam = resultSet.getString("");
-		String straat = resultSet.getString("");
-		String huisnr = resultSet.getString("");
-		String postcode = resultSet.getString("");
-		String gemeente = resultSet.getString("");
-		String gebruikersnaam = resultSet.getString("");
-		String paswoord = resultSet.getString("");
-		return new Klant(id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam,paswoord);
+		String voornaam = resultSet.getString("voornaam");
+		String familienaam = resultSet.getString("familienaam");
+		String straat = resultSet.getString("straat");
+		String huisnr = resultSet.getString("huisnr");
+		String postcode = resultSet.getString("postcode");
+		String gemeente = resultSet.getString("gemeente");
+		String gebruikersnaam = resultSet.getString("gebruikersnaam");
+		String paswoord = resultSet.getString("paswoord");
+		return new Klant(id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord);
 	}
 
 }

@@ -11,20 +11,20 @@
 	<section>
 		<form>
 			<h2>Stap 1: Wie ben je?</h2>
-			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam'
-				value='...' />
-			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='...' />
+			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam'/>
+			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
 			<p>
 				<input type='submit' value='Zoek me op' formmethod='post'
-					formaction='bevestigingreservaties.htm'>
+					formaction='bevestig.htm'>
 			</p>
 			<p>
 				<input type='submit' value='Ik ben nieuw' formmethod='post'
 					formaction='nieweklant.htm'>
 			</p>
-			Joske Vermeulen ...
+			${klant.voornaam} ${klant.familienaam}
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
+				<input type='hidden' name='klantid' value='${klant.id}' />
 				<input type='submit' value='Bevestigen' formmethod='post'
 					formaction='overzicht.htm'>
 			</p>

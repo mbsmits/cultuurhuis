@@ -73,6 +73,10 @@ public final class Klant extends Entiteit implements Serializable {
 		return paswoord;
 	}
 
+	public void setId(long id) {
+		this.id = checkLong(id);
+	}
+
 	@Override
 	public String toString() {
 		return gebruikersnaam;

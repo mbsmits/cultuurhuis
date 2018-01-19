@@ -46,7 +46,6 @@ public class MandjeServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
 		mandje.add(reservatie);
-		System.out.println(mandje);
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
@@ -63,7 +62,6 @@ public class MandjeServlet extends HttpServlet {
 				nieuwMandje.add(reservatie);
 			}
 		}
-		System.out.println(nieuwMandje);
 		session.setAttribute("mandje", nieuwMandje);
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
