@@ -50,7 +50,7 @@ public class OverzichtServlet extends HttpServlet {
 			reservatieRepository.maakAan(reservatie);
 			gelukteReservaties.add(reservatie);
 		}
-		session.setAttribute("mandje", null);
+		session.removeAttribute("mandje");
 		request.setAttribute("geluktereservaties", gelukteReservaties);
 		request.setAttribute("misluktereservaties", mislukteReservaties);
 		request.getRequestDispatcher(VIEW).forward(request, response);

@@ -8,14 +8,6 @@ body {
 	margin-right: 150px;
 }
 
-a {
-	color: grey;
-}
-
-a:hover {
-	color: black;
-}
-
 /* HEADER *************************************************************************************************************/
 header img {
 	display: block;

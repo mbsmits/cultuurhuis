@@ -38,16 +38,4 @@
 		<name>numberinputfield</name>
 		<path>/WEB-INF/tags/vdab/numberinputfield.tag</path>
 	</tag-file>
-	<tag-file>
-		<name>voorstellingen</name>
-		<path>/WEB-INF/tags/vdab/voorstellingen.tag</path>
-	</tag-file>
-	<tag-file>
-		<name>mandje</name>
-		<path>/WEB-INF/tags/vdab/mandje.tag</path>
-	</tag-file>
-	<tag-file>
-		<name>overzicht</name>
-		<path>/WEB-INF/tags/vdab/overzicht.tag</path>
-	</tag-file>
 </taglib>

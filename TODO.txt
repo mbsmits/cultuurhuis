@@ -1,0 +1,6 @@
+- Met veld klant of veld klantid, ... ?
+- Filters
+- get versus post overal juist?
+- optimale SQL
+- dat form knops niet twee (kort achteréén) ingedrukt...
+- alles functioneel (low priority)

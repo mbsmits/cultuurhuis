@@ -16,7 +16,6 @@ import be.vdab.entities.Voorstelling;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.GenreRepository;
 import be.vdab.repositories.VoorstellingRepository;
-import be.vdab.util.StringUtils;
 
 @WebServlet(urlPatterns = "/voorstellingen.htm", name = "voorstellingenservlet")
 public class VoorstellingenServlet extends HttpServlet {
@@ -37,15 +36,24 @@ public class VoorstellingenServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String genreid = request.getParameter("genreid");
-		if (genreid != null && StringUtils.isLong(genreid)) {
-			Genre genre = genreRepository.findById(Long.parseLong(genreid));
-			List<Voorstelling> voorstellingen = voorstellingRepository.findByGenre(Long.parseLong(genreid));
-			request.setAttribute("genre", genre);
-			request.setAttribute("voorstellingen", voorstellingen);
+		try {
+			setGenreEnVoorstellingenIn(request);
+		} catch (NumberFormatException ex) {
 		}
-		request.setAttribute("genres", genreRepository.findAll());
+		setGenresIn(request);
 		request.getRequestDispatcher(VIEW).forward(request, response);
+	}
+
+	private void setGenreEnVoorstellingenIn(HttpServletRequest request) {
+		long genreid = Long.parseLong(request.getParameter("genreid"));
+		Genre genre = genreRepository.findById(genreid);
+		List<Voorstelling> voorstellingen = voorstellingRepository.findByGenre(genreid);
+		request.setAttribute("genre", genre);
+		request.setAttribute("voorstellingen", voorstellingen);
+	}
+
+	private void setGenresIn(HttpServletRequest request) {
+		request.setAttribute("genres", genreRepository.findAll());
 	}
 
 }

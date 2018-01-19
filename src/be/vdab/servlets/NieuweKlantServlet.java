@@ -1,6 +1,8 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -38,6 +40,16 @@ public class NieuweKlantServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			maakKlantAanEnSetIn(request);
+			response.sendRedirect(request.getContextPath() + REDIRECT_URL);
+		} catch (NullPointerException ex) {
+			setFoutenIn(request, ex);
+			request.getRequestDispatcher(VIEW).forward(request, response);
+		}
+	}
+
+	private void maakKlantAanEnSetIn(HttpServletRequest request) {
 		String voornaam = request.getParameter("voornaam");
 		String familienaam = request.getParameter("familienaam");
 		String straat = request.getParameter("straat");
@@ -48,7 +60,12 @@ public class NieuweKlantServlet extends HttpServlet {
 		String paswoord = request.getParameter("paswoord");
 		Klant klant = new Klant(voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord);
 		klantRepository.maakAan(klant);
-		response.sendRedirect(request.getContextPath() + REDIRECT_URL);
+	}
+
+	private void setFoutenIn(HttpServletRequest request, Exception ex) {
+		List<String> fouten = new ArrayList<>();
+		fouten.add(ex.getMessage());
+		request.setAttribute("fouten", fouten);
 	}
 
 }

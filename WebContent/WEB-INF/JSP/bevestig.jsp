@@ -1,4 +1,4 @@
-<%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<%@page contentType='text/html' pageEncoding='UTF-8'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
@@ -7,19 +7,19 @@
 <c:set var='titel' value='Bevestiging reservaties' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='bevestig' showVoorstellingenLink='true' showMandjeLink='true'
-		showBevestigLink='true'
-	/>
+	<vdab:header title='${titel}' image='bevestig' />
 	<section>
 		<form>
 			<h2>Stap 1: Wie ben je?</h2>
-			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam' />
-			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
+			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam' value='' />
+			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='' />
 			<p>
-				<input type='submit' value='Zoek me op' formmethod='post' formaction='bevestig.htm'>
+				<input type='submit' value='Zoek me op' formmethod='get' formaction='bevestig.htm' disabled='${not empty klant}'>
 			</p>
 			<p>
-				<input type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'>
+				<input type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'
+					disabled='${not empty klant}'
+				>
 			</p>
 		</form>
 		<form>
@@ -27,7 +27,7 @@
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
 				<input type='hidden' name='klantid' value='${klant.id}' /> <input type='submit' value='Bevestigen'
-					formmethod='post' formaction='overzicht.htm'
+					formmethod='post' formaction='overzicht.htm' disabled='${empty klant}'
 				>
 			</p>
 		</form>

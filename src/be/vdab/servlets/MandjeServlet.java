@@ -33,37 +33,42 @@ public class MandjeServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			voegReservatieAanMandjeToe(request);
+		} catch (NumberFormatException ex) {
+		}
+		verwijderVoorstellingUitMandje(request);
+		request.getRequestDispatcher(VIEW).forward(request, response);
+	}
+
+	private void voegReservatieAanMandjeToe(HttpServletRequest request) {
 		long voorstellingsid = Long.parseLong(request.getParameter("voorstellingsid"));
 		long plaatsen = Long.parseLong(request.getParameter("plaatsen"));
 		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingsid);
 		Reservatie reservatie = new Reservatie(voorstelling, plaatsen);
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		if (session.getAttribute("mandje") == null) {
 			session.setAttribute("mandje", new ArrayList<Reservatie>());
 		}
 		@SuppressWarnings("unchecked")
 		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
 		mandje.add(reservatie);
-		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
+	private void verwijderVoorstellingUitMandje(HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		@SuppressWarnings("unchecked")
 		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
 		List<Reservatie> nieuwMandje = new ArrayList<>();
 		for (Reservatie reservatie : mandje) {
-			boolean on = (request.getParameter("" + reservatie.getVoorstelling().getId()) != null);
+			boolean on = (request.getParameter("verwijderVoorstelling" + reservatie.getVoorstelling().getId()) != null);
 			if (!on) {
 				nieuwMandje.add(reservatie);
 			}
 		}
 		session.setAttribute("mandje", nieuwMandje);
-		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 }

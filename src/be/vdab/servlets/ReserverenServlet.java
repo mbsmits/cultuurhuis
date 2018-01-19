@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 import be.vdab.entities.Voorstelling;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.VoorstellingRepository;
-import be.vdab.util.StringUtils;
 
 @WebServlet(urlPatterns = "/reserveren.htm", name = "reserverenservlet")
 public class ReserverenServlet extends HttpServlet {
@@ -32,12 +31,14 @@ public class ReserverenServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String voorstellingsid = request.getParameter("voorstellingsid");
-		if (voorstellingsid != null && StringUtils.isLong(voorstellingsid)) {
-			Voorstelling voorstelling = voorstellingRepository.findById(Long.parseLong(voorstellingsid));
-			request.setAttribute("voorstelling", voorstelling);
-		}
+		setVoorstellingIn(request);
 		request.getRequestDispatcher(VIEW).forward(request, response);
+	}
+
+	private void setVoorstellingIn(HttpServletRequest request) {
+		long voorstellingsid = Long.parseLong(request.getParameter("voorstellingsid"));
+		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingsid);
+		request.setAttribute("voorstelling", voorstelling);
 	}
 
 }

@@ -34,17 +34,18 @@ public class BevestigServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try {
+			setKlantIn(request);
+		} catch (NullPointerException ex) {
+		}
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private void setKlantIn(HttpServletRequest request) {
 		String gebruikersnaam = request.getParameter("gebruikersnaam");
 		String paswoord = request.getParameter("paswoord");
 		Klant klant = klantRepository.findByGebruikersnaamAndPaswoord(gebruikersnaam.trim(), paswoord.trim());
 		request.setAttribute("klant", klant);
-		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 
 }
