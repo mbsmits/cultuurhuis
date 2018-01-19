@@ -1,4 +1,4 @@
-<%@page contentType='text/html' pageEncoding='UTF-8'%>
+<%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
@@ -10,7 +10,7 @@
 	<vdab:header title='${titel}' image='reserveren' showVoorstellingenLink='true' showMandjeLink='true'
 		showBevestigLink='true'
 	/>
-	<form>
+	<form id='reserveerform'>
 		<vdab:field label='Voorstelling' value='${voorstelling.titel}' />
 		<vdab:field label='Uitvoerders' value='${voorstelling.uitvoerders}' />
 		<vdab:field label='Datum' value='${voorstelling.datum}' />
@@ -19,9 +19,18 @@
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
 		<p>
 			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input type='submit' value='Reserveren'
-				formaction='mandje.htm'
+				formaction='mandje.htm' id='reserveerknop'
 			>
 		</p>
 	</form>
+	<script>
+		document.getElementById('reserveerform').onsubmit = function() {
+			if (!navigator.cookieEnabled) {
+				alert("Dit werkt enkel als cookies aanstaan");
+				return false;
+			}
+			document.getElementById('reserveerknop').disabled = true;
+		};
+	</script>
 </body>
 </html>
