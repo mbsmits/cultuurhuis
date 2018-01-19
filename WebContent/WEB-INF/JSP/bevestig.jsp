@@ -14,12 +14,12 @@
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='' />
 			<p>
 				<input id='zoekmeopknop ' type='submit' value='Zoek me op' formmethod='get' formaction='bevestig.htm'
-					disabled='${not empty klant}'
+					<c:if test='${not empty klant}'>disabled</c:if>
 				>
 			</p>
 			<p>
 				<input id='ikbennieuwknop' type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'
-					disabled='${not empty klant}'
+					<c:if test='${not empty klant}'>disabled</c:if>
 				>
 			</p>
 		</form>
@@ -28,7 +28,7 @@
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
 				<input type='hidden' name='klantid' value='${klant.id}' /> <input id='bevestigknop' type='submit'
-					value='Bevestigen' formmethod='post' formaction='overzicht.htm' disabled='${empty klant}'
+					value='Bevestigen' formmethod='post' formaction='overzicht.htm' <c:if test='${empty klant}'>disabled</c:if>
 				>
 			</p>
 		</form>
