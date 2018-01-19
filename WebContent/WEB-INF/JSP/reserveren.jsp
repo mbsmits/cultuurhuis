@@ -16,8 +16,8 @@
 		<vdab:field label='Vrije plaatsen' value='${voorstelling.vrijePlaatsen}' />
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
 		<p>
-			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input type='submit' value='Reserveren'
-				formmethod='post' formaction='mandje.htm' id='reserveerknop'
+			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit' value='Reserveren'
+				formmethod='post' formaction='mandje.htm' 
 			>
 		</p>
 	</form>

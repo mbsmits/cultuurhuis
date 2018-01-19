@@ -9,7 +9,7 @@
 <body>
 	<vdab:header title='${titel}' image='nieuweklant' />
 	<section>
-		<form>
+		<form id='nieuweklantform'>
 			<vdab:textinputfield label='Voornaam' name='voornaam' value='${voornaam}' />
 			<vdab:textinputfield label='Familienaam' name='familienaam' value='${familienaam}' />
 			<vdab:textinputfield label='Straat' name='straat' value='${straat}' />
@@ -20,7 +20,7 @@
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='' />
 			<vdab:passwordinputfield label='Herhaal paswoord' name='paswoord2' value='' />
 			<p>
-				<input type='submit' value='OK' formmethod='post' formaction='nieuweklant.htm' />
+				<input id='nieuweklantknop' type='submit' value='OK' formmethod='post' formaction='nieuweklant.htm' />
 			</p>
 		</form>
 		<ul>
@@ -28,6 +28,14 @@
 				<li>${fout}</li>
 			</c:forEach>
 		</ul>
-	</section>
+	</section><script>
+		document.getElementById('nieuweklantform').onsubmit = function() {
+			if (!navigator.cookieEnabled) {
+				alert("Dit werkt enkel als cookies aanstaan");
+				return false;
+			}
+			document.getElementById('nieuweklantknop').disabled = true;
+		};
+	</script>
 </body>
 </html>

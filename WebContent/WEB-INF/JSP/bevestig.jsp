@@ -14,23 +14,32 @@
 			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam' value='' />
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' value='' />
 			<p>
-				<input type='submit' value='Zoek me op' formmethod='get' formaction='bevestig.htm' disabled='${not empty klant}'>
+				<input id='zoekmeopknop 'type='submit' value='Zoek me op' formmethod='get' formaction='bevestig.htm' disabled='${not empty klant}'>
 			</p>
 			<p>
-				<input type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'
+				<input id='ikbennieuwknop' type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'
 					disabled='${not empty klant}'
 				>
 			</p>
 		</form>
-		<form>
-			${klant.voornaam} ${klant.familienaam}
+		<form id='bevestigform'>
+			${klant.voornaam} ${klant.familienaam} ${klant.straat} ${klant.postcode} ${klant.gemeente}
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
-				<input type='hidden' name='klantid' value='${klant.id}' /> <input type='submit' value='Bevestigen'
+				<input type='hidden' name='klantid' value='${klant.id}' /> <input id='bevestigknop' type='submit' value='Bevestigen'
 					formmethod='post' formaction='overzicht.htm' disabled='${empty klant}'
 				>
 			</p>
 		</form>
 	</section>
+	<script>
+		document.getElementById('bevestigform').onsubmit = function() {
+			if (!navigator.cookieEnabled) {
+				alert("Dit werkt enkel als cookies aanstaan");
+				return false;
+			}
+			document.getElementById('bevestigknop').disabled = true;
+		};
+	</script>
 </body>
 </html>

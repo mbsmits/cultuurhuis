@@ -20,7 +20,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
 
 	private static final String FIND_BY_GENRE = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
-			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and genres.id=? and datum>=?";
+			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and genres.id=? and datum>=? order by datum";
 
 	private static final String FIND_BY_ID = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
 			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and voorstellingen.id=?";
@@ -32,7 +32,7 @@ public final class VoorstellingRepository extends AbstractRepository {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			statement.setLong(1, genreid);
-			statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now().minusYears(100)));
+			statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
 			try (ResultSet resultSet = statement.executeQuery()) {
 				while (resultSet.next()) {
 					voorstellingen.add(resultSetRijNaarVoorstelling(resultSet));
@@ -69,7 +69,6 @@ public final class VoorstellingRepository extends AbstractRepository {
 		long genreid = resultSet.getLong("genres.id");
 		String naam = resultSet.getString("naam");
 		Genre genre = new Genre(genreid, naam);
-
 		long voorstellingenid = resultSet.getLong("voorstellingen.id");
 		String titel = resultSet.getString("titel");
 		String uitvoerders = resultSet.getString("uitvoerders");

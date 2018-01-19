@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Logger;
 
 import be.vdab.entities.Klant;
@@ -62,7 +61,7 @@ public final class KlantRepository extends AbstractRepository {
 
 	public void maakAan(Klant klant) {
 		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(CREATE, Statement.RETURN_GENERATED_KEYS)) {
+				PreparedStatement statement = connection.prepareStatement(CREATE)) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
 			statement.setString(1, klant.getVoornaam());
