@@ -7,12 +7,10 @@
 <c:set var='titel' value='Problemen bij ophalen data' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='datafout' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
-	<section>
-		We kunnen de gevraagde data niet ophalen wegens een technische
-		storing. Gelieve de webbeheerder: <a
-			href=”//mailto:mbsmits.vdab@gmail.com”>Marc Smits</a> te
-		contacteren.
-	</section>
+	<vdab:header title='${titel}' image='datafout' showVoorstellingenLink='true' showMandjeLink='true'
+		showBevestigLink='true'
+	/>
+	<section>We kunnen de gevraagde data niet ophalen wegens een technische storing. Gelieve de helpdesk te
+		contacteren.</section>
 </body>
 </html>

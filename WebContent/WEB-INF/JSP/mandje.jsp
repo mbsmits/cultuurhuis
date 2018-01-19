@@ -7,7 +7,9 @@
 <c:set var='titel' value='Reservatiemandje' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='mandje' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
+	<vdab:header title='${titel}' image='mandje' showVoorstellingenLink='true' showMandjeLink='true'
+		showBevestigLink='true'
+	/>
 	<section>
 		<vdab:mandje titel='Reservatiemandje' reservaties='${mandje}' />
 		Te betalen (€): ${totaal}

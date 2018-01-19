@@ -7,26 +7,28 @@
 <c:set var='titel' value='Bevestiging reservaties' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='bevestig' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
+	<vdab:header title='${titel}' image='bevestig' showVoorstellingenLink='true' showMandjeLink='true'
+		showBevestigLink='true'
+	/>
 	<section>
 		<form>
 			<h2>Stap 1: Wie ben je?</h2>
-			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam'/>
+			<vdab:textinputfield label='Gebruikersnaam' name='gebruikersnaam' />
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
 			<p>
-				<input type='submit' value='Zoek me op' formmethod='post'
-					formaction='bevestig.htm'>
+				<input type='submit' value='Zoek me op' formmethod='post' formaction='bevestig.htm'>
 			</p>
 			<p>
-				<input type='submit' value='Ik ben nieuw' formmethod='post'
-					formaction='nieweklant.htm'>
+				<input type='submit' value='Ik ben nieuw' formmethod='get' formaction='nieuweklant.htm'>
 			</p>
+		</form>
+		<form>
 			${klant.voornaam} ${klant.familienaam}
 			<h2>Stap 2: Bevestigen</h2>
 			<p>
-				<input type='hidden' name='klantid' value='${klant.id}' />
-				<input type='submit' value='Bevestigen' formmethod='post'
-					formaction='overzicht.htm'>
+				<input type='hidden' name='klantid' value='${klant.id}' /> <input type='submit' value='Bevestigen'
+					formmethod='post' formaction='overzicht.htm'
+				>
 			</p>
 		</form>
 	</section>

@@ -7,12 +7,12 @@
 <c:set var='titel' value='Overzicht' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='bevestig' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
+	<vdab:header title='${titel}' image='bevestig' showVoorstellingenLink='true' showMandjeLink='true'
+		showBevestigLink='true'
+	/>
 	<section>
-		<vdab:overzicht titel='Gelukte reservaties'
-			reservaties='${geluktereservaties}' mislukt='false' />
-		<vdab:overzicht titel='Mislukte reservaties'
-			reservaties='${misluktereservaties}' mislukt='true' />
+		<vdab:overzicht titel='Gelukte reservaties' reservaties='${geluktereservaties}' mislukt='false' />
+		<vdab:overzicht titel='Mislukte reservaties' reservaties='${misluktereservaties}' mislukt='true' />
 	</section>
 </body>
 </html>

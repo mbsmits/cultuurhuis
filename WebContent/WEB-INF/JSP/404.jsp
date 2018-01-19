@@ -7,9 +7,7 @@
 <c:set var='titel' value='Pagina niet gevonden' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='fout' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
+	<vdab:header title='${titel}' image='fout' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink='true' />
 	<section>De pagina die u zocht bestaat niet op onze website.</section>
 </body>
 </html>
-
-

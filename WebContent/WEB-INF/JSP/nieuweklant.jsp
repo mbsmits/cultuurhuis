@@ -7,9 +7,11 @@
 <c:set var='titel' value='Nieuwe Klant' />
 <vdab:head title='${titel}' />
 <body>
-	<vdab:header title='${titel}' image='nieuweklant' showVoorstellingenLink='true' showMandjeLink='true' showBevestigLink ='true'/>
+	<vdab:header title='${titel}' image='nieuweklant' showVoorstellingenLink='true' showMandjeLink='true'
+		showBevestigLink='true'
+	/>
 	<section>
-		<form method='post'>
+		<form>
 			<vdab:textinputfield label='Voornaam' name='voornaam' />
 			<vdab:textinputfield label='Familienaam' name='familienaam' />
 			<vdab:textinputfield label='Straat' name='straat' />
@@ -20,7 +22,7 @@
 			<vdab:passwordinputfield label='Paswoord' name='paswoord' />
 			<vdab:passwordinputfield label='Herhaal paswoord' name='paswoord2' />
 			<p>
-				<input type='submit' value='OK' 	formaction='nieuweklant.htm' />
+				<input type='submit' value='OK' formmethod='post' formaction='nieuweklant.htm' />
 			</p>
 		</form>
 		<ul>

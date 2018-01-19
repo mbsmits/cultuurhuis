@@ -1,7 +1,6 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,28 +22,21 @@ import be.vdab.util.StringUtils;
 public class VoorstellingenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final String VIEW = "/WEB-INF/JSP/voorstellingen.jsp";
 
 	private final transient GenreRepository genreRepository = new GenreRepository();
 	private final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
 
-	private final List<Genre> genres = new ArrayList<>();
-	
 	@Resource(name = AbstractRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		genreRepository.setDataSource(dataSource);
-		voorstellingRepository.setDataSource(dataSource); 
+		voorstellingRepository.setDataSource(dataSource);
 	}
 
 	@Override
-	public void init()  {
-		genres.addAll(genreRepository.findAll());
-	}
-	
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String genreid = request.getParameter("genreid");
 		if (genreid != null && StringUtils.isLong(genreid)) {
 			Genre genre = genreRepository.findById(Long.parseLong(genreid));
@@ -52,13 +44,8 @@ public class VoorstellingenServlet extends HttpServlet {
 			request.setAttribute("genre", genre);
 			request.setAttribute("voorstellingen", voorstellingen);
 		}
-		request.setAttribute("genres", genres);
+		request.setAttribute("genres", genreRepository.findAll());
 		request.getRequestDispatcher(VIEW).forward(request, response);
-	}
-	
-	@Override
-	public void destroy()  {
-		genres.clear();
 	}
 
 }

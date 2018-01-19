@@ -3,36 +3,26 @@
 body {
 	background-color: white;
 	color: black;
-	font-family: "Calibri Light", sans-serif;
+	font-family: sans-serif;
 	margin-left: 150px;
 	margin-right: 150px;
 }
 
 a {
-	color: inherit;
+	color: grey;
 }
 
-/* HEADER *************************************************************************************************************/
-header {
-	background-color: white;
+a:hover {
 	color: black;
 }
 
+/* HEADER *************************************************************************************************************/
 header img {
 	display: block;
 	float: right;
-	/*margin-le: 1em;*/
 }
 
-header h1 {
-	font-weight: normal;
-}
-
-nav ul {
-	padding: 0;
-}
-
-nav li {
+header li {
 	display: inline;
 }
 
@@ -60,12 +50,6 @@ label {
 
 span.value {
 	font-weight: bold;
-}
-
-/* FOOTER *************************************************************************************************************/
-footer {
-	background-color: grey;
-	color: white;
 }
 
 /* CLEARFIX ***********************************************************************************************************/

@@ -1,8 +1,6 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -22,7 +20,7 @@ public class NieuweKlantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static final String VIEW = "/WEB-INF/JSP/nieuweklant.jsp";
-	private static final String REDIRECT_URL = "/bevestigingreservaties.htm";
+	private static final String REDIRECT_URL = "/bevestig.htm";
 
 	private final transient KlantRepository klantRepository = new KlantRepository();
 
@@ -40,25 +38,17 @@ public class NieuweKlantServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Map<String, String> fouten = new HashMap<>();
-		// ...
-		if (fouten.isEmpty()) {
-			String voornaam = request.getParameter("voornaam");
-			String familienaam = request.getParameter("familienaam");
-			String straat = request.getParameter("straat");
-			String huisnr = request.getParameter("huisnr");
-			String postcode = request.getParameter("postcode");
-			String gemeente = request.getParameter("gemeente");
-			String gebruikersnaam = request.getParameter("gebruikersnaam");
-			String paswoord = request.getParameter("paswoord");
-			Klant klant = new Klant(voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam,
-					paswoord);
-			klantRepository.maakAan(klant);
-			response.sendRedirect(request.getContextPath() + REDIRECT_URL);
-		} else {
-			request.setAttribute("fouten", fouten);
-			request.getRequestDispatcher(VIEW).forward(request, response);
-		}
+		String voornaam = request.getParameter("voornaam");
+		String familienaam = request.getParameter("familienaam");
+		String straat = request.getParameter("straat");
+		String huisnr = request.getParameter("huisnr");
+		String postcode = request.getParameter("postcode");
+		String gemeente = request.getParameter("gemeente");
+		String gebruikersnaam = request.getParameter("gebruikersnaam");
+		String paswoord = request.getParameter("paswoord");
+		Klant klant = new Klant(voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord);
+		klantRepository.maakAan(klant);
+		response.sendRedirect(request.getContextPath() + REDIRECT_URL);
 	}
 
 }

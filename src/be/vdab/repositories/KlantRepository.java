@@ -19,7 +19,7 @@ public final class KlantRepository extends AbstractRepository {
 	private static final String FIND_BY_ID = "select id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
 			+ " from klanten where id=?";
 
-	private static final String CREATE = "insert into klanten(voornaam, familienaam, straat, huisnr, postcode, gebruikersnaam, paswoord ) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String CREATE = "insert into klanten(voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public Klant findByGebruikersnaamAndPaswoord(String gebruikersnaam, String paswoord) {
 		try (Connection connection = dataSource.getConnection();

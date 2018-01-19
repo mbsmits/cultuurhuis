@@ -1,18 +1,14 @@
 <%@tag pageEncoding='UTF-8'%>
 <%@attribute name='title' required='true' type='String'%>
 <%@attribute name='image' required='true' type='String'%>
-<%@attribute name='showVoorstellingenLink' required='true'
-	type='Boolean'%>
+<%@attribute name='showVoorstellingenLink' required='true' type='Boolean'%>
 <%@attribute name='showMandjeLink' required='true' type='Boolean'%>
 <%@attribute name='showBevestigLink' required='true' type='Boolean'%>
 <%@attribute name='genres' required='false' type='Iterable'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
-<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
-<%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <header>
 	<h1 class="clearFix">
-		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS -
-		${title}
+		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS - ${title}
 	</h1>
 	<nav>
 		<ul>
@@ -32,8 +28,7 @@
 			<h2>Genres</h2>
 			<ul>
 				<c:forEach var='genre' items='${genres}'>
-					<li><a href='voorstellingen.htm?genreid=${genre.id}'>
-							${genre.naam}</a></li>
+					<li><a href='voorstellingen.htm?genreid=${genre.id}'> ${genre.naam}</a></li>
 				</c:forEach>
 			</ul>
 		</nav>
