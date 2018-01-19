@@ -1,6 +1,5 @@
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
-<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html lang='nl'>
@@ -16,8 +15,8 @@
 		<vdab:field label='Vrije plaatsen' value='${voorstelling.vrijePlaatsen}' />
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
 		<p>
-			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit' value='Reserveren'
-				formmethod='post' formaction='mandje.htm' 
+			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
+				value='Reserveren' formmethod='post' formaction='mandje.htm'
 			>
 		</p>
 	</form>

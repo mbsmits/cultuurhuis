@@ -1,6 +1,5 @@
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
-<%@taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt'%>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags'%>
 <!doctype html>
 <html lang='nl'>
@@ -28,7 +27,8 @@
 				<li>${fout}</li>
 			</c:forEach>
 		</ul>
-	</section><script>
+	</section>
+	<script>
 		document.getElementById('nieuweklantform').onsubmit = function() {
 			if (!navigator.cookieEnabled) {
 				alert("Dit werkt enkel als cookies aanstaan");
