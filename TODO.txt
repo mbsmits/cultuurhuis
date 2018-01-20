@@ -4,3 +4,6 @@
 - optimale SQL
 - dat form knops niet twee (kort achteréén) ingedrukt...
 - alles functioneel (low priority)
+- paswoord en herhaal paswoord hetzelfde
+- isolation levels
+- search todo in code

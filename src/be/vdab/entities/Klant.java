@@ -30,7 +30,6 @@ public final class Klant extends Entiteit implements Serializable {
 
 	public Klant(String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
 			String gebruikersnaam, String paswoord) {
-		super();
 		this.voornaam = checkString(voornaam);
 		this.familienaam = checkString(familienaam);
 		this.straat = checkString(straat);
@@ -75,11 +74,6 @@ public final class Klant extends Entiteit implements Serializable {
 
 	public void setId(long id) {
 		this.id = checkLong(id);
-	}
-
-	@Override
-	public String toString() {
-		return gebruikersnaam;
 	}
 
 }

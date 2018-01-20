@@ -33,7 +33,8 @@
 				</table>
 			</form>
 		</section>
-		Te betalen (€): ${totaal}
+		Te betalen:
+		<vdab:bedrag value='${mandje.totaal}' />
 	</section>
 	<script>
 		document.getElementById('verwijderform').onsubmit = function() {

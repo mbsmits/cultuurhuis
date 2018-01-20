@@ -17,9 +17,4 @@ public final class Genre extends Entiteit implements Serializable {
 		return naam;
 	}
 
-	@Override
-	public String toString() {
-		return naam;
-	}
-	
 }

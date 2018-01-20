@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,13 +17,14 @@ public final class GenreRepository extends AbstractRepository {
 
 	private static final String FIND_ALL = "select id, naam from genres";
 	private static final String FIND_BY_ID = "select id, naam from genres where id=?";
-	
+
 	public List<Genre> findAll() {
-		try (Connection connection = dataSource.getConnection(); Statement statement = connection.createStatement()) {
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(FIND_ALL)) {
 			List<Genre> genres = new ArrayList<>();
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			connection.setAutoCommit(false);
-			try (ResultSet resultSet = statement.executeQuery(FIND_ALL)) {
+			try (ResultSet resultSet = statement.executeQuery()) {
 				while (resultSet.next()) {
 					genres.add(resultSetRijNaarGenre(resultSet));
 				}
@@ -54,8 +54,8 @@ public final class GenreRepository extends AbstractRepository {
 			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
 			throw new RepositoryException(ex);
 		}
-	}	
-	
+	}
+
 	private Genre resultSetRijNaarGenre(ResultSet resultSet) throws SQLException {
 		long id = resultSet.getLong("id");
 		String naam = resultSet.getString("naam");

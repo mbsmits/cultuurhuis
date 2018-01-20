@@ -1,8 +1,6 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import be.vdab.entities.Reservatie;
-import be.vdab.entities.Voorstelling;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
@@ -46,26 +43,23 @@ public class MandjeServlet extends HttpServlet {
 	private void voegReservatieAanMandjeToe(HttpServletRequest request) {
 		long voorstellingsid = Long.parseLong(request.getParameter("voorstellingsid"));
 		long plaatsen = Long.parseLong(request.getParameter("plaatsen"));
-		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingsid);
-		Reservatie reservatie = new Reservatie(voorstelling, plaatsen);
+		Reservatie reservatie = new Reservatie(voorstellingsid, plaatsen);
 		HttpSession session = request.getSession();
 		if (session.getAttribute("mandje") == null) {
-			session.setAttribute("mandje", new ArrayList<Reservatie>());
+			session.setAttribute("mandje", new Mandje());
 		}
-		@SuppressWarnings("unchecked")
-		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
-		mandje.add(reservatie);
+		Mandje mandje = (Mandje) session.getAttribute("mandje");
+		mandje.addOrReplace(reservatie);
 	}
 
 	private void verwijderVoorstellingUitMandje(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		@SuppressWarnings("unchecked")
-		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
-		List<Reservatie> nieuwMandje = new ArrayList<>();
+		Mandje mandje = (Mandje) session.getAttribute("mandje");
+		Mandje nieuwMandje = new Mandje();
 		for (Reservatie reservatie : mandje) {
-			boolean on = (request.getParameter("verwijderVoorstelling" + reservatie.getVoorstelling().getId()) != null);
+			boolean on = (request.getParameter("verwijderVoorstelling" + reservatie.getVoorstellingId()) != null);
 			if (!on) {
-				nieuwMandje.add(reservatie);
+				nieuwMandje.addOrReplace(reservatie);
 			}
 		}
 		session.setAttribute("mandje", nieuwMandje);

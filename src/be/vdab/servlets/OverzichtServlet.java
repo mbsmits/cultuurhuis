@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import be.vdab.entities.Klant;
 import be.vdab.entities.Reservatie;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.KlantRepository;
@@ -38,17 +37,20 @@ public class OverzichtServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		long klantid = Long.parseLong(request.getParameter("klantid"));
-		Klant klant = klantRepository.findById(klantid);
+		long klantId = Long.parseLong(request.getParameter("klantid"));
 		HttpSession session = request.getSession(false);
-		@SuppressWarnings("unchecked")
-		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
+		Mandje mandje = (Mandje) session.getAttribute("mandje");
+		mandje.setKlantId(klantId);
 		List<Reservatie> gelukteReservaties = new ArrayList<>();
 		List<Reservatie> mislukteReservaties = new ArrayList<>();
 		for (Reservatie reservatie : mandje) {
-			reservatie.setKlant(klant);
-			reservatieRepository.maakAan(reservatie);
-			gelukteReservaties.add(reservatie);
+			try {
+				reservatieRepository.maakAan(reservatie);
+				gelukteReservaties.add(reservatie);
+			} catch (Exception ex) {
+				mislukteReservaties.add(reservatie);
+			}
+
 		}
 		session.removeAttribute("mandje");
 		request.setAttribute("geluktereservaties", gelukteReservaties);

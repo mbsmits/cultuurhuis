@@ -1,41 +1,35 @@
 package be.vdab.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public final class Reservatie extends Entiteit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Klant klant;
-	private final Voorstelling voorstelling;
+	private long klantId;
+	private final long voorstellingId;
 	private final long plaatsen;
 
-	public Reservatie(Voorstelling voorstelling, long plaatsen) {
+	public Reservatie(long voorstellingId, long plaatsen) {
 		super();
-		this.voorstelling = Objects.requireNonNull(voorstelling);
+		this.voorstellingId = checkLong(voorstellingId);
 		this.plaatsen = checkLong(plaatsen);
 	}
 
-	public Klant getKlant() {
-		return klant;
+	public long getKlantId() {
+		return klantId;
 	}
 
-	public Voorstelling getVoorstelling() {
-		return voorstelling;
+	public long getVoorstellingId() {
+		return voorstellingId;
 	}
 
 	public long getPlaatsen() {
 		return plaatsen;
 	}
 
-	public void setKlant(Klant klant) {
-		this.klant = Objects.requireNonNull(klant);
-	}
-
-	@Override
-	public String toString() {
-		return "reservatie van " + klant + " voor " + voorstelling;
+	public void setKlantId(long klantId) {
+		this.klantId = checkLong(klantId);
 	}
 
 }

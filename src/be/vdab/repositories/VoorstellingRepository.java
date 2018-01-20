@@ -12,18 +12,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-import be.vdab.entities.Genre;
 import be.vdab.entities.Voorstelling;
 
 public final class VoorstellingRepository extends AbstractRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
 
-	private static final String FIND_BY_GENRE = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
-			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and genres.id=? and datum>=? order by datum";
+	private static final String FIND_BY_GENRE = "select id, titel, uitvoerders, datum, genreid, prijs, vrijeplaatsen "
+			+ "from voorstellingen where genreid=? and datum>=? order by datum";
 
-	private static final String FIND_BY_ID = "select voorstellingen.id, titel, uitvoerders, datum, genres.id, genres.naam, prijs, vrijeplaatsen "
-			+ "from voorstellingen, genres where voorstellingen.genreid=genres.id and voorstellingen.id=?";
+	private static final String FIND_BY_ID = "select id, titel, uitvoerders, datum, genreid, prijs, vrijeplaatsen "
+			+ "from voorstellingen where id=?";
 
 	public List<Voorstelling> findByGenre(long genreid) {
 		try (Connection connection = dataSource.getConnection();
@@ -66,15 +65,13 @@ public final class VoorstellingRepository extends AbstractRepository {
 	}
 
 	private Voorstelling resultSetRijNaarVoorstelling(ResultSet resultSet) throws SQLException {
-		long genreid = resultSet.getLong("genres.id");
-		String naam = resultSet.getString("naam");
-		Genre genre = new Genre(genreid, naam);
-		long voorstellingenid = resultSet.getLong("voorstellingen.id");
+		long voorstellingenId = resultSet.getLong("id");
 		String titel = resultSet.getString("titel");
 		String uitvoerders = resultSet.getString("uitvoerders");
 		LocalDateTime datum = resultSet.getTimestamp("datum").toLocalDateTime();
+		long genreId = resultSet.getLong("genreid");
 		BigDecimal prijs = resultSet.getBigDecimal("prijs");
 		long vrijePlaatsen = resultSet.getLong("vrijeplaatsen");
-		return new Voorstelling(voorstellingenid, titel, uitvoerders, datum, genre, prijs, vrijePlaatsen);
+		return new Voorstelling(voorstellingenId, titel, uitvoerders, datum, genreId, prijs, vrijePlaatsen);
 	}
 }

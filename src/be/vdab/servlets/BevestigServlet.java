@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 import be.vdab.entities.Klant;
 import be.vdab.repositories.AbstractRepository;
 import be.vdab.repositories.KlantRepository;
-import be.vdab.repositories.ReservatieRepository;
 
 @WebServlet(urlPatterns = "/bevestig.htm", name = "bevestigservlet")
 public class BevestigServlet extends HttpServlet {
@@ -23,12 +22,10 @@ public class BevestigServlet extends HttpServlet {
 	private static final String VIEW = "/WEB-INF/JSP/bevestig.jsp";
 
 	private final transient KlantRepository klantRepository = new KlantRepository();
-	private final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
 
 	@Resource(name = AbstractRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		klantRepository.setDataSource(dataSource);
-		reservatieRepository.setDataSource(dataSource);
 	}
 
 	@Override

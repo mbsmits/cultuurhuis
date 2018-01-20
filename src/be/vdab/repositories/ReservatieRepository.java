@@ -19,9 +19,9 @@ public final class ReservatieRepository extends AbstractRepository {
 				PreparedStatement update = connection.prepareStatement(UPDATE);
 				PreparedStatement insert = connection.prepareStatement(INSERT)) {
 			update.setLong(1, reservatie.getPlaatsen());
-			update.setLong(2, reservatie.getVoorstelling().getId());
-			insert.setLong(1, reservatie.getKlant().getId());
-			insert.setLong(2, reservatie.getVoorstelling().getId());
+			update.setLong(2, reservatie.getVoorstellingId());
+			insert.setLong(1, reservatie.getKlantId());
+			insert.setLong(2, reservatie.getVoorstellingId());
 			insert.setLong(3, reservatie.getPlaatsen());
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			connection.setAutoCommit(false);
