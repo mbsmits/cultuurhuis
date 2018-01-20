@@ -11,7 +11,7 @@ public final class Voorstelling extends Entiteit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	private final long id;
 	private final String titel;
 	private final String uitvoerders;
 	private final LocalDateTime datum;

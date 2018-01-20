@@ -37,7 +37,10 @@ public class MandjeServlet extends HttpServlet {
 			voegReservatieAanMandjeToe(request);
 		} catch (NumberFormatException ex) {
 		}
-		verwijderVoorstellingUitMandje(request);
+		try {
+			verwijderVoorstellingUitMandje(request);
+		} catch (NullPointerException ex) {
+		}
 		request.getRequestDispatcher(VIEW).forward(request, response);
 	}
 

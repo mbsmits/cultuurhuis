@@ -50,7 +50,6 @@ public class OverzichtServlet extends HttpServlet {
 			} catch (Exception ex) {
 				mislukteReservaties.add(reservatie);
 			}
-
 		}
 		session.removeAttribute("mandje");
 		request.setAttribute("geluktereservaties", gelukteReservaties);

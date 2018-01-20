@@ -6,7 +6,7 @@ public final class Klant extends Entiteit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id; // TODO liefst final
+	private final long id;
 	private final String voornaam;
 	private final String familienaam;
 	private final String straat;
@@ -16,9 +16,9 @@ public final class Klant extends Entiteit implements Serializable {
 	private final String gebruikersnaam;
 	private final String paswoord;
 
-	public Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode,
-			String gemeente, String gebruikersnaam, String paswoord) {
-		this.id = checkLong(id);
+	public Klant(String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
+			String gebruikersnaam, String paswoord) {
+		this.id = -1;
 		this.voornaam = checkString(voornaam);
 		this.familienaam = checkString(familienaam);
 		this.straat = checkString(straat);
@@ -29,9 +29,9 @@ public final class Klant extends Entiteit implements Serializable {
 		this.paswoord = checkString(paswoord);
 	}
 
-	public Klant(String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente,
-			String gebruikersnaam, String paswoord) {
-		this.id = -1;
+	public Klant(long id, String voornaam, String familienaam, String straat, String huisnr, String postcode,
+			String gemeente, String gebruikersnaam, String paswoord) {
+		this.id = checkLong(id);
 		this.voornaam = checkString(voornaam);
 		this.familienaam = checkString(familienaam);
 		this.straat = checkString(straat);
@@ -77,9 +77,5 @@ public final class Klant extends Entiteit implements Serializable {
 	public String getPaswoord() {
 		return paswoord;
 	}
-
-	// public void setId(long id) {
-	// this.id = checkLong(id);
-	// }
 
 }
