@@ -1,4 +1,3 @@
-- Met veld klant of veld klantid, ... ?
 - Filters
 - get versus post overal juist?
 - optimale SQL
@@ -7,3 +6,4 @@
 - paswoord en herhaal paswoord hetzelfde
 - isolation levels
 - search todo in code
+- class mandje performanter implementeren

@@ -45,9 +45,9 @@ public class VoorstellingenServlet extends HttpServlet {
 	}
 
 	private void setGenreEnVoorstellingenIn(HttpServletRequest request) {
-		long genreid = Long.parseLong(request.getParameter("genreid"));
-		Genre genre = genreRepository.findById(genreid);
-		List<Voorstelling> voorstellingen = voorstellingRepository.findByGenre(genreid);
+		long genreId = Long.parseLong(request.getParameter("genreId"));
+		Genre genre = genreRepository.findById(genreId);
+		List<Voorstelling> voorstellingen = voorstellingRepository.findByGenre(genreId);
 		request.setAttribute("genre", genre);
 		request.setAttribute("voorstellingen", voorstellingen);
 	}

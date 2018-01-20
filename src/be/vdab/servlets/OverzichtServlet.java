@@ -37,7 +37,7 @@ public class OverzichtServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		long klantId = Long.parseLong(request.getParameter("klantid"));
+		long klantId = Long.parseLong(request.getParameter("klantId"));
 		HttpSession session = request.getSession(false);
 		Mandje mandje = (Mandje) session.getAttribute("mandje");
 		mandje.setKlantId(klantId);

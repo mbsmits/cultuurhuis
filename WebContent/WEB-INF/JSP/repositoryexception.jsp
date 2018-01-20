@@ -7,7 +7,7 @@
 <vdab:head title='${titel}' />
 <body>
 	<vdab:header title='${titel}' image='datafout' />
-	<section>We kunnen de gevraagde data niet ophalen wegens een technische storing. Gelieve de helpdesk te
-		contacteren.</section>
+	<section>We kunnen de gevraagde data niet ophalen wegens een
+		technische storing. Gelieve de helpdesk te contacteren.</section>
 </body>
 </html>

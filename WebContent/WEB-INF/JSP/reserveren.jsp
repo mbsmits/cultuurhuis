@@ -12,12 +12,13 @@
 		<vdab:field label='Uitvoerders' value='${voorstelling.uitvoerders}' />
 		<vdab:field label='Datum' value='${voorstelling.datum}' />
 		<vdab:field label='Prijs' value='${voorstelling.prijs}' />
-		<vdab:field label='Vrije plaatsen' value='${voorstelling.vrijePlaatsen}' />
+		<vdab:field label='Vrije plaatsen'
+			value='${voorstelling.vrijePlaatsen}' />
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
 		<p>
-			<input type='hidden' name='voorstellingsid' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
-				value='Reserveren' formmethod='post' formaction='mandje.htm'
-			>
+			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' />
+			<input id='reserveerknop' type='submit' value='Reserveren'
+				formmethod='post' formaction='mandje.htm'>
 		</p>
 	</form>
 	<script>

@@ -27,7 +27,7 @@
 						<td><vdab:bedrag value='${voorstelling.prijs}' /></td>
 						<td>${voorstelling.vrijePlaatsen}</td>
 						<td><c:if test='${voorstelling.reserveerbaar}'>
-								<a href='reserveren.htm?voorstellingsid=${voorstelling.id}'>Reserveren</a>
+								<a href='reserveren.htm?voorstellingId=${voorstelling.id}'>Reserveren</a>
 							</c:if></td>
 					</tr>
 				</c:forEach>

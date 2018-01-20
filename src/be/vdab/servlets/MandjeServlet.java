@@ -45,7 +45,7 @@ public class MandjeServlet extends HttpServlet {
 	}
 
 	private void voegReservatieAanMandjeToe(HttpServletRequest request) {
-		long voorstellingId = Long.parseLong(request.getParameter("voorstellingid"));
+		long voorstellingId = Long.parseLong(request.getParameter("voorstellingId"));
 		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
 		long plaatsen = Long.parseLong(request.getParameter("plaatsen"));
 		Reservatie reservatie = new Reservatie(voorstelling, plaatsen);

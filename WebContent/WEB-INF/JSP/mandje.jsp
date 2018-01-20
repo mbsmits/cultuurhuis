@@ -18,7 +18,8 @@
 						<th>Uitvoerders</th>
 						<th>Prijs</th>
 						<th>Plaatsen</th>
-						<th><input id='verwijderknop' type='submit' value='Verwijderen' formaction='mandje.htm' /></th>
+						<th><input id='verwijderknop' type='submit'
+							value='Verwijderen' formaction='mandje.htm' /></th>
 					</tr>
 					<c:forEach var='reservatie' items='${mandje}'>
 						<tr>
@@ -27,7 +28,8 @@
 							<td><c:out value='${reservatie.voorstelling.uitvoerders}' /></td>
 							<td><vdab:bedrag value='${reservatie.voorstelling.prijs}' /></td>
 							<td>${reservatie.plaatsen}</td>
-							<td><input type='checkbox' name='verwijderVoorstelling${reservatie.voorstelling.id}' /></td>
+							<td><input type='checkbox'
+								name='verwijderVoorstelling${reservatie.voorstelling.id}' /></td>
 						</tr>
 					</c:forEach>
 				</table>

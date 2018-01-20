@@ -36,8 +36,8 @@ public class ReserverenServlet extends HttpServlet {
 	}
 
 	private void setVoorstellingIn(HttpServletRequest request) {
-		long voorstellingsid = Long.parseLong(request.getParameter("voorstellingsid"));
-		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingsid);
+		long voorstellingId = Long.parseLong(request.getParameter("voorstellingId"));
+		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
 		request.setAttribute("voorstelling", voorstelling);
 	}
 
