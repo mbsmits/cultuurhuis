@@ -11,6 +11,7 @@ public final class Voorstelling extends Entiteit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private long id;
 	private final String titel;
 	private final String uitvoerders;
 	private final LocalDateTime datum;
@@ -20,13 +21,17 @@ public final class Voorstelling extends Entiteit implements Serializable {
 
 	public Voorstelling(long id, String titel, String uitvoerders, LocalDateTime datum, long genreId, BigDecimal prijs,
 			long vrijePlaatsen) {
-		super(id);
+		this.id = checkLong(id);
 		this.titel = checkString(titel);
 		this.uitvoerders = checkString(uitvoerders);
 		this.datum = Objects.requireNonNull(datum);
 		this.genreId = checkLong(genreId);
 		this.prijs = Objects.requireNonNull(prijs);
 		this.vrijePlaatsen = checkLong(vrijePlaatsen);
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public String getTitel() {

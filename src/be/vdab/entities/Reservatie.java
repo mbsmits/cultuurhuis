@@ -1,18 +1,19 @@
 package be.vdab.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public final class Reservatie extends Entiteit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private long klantId;
-	private final long voorstellingId;
+	private final Voorstelling voorstelling;
 	private final long plaatsen;
 
-	public Reservatie(long voorstellingId, long plaatsen) {
+	public Reservatie(Voorstelling voorstelling, long plaatsen) {
 		super();
-		this.voorstellingId = checkLong(voorstellingId);
+		this.voorstelling = Objects.requireNonNull(voorstelling);
 		this.plaatsen = checkLong(plaatsen);
 	}
 
@@ -21,7 +22,11 @@ public final class Reservatie extends Entiteit implements Serializable {
 	}
 
 	public long getVoorstellingId() {
-		return voorstellingId;
+		return voorstelling.getId();
+	}
+
+	public Voorstelling getVoorstelling() {
+		return voorstelling;
 	}
 
 	public long getPlaatsen() {

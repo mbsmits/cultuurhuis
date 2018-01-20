@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 import be.vdab.entities.Genre;
 
-public final class GenreRepository extends AbstractRepository {
+public final class GenreRepository extends EntiteitRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(GenreRepository.class.getName());
 

@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import be.vdab.entities.Klant;
 
-public final class KlantRepository extends AbstractRepository {
+public final class KlantRepository extends EntiteitRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(KlantRepository.class.getName());
 

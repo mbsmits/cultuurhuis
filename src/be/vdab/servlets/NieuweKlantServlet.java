@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import be.vdab.entities.Klant;
-import be.vdab.repositories.AbstractRepository;
+import be.vdab.repositories.EntiteitRepository;
 import be.vdab.repositories.KlantRepository;
 
 @WebServlet(urlPatterns = "/nieuweklant.htm", name = "nieuweklantservlet")
@@ -26,7 +26,7 @@ public class NieuweKlantServlet extends HttpServlet {
 
 	private final transient KlantRepository klantRepository = new KlantRepository();
 
-	@Resource(name = AbstractRepository.JNDI_NAME)
+	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		klantRepository.setDataSource(dataSource);
 	}

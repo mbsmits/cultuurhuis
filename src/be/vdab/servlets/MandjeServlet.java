@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import be.vdab.entities.Reservatie;
-import be.vdab.repositories.AbstractRepository;
+import be.vdab.entities.Voorstelling;
+import be.vdab.repositories.EntiteitRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
 @WebServlet(urlPatterns = "/mandje.htm", name = "mandjeservlet")
@@ -24,7 +25,7 @@ public class MandjeServlet extends HttpServlet {
 
 	private final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
 
-	@Resource(name = AbstractRepository.JNDI_NAME)
+	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		voorstellingRepository.setDataSource(dataSource);
 	}
@@ -41,9 +42,10 @@ public class MandjeServlet extends HttpServlet {
 	}
 
 	private void voegReservatieAanMandjeToe(HttpServletRequest request) {
-		long voorstellingsid = Long.parseLong(request.getParameter("voorstellingsid"));
+		long voorstellingId = Long.parseLong(request.getParameter("voorstellingid"));
+		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
 		long plaatsen = Long.parseLong(request.getParameter("plaatsen"));
-		Reservatie reservatie = new Reservatie(voorstellingsid, plaatsen);
+		Reservatie reservatie = new Reservatie(voorstelling, plaatsen);
 		HttpSession session = request.getSession();
 		if (session.getAttribute("mandje") == null) {
 			session.setAttribute("mandje", new Mandje());

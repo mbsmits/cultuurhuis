@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import be.vdab.entities.Voorstelling;
 
-public final class VoorstellingRepository extends AbstractRepository {
+public final class VoorstellingRepository extends EntiteitRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
 

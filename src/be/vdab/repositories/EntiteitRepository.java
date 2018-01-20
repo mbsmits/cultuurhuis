@@ -4,7 +4,7 @@ import java.util.logging.Level;
 
 import javax.sql.DataSource;
 
-public abstract class AbstractRepository {
+public abstract class EntiteitRepository {
 
 	public static final String JNDI_NAME = "jdbc/cultuurhuis";
 	protected static final String LOG_MESSAGE = "Probleem met database cultuurhuis";

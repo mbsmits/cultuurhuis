@@ -4,16 +4,6 @@ import java.util.Objects;
 
 public abstract class Entiteit {
 
-	protected long id;
-
-	public Entiteit() {
-		this.id = -1;
-	}
-
-	public Entiteit(long id) {
-		this.id = checkLong(id);
-	}
-
 	protected static long checkLong(long geheelGetal) {
 		if (geheelGetal < 0) {
 			throw new IllegalArgumentException("ongeldig geheel getal (negatief)");
@@ -30,10 +20,6 @@ public abstract class Entiteit {
 			throw new IllegalArgumentException("ongeldige string (te lang)");
 		}
 		return string;
-	}
-
-	public long getId() {
-		return id;
 	}
 
 }

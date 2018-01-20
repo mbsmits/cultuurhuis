@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 import be.vdab.entities.Genre;
 import be.vdab.entities.Voorstelling;
-import be.vdab.repositories.AbstractRepository;
+import be.vdab.repositories.EntiteitRepository;
 import be.vdab.repositories.GenreRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
@@ -27,7 +27,7 @@ public class VoorstellingenServlet extends HttpServlet {
 	private final transient GenreRepository genreRepository = new GenreRepository();
 	private final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
 
-	@Resource(name = AbstractRepository.JNDI_NAME)
+	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		genreRepository.setDataSource(dataSource);
 		voorstellingRepository.setDataSource(dataSource);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import be.vdab.entities.Voorstelling;
-import be.vdab.repositories.AbstractRepository;
+import be.vdab.repositories.EntiteitRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
 @WebServlet(urlPatterns = "/reserveren.htm", name = "reserverenservlet")
@@ -23,7 +23,7 @@ public class ReserverenServlet extends HttpServlet {
 
 	private final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
 
-	@Resource(name = AbstractRepository.JNDI_NAME)
+	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		voorstellingRepository.setDataSource(dataSource);
 	}

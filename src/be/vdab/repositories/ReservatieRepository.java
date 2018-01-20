@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import be.vdab.entities.Reservatie;
 
-public final class ReservatieRepository extends AbstractRepository {
+public final class ReservatieRepository extends EntiteitRepository {
 
 	private static final Logger LOGGER = Logger.getLogger(ReservatieRepository.class.getName());
 
