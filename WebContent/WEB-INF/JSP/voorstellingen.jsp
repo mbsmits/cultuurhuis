@@ -9,7 +9,7 @@
 	<vdab:header title='${titel}' image='voorstellingen' />
 	<c:if test='${! empty genre}'>
 		<section>
-			<h2>${titel}</h2>
+			<h2>${genre.naam}voorstellingen</h2>
 			<table>
 				<tr>
 					<th>Datum</th>

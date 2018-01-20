@@ -1,9 +1,71 @@
 - Filters
 - get versus post overal juist?
-- optimale SQL
+
 - dat form knops niet twee (kort achteréén) ingedrukt...
-- alles functioneel (low priority)
-- paswoord en herhaal paswoord hetzelfde
+- alles functioneel programmeren (low priority)
 - isolation levels
 - search todo in code
 - class mandje performanter implementeren
+
+
+- optimale SQL (low priority now)
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Je maakt een web applicatie waarmee klanten van een cultuurcentrum ("Het CultuurHuis") kaarten kunnen reserveren voor de voorstellingen. 
+De voorstellingen zijn ingedeeld in genres. Je toont op de beginpagina de genres als hyperlinks, in alfabetische volgorde: ... <voorstellingen>. 
+Als de gebruiker een genre kiest, ziet hij de voorstellingen van dat genre. 
+Voorstellingen uit het verleden (voorstellingsdatum < systeemdatum) komen niet in de lijst voor. 
+De voorstellingen zijn oplopend gesorteerd op de voorstellingsdatum. 
+Bemerk dat de even en oneven rijen een andere achtergrondkleur hebben. ... <voorstellingen>. 
+Enkel bij voorstellingen die nog vrije plaatsen hebben ziet de gebruiker een hyperlink Reserveren. 
+Als de gebruiker de hyperlink Reserveren bij een voorstelling aanklikt, ziet hij een nieuwe pagina, 
+waarin hij kaarten voor die voorstelling kan reserveren: ... <reserveren>. 
+De hyperlink Voorstellingen brengt de gebruiker terug op de eerste pagina. 
+De gebruiker kan bij Plaatsen een geheel getal intikken tussen 1 en Vrije Plaatsen. 
+Als hij een verkeerde waarde intikt, toon je naast de knop de foutmelding "Tik een getal tussen 1 en [vrijeplaatsen]." (TODO)
+Je vervangt in deze foutmelding [vrijeplaatsen] door de vrije plaatsen van de voorstelling. 
+In het voorbeeld hierboven wordt de melding dus: "Tik een getal tussen 1 en 198." 
+Jij plaatst de reservering in een tijdelijk(!) reserveringsmandje 
+(Je onthoudt de reservering op dit moment nog niet in de database, maar op HTTP session). 
+Als een gebruiker een tweede keer dezelfde voorstelling reserveert, toon je in het invoervak bij Plaatsen: 
+het aantal dat hij reeds intikte bj de eerste reservering van die voorstelling. 
+Hij kan dit getal bij de tweede reservering wijzigen. 
+Een reservatiemandje (zie verder) kan een voorstelling max. één keer bevatten. 
+Ieder keer de gebruiker een reservering gedaan heeft, komt hij op een pagina waarin hij zijn reserveringen ziet. ... <mandje>. 
+Onder het overzicht ziet de gebruiker hoeveel hij in totaal moet betalen. 
+De gebruiker kan een vinkje plaatsen bij één of meerdere reserveringen en daarna op de knop Verwijderen klikken. 
+De aangevinkte reserveringen worden dan uit het mandje verwijderd. 
+Met de hyperlink Voorstellingen komt de gebruiker terug op de eerste pagina.
+Zodra de gebruiker minstens één reservering heeft, ziet hij op de andere pagina's naast de 
+hyperlink Voorstellingen de hyperlinks Reservatiemandje en Bevestiging reservatie: ...<voorstelling>. 
+Met de hyperlink Reservatiemandje ziet de gebruiker terug zijn mandje. 
+Met de hyperlink Bevestiging reservatie komt de gebruiker op een pagina waar hij zich indentificeert 
+en de reservatie definitief vastlegt: ... <bevestig>. Een bestaande klant tikt zijn gebruikersnaam en paswoord in. 
+Daarna klikt hij op de button Zoek me op. 
+Als deze gebruikersnaam met bijhorend paswoord bestaan, ziet de gebruiker zijn gegevens en wordt de knop Bevestigen bruikbaar. 
+De textboxen bij Gebruikersnaam en Paswoord en de buttons Zoek me op en Ik ben nieuw zijn gedisabled. ... <bevestig>. 
+Als hij een verkeerde gebruikersnaam of paswoord intikt, toon je in plaats van zijn voornaam, familienaam en 
+adres de foutmelding "Verkeerde gebruikersnaam of paswoord". 
+Een nieuwe gebruiker klikt op de knop Ik ben nieuw. 
+Dan ziet hij volgend invulformulier: ... <nieuweklant>. Alle velden zijn verplicht in te vullen. 	(TODO)
+Als de gebruiker op OK klikt, voeg je de gegevens toe aan de database, tenzij één van volgende fouten optreedt:
+• Velden werden leegelaten.
+• Paswoord en Herhaal paswoord zijn verschillend.
+• Een klant met Gebruikersnaam komt al voor in de database.
+Je toont deze fouten onder in het invulformulier: ... <nieuweklant>. 
+Als de klant als nieuwe gebruiker is toegevoegd, keert hij terug naar de pagina bevestiging reservaties en 
+is hij daar geselecteerd alsof hij zich zou opgezocht hebben als bestaande klant. ... <bevestiging>. 
+
+
+Nadat de gebruiker op de knop Bevestigen klikt, leg je de reservaties in het reservatiemandje vast in de database:
+• Je vermindert VrijePlaatsen in de table Voorstellingen. 
+Als VrijePlaatsen kleiner geworde is dan de gewenst plaatsen in het reservatiemandje 
+(omdat een andere gebruiker ondertussen ook voor die voorstelling gereserveerd heeft), 
+ken je VrijePlaatsen niet verminderen. Die reservatie voor deze voorstelling gaat voor deze gebruiker dan niet door.
+• Als je VrijePlaatsen wel kon verminderen in de table Voorstellingen, voeg je een record toe aan de table Reserveringen.
+Daarna toon je aan de gebruiker een overzicht van de handelingen in de database: ... Op dat moment heb je het reservatiemandje ook leeg gemaakt.

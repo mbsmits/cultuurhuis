@@ -7,18 +7,28 @@
 <vdab:head title='${titel}' />
 <body>
 	<vdab:header title='${titel}' image='reserveren' />
-	<form id='reserveerform'>
-		<vdab:field label='Voorstelling' value='${voorstelling.titel}' />
-		<vdab:field label='Uitvoerders' value='${voorstelling.uitvoerders}' />
-		<vdab:field label='Datum' value='${voorstelling.datum}' />
-		<vdab:field label='Prijs' value='${voorstelling.prijs}' />
-		<vdab:field label='Vrije plaatsen'
-			value='${voorstelling.vrijePlaatsen}' />
-		<vdab:numberinputfield label='Plaatsen' name='plaatsen' />
+	<form id='reserveerform' method='post'>
+		<p>
+			Voorstelling<br> <b>${voorstelling.titel}</b>
+		</p>
+		<p>
+			Uitvoerders<br> <b>${voorstelling.uitvoerders}</b>
+		</p>
+		<p>
+			Datum<br> <b><vdab:datum value='${voorstelling.utilDatum}' /></b>
+		</p>
+		<p>
+			Prijs<br> <b><vdab:bedrag value='${voorstelling.prijs}' /></b>
+		</p>
+		<p>
+			Vrije plaatsen<br> <b>${voorstelling.vrijePlaatsen}</b>
+		</p>
+		<vdab:numberinputfield label='Plaatsen' name='plaatsen' minValue='1'
+			maxValue='${voorstelling.vrijePlaatsen}' value='${plaatsen}' />
 		<p>
 			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' />
-			<input id='reserveerknop' type='submit' value='Reserveren'
-				formmethod='post' formaction='mandje.htm'>
+			<input id='reserveerknop' type='submit' value='Reserveren'>
+			${foutmelding}
 		</p>
 	</form>
 	<script>

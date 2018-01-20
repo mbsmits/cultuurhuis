@@ -12,9 +12,11 @@ public final class Reservatie extends Entiteit implements Serializable {
 	private final long plaatsen;
 
 	public Reservatie(Voorstelling voorstelling, long plaatsen) {
-		super();
 		this.voorstelling = Objects.requireNonNull(voorstelling);
 		this.plaatsen = checkLong(plaatsen);
+		if (plaatsen > voorstelling.getVrijePlaatsen()) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	public long getKlantId() {

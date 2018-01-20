@@ -18,7 +18,7 @@
 					<th>Prijs</th>
 					<th>Plaatsen</th>
 				</tr>
-				<c:forEach var='reservatie' items='${geluktereservaties}'>
+				<c:forEach var='reservatie' items='${gelukteReservaties}'>
 					<tr>
 						<td><vdab:datum value='${reservatie.voorstelling.utilDatum}' /></td>
 						<td><c:out value='${reservatie.voorstelling.titel}' /></td>
@@ -40,7 +40,7 @@
 					<th>Plaatsen</th>
 					<th>Vrije plaatsen</th>
 				</tr>
-				<c:forEach var='reservatie' items='${misluktereservaties}'>
+				<c:forEach var='reservatie' items='${mislukteReservaties}'>
 					<tr>
 						<td><vdab:datum value='${reservatie.voorstelling.utilDatum}' /></td>
 						<td><c:out value='${reservatie.voorstelling.titel}' /></td>

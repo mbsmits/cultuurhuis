@@ -15,9 +15,6 @@ public final class KlantRepository extends EntiteitRepository {
 	private static final String FIND_BY_GEBRUIKERSNAAM_AND_PASWOORD = "select id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
 			+ " from klanten where gebruikersnaam=? and paswoord=?";
 
-	private static final String FIND_BY_ID = "select id, voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord "
-			+ " from klanten where id=?";
-
 	private static final String CREATE = "insert into klanten(voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord ) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public Klant findByGebruikersnaamAndPaswoord(String gebruikersnaam, String paswoord) {
@@ -27,25 +24,6 @@ public final class KlantRepository extends EntiteitRepository {
 			connection.setAutoCommit(false);
 			statement.setString(1, gebruikersnaam);
 			statement.setString(2, paswoord);
-			Klant klant;
-			try (ResultSet resultSet = statement.executeQuery()) {
-				resultSet.next();
-				klant = resultSetRijNaarKlant(resultSet);
-			}
-			connection.commit();
-			return klant;
-		} catch (SQLException ex) {
-			LOGGER.log(LOG_LEVEL, LOG_MESSAGE, ex);
-			throw new RepositoryException(ex);
-		}
-	}
-
-	public Klant findById(long id) {
-		try (Connection connection = dataSource.getConnection();
-				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
-			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-			connection.setAutoCommit(false);
-			statement.setLong(1, id);
 			Klant klant;
 			try (ResultSet resultSet = statement.executeQuery()) {
 				resultSet.next();
