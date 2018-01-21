@@ -2,6 +2,8 @@ package be.vdab.servlets;
 
 import javax.servlet.annotation.WebServlet;
 
+import be.vdab.repositories.RepositoryException;
+
 @WebServlet(urlPatterns = "/voorstellingen.htm", name = "voorstellingenservlet")
 public class VoorstellingenServlet extends Servlet {
 
@@ -11,12 +13,12 @@ public class VoorstellingenServlet extends Servlet {
 
 	@Override
 	void doGet(Request request) {
-		// setAllGenresIn(request);
-		// try {
-		// setGenreEnVoorstellingenIn(request);
-		// } catch (NumberFormatException | RepositoryException ex) {
-		// }
-
+		request.setAllGenres(genreRepository);
+		try {
+			request.setGenreById(genreRepository);
+			request.setVoorstellingById(voorstellingRepository);
+		} catch (NumberFormatException | RepositoryException ex) {
+		}
 	}
 
 	@Override

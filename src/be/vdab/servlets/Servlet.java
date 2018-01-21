@@ -26,10 +26,10 @@ abstract class Servlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private final transient KlantRepository klantRepository = new KlantRepository();
-	private final transient GenreRepository genreRepository = new GenreRepository();
-	private final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
-	private final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
+	protected final transient KlantRepository klantRepository = new KlantRepository();
+	protected final transient GenreRepository genreRepository = new GenreRepository();
+	protected final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
+	protected final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
 
 	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
