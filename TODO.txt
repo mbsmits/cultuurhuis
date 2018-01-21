@@ -12,6 +12,14 @@
 
 
 
+BELAngrijk
+- redirects na post...
+- totaal bedrag weg?
+- alle fouten langs server side detecteren
+- fouten en exceptions
+- beter dan lists
+
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 

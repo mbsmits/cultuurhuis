@@ -23,12 +23,13 @@
 		<p>
 			Vrije plaatsen<br> <b>${voorstelling.vrijePlaatsen}</b>
 		</p>
-		<vdab:numberinputfield label='Plaatsen' name='plaatsen' minValue='1'
-			maxValue='${voorstelling.vrijePlaatsen}' value='${plaatsen}' />
+		<vdab:numberinputfield label='Plaatsen' name='plaatsen' minValue='1' maxValue='${voorstelling.vrijePlaatsen}'
+			value='${plaatsen}'
+		/>
 		<p>
-			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' />
-			<input id='reserveerknop' type='submit' value='Reserveren'>
-			${foutmelding}
+			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
+				value='Reserveren'
+			> ${foutmelding}
 		</p>
 	</form>
 	<script>

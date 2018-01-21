@@ -5,8 +5,7 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <header>
 	<h1 class="clearFix">
-		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS -
-		${title}
+		<img src='images/${image}.png' alt='${image}'> CULTUURHUIS - ${title}
 	</h1>
 	<nav>
 		<ul>
@@ -24,8 +23,7 @@
 			<h2>Genres</h2>
 			<ul>
 				<c:forEach var='genre' items='${genres}'>
-					<li><a href='voorstellingen.htm?genreId=${genre.id}'>
-							${genre.naam}</a></li>
+					<li><a href='voorstellingen.htm?genreId=${genre.id}'> ${genre.naam}</a></li>
 				</c:forEach>
 			</ul>
 		</nav>
