@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/overzicht.htm", name = "overzichtservlet")
-public class OverzichtServlet extends AbstractServlet {
+public class OverzichtServlet extends Servlet {
 
 	private static final long serialVersionUID = 1L;
 

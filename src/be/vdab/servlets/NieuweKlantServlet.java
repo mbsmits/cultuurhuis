@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.vdab.repositories.RepositoryException;
 
 @WebServlet(urlPatterns = "/nieuweklant.htm", name = "nieuweklantservlet")
-public class NieuweKlantServlet extends AbstractServlet {
+public class NieuweKlantServlet extends Servlet {
 
 	private static final long serialVersionUID = 1L;
 

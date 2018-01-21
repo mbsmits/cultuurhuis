@@ -1,14 +1,15 @@
 package be.vdab.servlets;
 
+import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import be.vdab.entities.Genre;
@@ -21,7 +22,7 @@ import be.vdab.repositories.KlantRepository;
 import be.vdab.repositories.ReservatieRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
-abstract class AbstractServlet extends HttpServlet {
+abstract class Servlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +38,39 @@ abstract class AbstractServlet extends HttpServlet {
 		voorstellingRepository.setDataSource(dataSource);
 		reservatieRepository.setDataSource(dataSource);
 	}
-	
+
+	abstract String getView();
+
+	@Override
+	protected final void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(new Request(request));
+		request.getRequestDispatcher(getView()).forward(request, response);
+	}
+
+	@Override
+	protected final void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(new Request(request));
+		String redirect = getRedirect();
+		if (redirect != null) {
+			// redirect stuff
+		}
+	}
+
+	abstract void doGet(Request request);
+
+	void doPost(Request request) {
+	}
+
+	String getRedirect() {
+		return null;
+	}
+
+	private List<Reservatie> getMandje(HttpServletRequest request) {
+		return new Request(request).getSession().getMandje();
+	}
+
 	void setAllGenresIn(HttpServletRequest request) {
 		request.setAttribute("genres", genreRepository.findAll());
 	}
@@ -50,44 +83,10 @@ abstract class AbstractServlet extends HttpServlet {
 		request.setAttribute("voorstellingen", voorstellingen);
 	}
 
-	List<Reservatie> getMandje(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		if (session.getAttribute("mandje") == null) {
-			session.setAttribute("mandje", new ArrayList<Reservatie>());
-		}
-		@SuppressWarnings("unchecked")
-		List<Reservatie> mandje = (List<Reservatie>) session.getAttribute("mandje");
-		return mandje;
-	}
-
-	void setMandjeIn(HttpServletRequest request, List<Reservatie> mandje) {
-		HttpSession session = request.getSession();
-		session.setAttribute("mandje", mandje);
-	}
-
-	void removeMandjeIn(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.removeAttribute("mandje");
-	}
-	
 	Voorstelling getVoorstelling(HttpServletRequest request) {
 		long voorstellingId = Long.parseLong(request.getParameter("voorstellingId"));
 		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
 		return voorstelling;
-	}
-
-	void setVoorstellingIn(HttpServletRequest request, Voorstelling voorstelling) {
-		request.setAttribute("voorstelling", voorstelling);
-	}
-
-	void setVoorstellingIn(HttpServletRequest request) {
-		Voorstelling voorstelling = getVoorstelling(request);
-		request.setAttribute("voorstelling", voorstelling);
-	}
-
-	long getPlaatsen(HttpServletRequest request) {
-		long plaatsen = Long.parseLong(request.getParameter("plaatsen"));
-		return plaatsen;
 	}
 
 	void setTotaalIn(HttpServletRequest request) {
@@ -101,14 +100,6 @@ abstract class AbstractServlet extends HttpServlet {
 		request.setAttribute("totaal", totaal);
 	}
 
-	void setPlaatsenIn(HttpServletRequest request, long plaatsen) {
-		request.setAttribute("plaatsen", plaatsen);
-	}
-
-	void setFoutmeldingIn(HttpServletRequest request, String foutmelding) {
-		request.setAttribute("foutmelding", foutmelding);
-	}
-	
 	void setKlantIn(HttpServletRequest request) {
 		String gebruikersnaam = request.getParameter("gebruikersnaam");
 		String paswoord = request.getParameter("paswoord");
@@ -134,27 +125,8 @@ abstract class AbstractServlet extends HttpServlet {
 		setKlantIn(request);
 	}
 
-	void setFoutenIn(HttpServletRequest request, String message) {
-		List<String> fouten = new ArrayList<>();
-		fouten.add(message);
-		request.setAttribute("fouten", fouten);
-	}
-	
-	long getKlantId(HttpServletRequest request) {
-		long klantId = Long.parseLong(request.getParameter("klantId"));
-		return klantId;
-	}
-	
 	void maakReservatieAan(Reservatie reservatie) {
 		reservatieRepository.maakAan(reservatie);
 	}
-	
-	void setGelukteReservatiesIn(HttpServletRequest request, List<Reservatie> gelukteReservaties) {
-		request.setAttribute("gelukteReservaties", gelukteReservaties);
-	}
-	
-	void setMislukteReservatiesIn(HttpServletRequest request, List<Reservatie> mislukteReservaties) {
-		request.setAttribute("mislukteReservaties", mislukteReservaties);
-	}
-	
+
 }

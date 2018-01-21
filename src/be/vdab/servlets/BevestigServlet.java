@@ -13,7 +13,7 @@ import be.vdab.entities.Reservatie;
 import be.vdab.repositories.RepositoryException;
 
 @WebServlet(urlPatterns = "/bevestig.htm", name = "bevestigservlet")
-public class BevestigServlet extends AbstractServlet {
+public class BevestigServlet extends Servlet {
 
 	private static final long serialVersionUID = 1L;
 

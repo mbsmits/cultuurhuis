@@ -13,7 +13,7 @@ import be.vdab.entities.Reservatie;
 import be.vdab.entities.Voorstelling;
 
 @WebServlet(urlPatterns = "/reserveren.htm", name = "reserverenservlet")
-public class ReserverenServlet extends AbstractServlet {
+public class ReserverenServlet extends Servlet {
 
 	private static final long serialVersionUID = 1L;
 

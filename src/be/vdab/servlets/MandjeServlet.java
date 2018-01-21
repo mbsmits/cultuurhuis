@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import be.vdab.entities.Reservatie;
 
 @WebServlet(urlPatterns = "/mandje.htm", name = "mandjeservlet")
-public class MandjeServlet extends AbstractServlet {
+public class MandjeServlet extends Servlet {
 
 	private static final long serialVersionUID = 1L;
 
