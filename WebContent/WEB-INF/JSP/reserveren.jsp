@@ -9,23 +9,35 @@
 	<vdab:header title='${titel}' image='reserveren' />
 	<form id='reserveerform' method='post'>
 		<p>
-			Voorstelling<br> <b>${voorstelling.titel}</b>
+			Voorstelling
+			<br>
+			<b>${voorstelling.titel}</b>
 		</p>
 		<p>
-			Uitvoerders<br> <b>${voorstelling.uitvoerders}</b>
+			Uitvoerders
+			<br>
+			<b>${voorstelling.uitvoerders}</b>
 		</p>
 		<p>
-			Datum<br> <b><vdab:datum value='${voorstelling.utilDatum}' /></b>
+			Datum
+			<br>
+			<b>
+				<vdab:datum value='${voorstelling.utilDatum}' />
+			</b>
 		</p>
 		<p>
-			Prijs<br> <b><vdab:bedrag value='${voorstelling.prijs}' /></b>
+			Prijs
+			<br>
+			<b>
+				<vdab:bedrag value='${voorstelling.prijs}' />
+			</b>
 		</p>
 		<p>
-			Vrije plaatsen<br> <b>${voorstelling.vrijePlaatsen}</b>
+			Vrije plaatsen
+			<br>
+			<b>${voorstelling.vrijePlaatsen}</b>
 		</p>
-		
-		<vdab:numberinputfield label='Plaatsen' name='plaatsen'	value='${plaatsen}'	/>
-		
+		<vdab:numberinputfield label='Plaatsen' name='plaatsen' value='${plaatsen}' />
 		<!-- 
 		
 		<vdab:numberinputfield label='Plaatsen' name='plaatsen'
@@ -33,13 +45,12 @@
 			value='${plaatsen}'
 		/>
 		 -->
-		
+		1: ${param.reminder} 2: ${not empty param.reminder}
 		<p>
-			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
-				value='Reserveren'
-			>
-			<c:if test='${reminder}'>
-				Tik een getal tussen 1 en ${voorstelling.vrijePlaatsen}
+			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' />
+			<input id='reserveerknop' type='submit' value='Reserveren'>
+			<c:if test='${not empty reminder}'>
+				Tik een getal tussen 1 en ${voorstelling.vrijePlaatsen}.
 			</c:if>
 		</p>
 	</form>

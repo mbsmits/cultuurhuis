@@ -14,7 +14,8 @@ public class ReserverenServlet extends CultuurHuisServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/reserveren.jsp";
-	private static final String REDIRECT = "/mandje.htm";
+	// private static final String SUCCESS_REDIRECT = "/mandje.htm";
+	private static final String FAILURE_REDIRECT = "/reserveren.htm";
 	
 	@Override
 	void doGet(CultuurHuisGetRequest request) {
@@ -44,8 +45,9 @@ public class ReserverenServlet extends CultuurHuisServlet {
 			session.setMandje(nieuwMandje);
 			mandje = session.getMandje();
 			mandje.add(reservatie);
+			// request.setRedirect(SUCCESS_REDIRECT + "?voorstellingId=" + voorstelling.getId() + "&reminder=true");
 		} catch (OnvoldoendePlaatsException ex) {
-			request.setRedirect(REDIRECT + "fout=");
+			request.setRedirect(FAILURE_REDIRECT + "?voorstellingId=" + voorstelling.getId() + "&reminder=true");
 		}
 	}
 	

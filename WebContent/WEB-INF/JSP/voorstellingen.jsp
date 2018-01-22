@@ -9,7 +9,7 @@
 	<vdab:header title='${titel}' image='voorstellingen' />
 	<c:if test='${! empty genre}'>
 		<section>
-			<h2>${genre.naam} voorstellingen</h2>
+			<h2>${genre.naam}voorstellingen</h2>
 			<table>
 				<tr>
 					<th>Datum</th>
@@ -21,14 +21,24 @@
 				</tr>
 				<c:forEach var='voorstelling' items='${voorstellingen}'>
 					<tr>
-						<td><vdab:datum value='${voorstelling.utilDatum}' /></td>
-						<td><c:out value='${voorstelling.titel}' /></td>
-						<td><c:out value='${voorstelling.uitvoerders}' /></td>
-						<td><vdab:bedrag value='${voorstelling.prijs}' /></td>
+						<td>
+							<vdab:datum value='${voorstelling.utilDatum}' />
+						</td>
+						<td>
+							<c:out value='${voorstelling.titel}' />
+						</td>
+						<td>
+							<c:out value='${voorstelling.uitvoerders}' />
+						</td>
+						<td>
+							<vdab:bedrag value='${voorstelling.prijs}' />
+						</td>
 						<td>${voorstelling.vrijePlaatsen}</td>
-						<td><c:if test='${voorstelling.reserveerbaar}'>
+						<td>
+							<c:if test='${voorstelling.reserveerbaar}'>
 								<a href='reserveren.htm?voorstellingId=${voorstelling.id}'>Reserveren</a>
-							</c:if></td>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
