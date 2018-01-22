@@ -1,7 +1,6 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 import javax.annotation.Resource;
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import be.vdab.entities.Genre;
 import be.vdab.entities.Klant;
 import be.vdab.entities.Reservatie;
-import be.vdab.entities.Voorstelling;
 import be.vdab.repositories.EntiteitRepository;
 import be.vdab.repositories.GenreRepository;
 import be.vdab.repositories.KlantRepository;
@@ -42,14 +39,14 @@ abstract class CultuurHuisServlet extends HttpServlet {
 	@Override
 	protected final void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(new CultuurHuisRequest(request));
+		doGet(new CultuurHuisGetRequest(request));
 		request.getRequestDispatcher(getView()).forward(request, response);
 	}
 	
 	@Override
 	protected final void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(new CultuurHuisRequest(request));
+		doPost(new CultuurHuisPostRequest(request));
 		String redirect = (String) request.getAttribute("redirect");
 		if (redirect != null) {
 			response.sendRedirect(request.getContextPath() + redirect);
@@ -58,32 +55,10 @@ abstract class CultuurHuisServlet extends HttpServlet {
 		}
 	}
 	
-	abstract void doGet(CultuurHuisRequest request);
+	abstract void doGet(CultuurHuisGetRequest request);
 	
-	void doPost(CultuurHuisRequest request) {
+	void doPost(CultuurHuisPostRequest request) {
 		// default implementation (do nothing)
-	}
-	
-	private List<Reservatie> getMandje(HttpServletRequest request) {
-		return new CultuurHuisRequest(request).getSession().getMandje();
-	}
-	
-	void setAllGenresIn(HttpServletRequest request) {
-		request.setAttribute("genres", genreRepository.findAll());
-	}
-	
-	void setGenreEnVoorstellingenIn(HttpServletRequest request) {
-		long genreId = Long.parseLong(request.getParameter("genreId"));
-		Genre genre = genreRepository.findById(genreId);
-		List<Voorstelling> voorstellingen = voorstellingRepository.findByGenre(genreId);
-		request.setAttribute("genre", genre);
-		request.setAttribute("voorstellingen", voorstellingen);
-	}
-	
-	Voorstelling getVoorstelling(HttpServletRequest request) {
-		long voorstellingId = Long.parseLong(request.getParameter("voorstellingId"));
-		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
-		return voorstelling;
 	}
 	
 	void setKlantIn(HttpServletRequest request) {

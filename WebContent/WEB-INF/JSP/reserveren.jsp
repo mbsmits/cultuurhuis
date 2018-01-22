@@ -23,13 +23,24 @@
 		<p>
 			Vrije plaatsen<br> <b>${voorstelling.vrijePlaatsen}</b>
 		</p>
-		<vdab:numberinputfield label='Plaatsen' name='plaatsen' minValue='1' maxValue='${voorstelling.vrijePlaatsen}'
+		
+		<vdab:numberinputfield label='Plaatsen' name='plaatsen'	value='${plaatsen}'	/>
+		
+		<!-- 
+		
+		<vdab:numberinputfield label='Plaatsen' name='plaatsen'
+				  minValue='1' maxValue='${voorstelling.vrijePlaatsen}' 
 			value='${plaatsen}'
 		/>
+		 -->
+		
 		<p>
 			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
 				value='Reserveren'
-			> ${fout}
+			>
+			<c:if test='${reminder}'>
+				Tik een getal tussen 1 en ${voorstelling.vrijePlaatsen}
+			</c:if>
 		</p>
 	</form>
 	<script>

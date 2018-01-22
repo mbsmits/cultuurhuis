@@ -15,16 +15,14 @@ import java.util.logging.Logger;
 import be.vdab.entities.Voorstelling;
 
 public final class VoorstellingRepository extends EntiteitRepository {
-
+	
 	private static final Logger LOGGER = Logger.getLogger(VoorstellingRepository.class.getName());
-
 	private static final String FIND_BY_GENRE = "select id, titel, uitvoerders, datum, genreid, prijs, vrijeplaatsen "
 			+ "from voorstellingen where genreid=? and datum>=? order by datum";
-
 	private static final String FIND_BY_ID = "select id, titel, uitvoerders, datum, genreid, prijs, vrijeplaatsen "
 			+ "from voorstellingen where id=?";
-
-	public List<Voorstelling> findByGenre(long genreid) {
+	
+	public List<Voorstelling> findByGenreId(long genreid) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_GENRE)) {
 			List<Voorstelling> voorstellingen = new ArrayList<>();
@@ -44,7 +42,7 @@ public final class VoorstellingRepository extends EntiteitRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	public Voorstelling findById(long id) {
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(FIND_BY_ID)) {
@@ -63,7 +61,7 @@ public final class VoorstellingRepository extends EntiteitRepository {
 			throw new RepositoryException(ex);
 		}
 	}
-
+	
 	private Voorstelling resultSetRijNaarVoorstelling(ResultSet resultSet) throws SQLException {
 		long voorstellingenId = resultSet.getLong("id");
 		String titel = resultSet.getString("titel");
