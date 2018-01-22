@@ -29,7 +29,7 @@
 		<p>
 			<input type='hidden' name='voorstellingId' value='${voorstelling.id}' /> <input id='reserveerknop' type='submit'
 				value='Reserveren'
-			> ${foutmelding}
+			> ${fout}
 		</p>
 	</form>
 	<script>

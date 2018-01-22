@@ -1,7 +1,6 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,15 +21,14 @@ import be.vdab.repositories.KlantRepository;
 import be.vdab.repositories.ReservatieRepository;
 import be.vdab.repositories.VoorstellingRepository;
 
-abstract class Servlet extends HttpServlet {
-
+abstract class CultuurHuisServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-
 	protected final transient KlantRepository klantRepository = new KlantRepository();
 	protected final transient GenreRepository genreRepository = new GenreRepository();
 	protected final transient VoorstellingRepository voorstellingRepository = new VoorstellingRepository();
 	protected final transient ReservatieRepository reservatieRepository = new ReservatieRepository();
-
+	
 	@Resource(name = EntiteitRepository.JNDI_NAME)
 	void setDataSource(DataSource dataSource) {
 		klantRepository.setDataSource(dataSource);
@@ -38,43 +36,42 @@ abstract class Servlet extends HttpServlet {
 		voorstellingRepository.setDataSource(dataSource);
 		reservatieRepository.setDataSource(dataSource);
 	}
-
+	
 	abstract String getView();
-
+	
 	@Override
 	protected final void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(new Request(request));
+		doGet(new CultuurHuisRequest(request));
 		request.getRequestDispatcher(getView()).forward(request, response);
 	}
-
+	
 	@Override
 	protected final void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(new Request(request));
-		String redirect = getRedirect();
+		doPost(new CultuurHuisRequest(request));
+		String redirect = (String) request.getAttribute("redirect");
 		if (redirect != null) {
-			// redirect stuff
+			response.sendRedirect(request.getContextPath() + redirect);
+		} else {
+			response.sendRedirect(request.getRequestURI());
 		}
 	}
-
-	abstract void doGet(Request request);
-
-	void doPost(Request request) {
+	
+	abstract void doGet(CultuurHuisRequest request);
+	
+	void doPost(CultuurHuisRequest request) {
+		// default implementation (do nothing)
 	}
-
-	String getRedirect() {
-		return null;
-	}
-
+	
 	private List<Reservatie> getMandje(HttpServletRequest request) {
-		return new Request(request).getSession().getMandje();
+		return new CultuurHuisRequest(request).getSession().getMandje();
 	}
-
+	
 	void setAllGenresIn(HttpServletRequest request) {
 		request.setAttribute("genres", genreRepository.findAll());
 	}
-
+	
 	void setGenreEnVoorstellingenIn(HttpServletRequest request) {
 		long genreId = Long.parseLong(request.getParameter("genreId"));
 		Genre genre = genreRepository.findById(genreId);
@@ -82,31 +79,20 @@ abstract class Servlet extends HttpServlet {
 		request.setAttribute("genre", genre);
 		request.setAttribute("voorstellingen", voorstellingen);
 	}
-
+	
 	Voorstelling getVoorstelling(HttpServletRequest request) {
 		long voorstellingId = Long.parseLong(request.getParameter("voorstellingId"));
 		Voorstelling voorstelling = voorstellingRepository.findById(voorstellingId);
 		return voorstelling;
 	}
-
-	void setTotaalIn(HttpServletRequest request) {
-		BigDecimal totaal = BigDecimal.ZERO;
-		for (Reservatie reservatie : getMandje(request)) {
-			Voorstelling voorstelling = reservatie.getVoorstelling();
-			BigDecimal prijs = voorstelling.getPrijs();
-			long plaatsen = reservatie.getPlaatsen();
-			totaal = totaal.add(prijs.multiply(BigDecimal.valueOf(plaatsen)));
-		}
-		request.setAttribute("totaal", totaal);
-	}
-
+	
 	void setKlantIn(HttpServletRequest request) {
 		String gebruikersnaam = request.getParameter("gebruikersnaam");
 		String paswoord = request.getParameter("paswoord");
 		Klant klant = klantRepository.findByGebruikersnaamAndPaswoord(gebruikersnaam.trim(), paswoord.trim());
 		request.setAttribute("klant", klant);
 	}
-
+	
 	void maakKlantAanEnSetIn(HttpServletRequest request) {
 		String voornaam = request.getParameter("voornaam");
 		String familienaam = request.getParameter("familienaam");
@@ -124,9 +110,8 @@ abstract class Servlet extends HttpServlet {
 		klantRepository.maakAan(klant);
 		setKlantIn(request);
 	}
-
+	
 	void maakReservatieAan(Reservatie reservatie) {
 		reservatieRepository.maakAan(reservatie);
 	}
-
 }

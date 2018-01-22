@@ -9,15 +9,14 @@ import be.vdab.entities.Reservatie;
 import be.vdab.entities.Voorstelling;
 
 @WebServlet(urlPatterns = "/reserveren.htm", name = "reserverenservlet")
-public class ReserverenServlet extends Servlet {
-
+public class ReserverenServlet extends CultuurHuisServlet {
+	
 	private static final long serialVersionUID = 1L;
-
 	private static final String VIEW = "/WEB-INF/JSP/reserveren.jsp";
-	private static final String SUCCESS_VIEW = "/WEB-INF/JSP/mandje.jsp";
-
+	private static final String REDIRECT = "/mandje.htm";
+	
 	@Override
-	void doGet(Request request) {
+	void doGet(CultuurHuisRequest request) {
 		request.setVoorstellingById(voorstellingRepository);
 		Voorstelling voorstelling = request.getVoorstelling();
 		for (Reservatie reservatie : request.getSession().getMandje()) {
@@ -26,34 +25,33 @@ public class ReserverenServlet extends Servlet {
 			}
 		}
 	}
-
+	
 	@Override
-	void doPost(Request request) {
+	void doPost(CultuurHuisRequest request) {
+		CultuurHuisSession session = request.getSession();
 		request.setVoorstellingById(voorstellingRepository);
 		Voorstelling voorstelling = request.getVoorstelling();
-		List<Reservatie> mandje = getMandje(request);
-		long plaatsen = getPlaatsen(request);
+		List<Reservatie> mandje = session.getMandje();
+		long plaatsen = request.getPlaatsen();
 		try {
 			Reservatie reservatie = new Reservatie(voorstelling, plaatsen);
-			List<Reservatie> nieuwMandje = new ArrayList<Reservatie>(); // TODO
+			List<Reservatie> nieuwMandje = new ArrayList<Reservatie>();
 			for (Reservatie oudeReservatie : mandje) {
 				if (oudeReservatie.getVoorstellingId() != reservatie.getVoorstellingId()) {
 					nieuwMandje.add(oudeReservatie);
 				}
 			}
-			request.setMandje(nieuwMandje);
-			mandje = request.getMandje();
+			session.setMandje(nieuwMandje);
+			mandje = session.getMandje();
 			mandje.add(reservatie);
-			request.getRequestDispatcher(SUCCESS_VIEW).forward(request, response);
 		} catch (IllegalArgumentException ex) {
-			request.setFout(ex.getMessage()); // wordt nog niet gebruikt
-			request.getRequestDispatcher(VIEW).forward(request, response);
+			request.setFout(ex.getMessage());
+			request.setRedirect(REDIRECT);
 		}
 	}
-
+	
 	@Override
 	String getView() {
 		return VIEW;
 	}
-
 }
