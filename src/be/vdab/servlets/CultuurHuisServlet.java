@@ -50,8 +50,6 @@ abstract class CultuurHuisServlet extends HttpServlet {
 		String redirect = (String) request.getAttribute("redirect");
 		if (redirect != null) {
 			response.sendRedirect(request.getContextPath() + redirect);
-		} else {
-			response.sendRedirect(request.getRequestURI());
 		}
 	}
 	
